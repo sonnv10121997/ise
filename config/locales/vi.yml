@@ -1,0 +1,7 @@
+vi:
+  events:
+    index:
+      welcome: "Đăng nhập thành công!"
+      logout: "Đăng xuất"
+      vn: "Tiếng Việt"
+      en: "Tiếng Anh"
