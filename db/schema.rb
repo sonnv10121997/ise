@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_035831) do
     t.date "start_date"
     t.date "end_date"
     t.string "semester"
-    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "partner_id"
