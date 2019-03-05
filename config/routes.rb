@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, module: :users
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    devise_for :users, module: :users, skip: :omniauth_callbacks
 
-  devise_scope :user do
-    root "users/sessions#new"
+    root "events#index"
   end
-
-  # get "*pages", to: "errors#routing"
 end
