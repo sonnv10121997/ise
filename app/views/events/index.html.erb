@@ -1,6 +1,0 @@
-<%= link_to t(".en"), {locale: :en} %>
-<%= link_to t(".vn"), {locale: :vi} %>
-<% if user_signed_in? %>
-  <%= t ".welcome" %>
-  <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
-<% end %>
