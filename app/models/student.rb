@@ -1,0 +1,1 @@
+class Student < User; end
