@@ -1,0 +1,68 @@
+<%= form_for @event do |f| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize event.errors.count, "error" %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, {required: true} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description, {required: true} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price, :value => number_with_delimiter(f.object.price),
+                     :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :max_participants %>
+    <%= f.text_field :max_participants, {required: true} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :joined_participants %>
+    <%= f.text_field :joined_participants, {required: true} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_select :start_date,
+                      {order: [:day, :month, :year],
+                       prompt: {day: 'Select day', month: 'Select month', year: 'Select year'},
+                       start_year: Date.today.year + 2,
+                       end_year: Date.today.year + 7},
+                      {required: true} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.date_select :end_date,
+                      {order: [:day, :month, :year],
+                       prompt: {day: 'Select day', month: 'Select month', year: 'Select year'},
+                       start_year: Date.today.year + 2,
+                       end_year: Date.today.year + 7},
+                      {required: true} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :semester %>
+    <%= f.text_field :semester, {required: true} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
