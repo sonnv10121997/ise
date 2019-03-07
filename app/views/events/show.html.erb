@@ -1,44 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @event.price %>
-</p>
-
-<p>
-  <strong>Max participants:</strong>
-  <%= @event.max_participants %>
-</p>
-
-<p>
-  <strong>Joined participants:</strong>
-  <%= @event.joined_participants %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date.strftime("%e, %B %Y") %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @event.end_date.strftime("%e, %B %Y") %>
-</p>
-
-<p>
-  <strong>Semester:</strong>
-  <%= @event.semester %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div class="container">
+  <div class="header-link">
+    <a href="#thumbnail">Latest</a> <b><</b> <%= link_to @event.name %>
+  </div>
+</div>
