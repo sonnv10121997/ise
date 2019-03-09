@@ -1,5 +1,7 @@
 {
   "name": "ise",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "malihu-custom-scrollbar-plugin": "^3.1.5"
+  }
 }

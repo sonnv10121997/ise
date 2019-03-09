@@ -1,7 +1,31 @@
 en:
   events:
     index:
-      welcome: "Log in successful!"
-      logout: "Log out"
-      vn: "Vietnamese"
-      en: "English"
+      welcome: Log in successful!
+      logout: Log out
+      vn: Vietnamese
+      en: English
+  users:
+    sessions:
+      new:
+        password: Password
+        forgot_password: Forgot password?
+        log_in: Log in
+        log_in_with_google: Log in with Google
+        sign_up: "Sign up"
+        remember_me: Remember me
+        or: or
+  layouts:
+    header:
+      search_anything: Search anything
+      ic_staffs: IC Staffs
+      international_partners: International Partners
+      about: About
+    sidebar:
+      home: Home
+      courses: Courses
+      lastest: Lastest
+      most_popular: Most popular
+      enrolling: Enrolling
+      my_enroll: My enroll
+      my_following: My following

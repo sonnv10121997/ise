@@ -1,0 +1,129 @@
+@import 'bootstrap';
+
+$header_container_gray: #ececec;
+$search_border_gray: #ddd;
+$search_btn_gray: #aaa;
+$main_nav_gray: #4e4e4e;
+$main_nav_border_orange: #ff6600;
+$main_nav_orange: #ff8a00;
+
+@mixin transition($duration, $property) {
+  transition: $duration $property;
+  -webkit-transition: $duration $property;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  box-shadow: 0px 1px 1px 1px $header_container_gray;
+  z-index: 1;
+}
+
+.logo {
+  height: 56px;
+  margin-left: 30px;
+}
+
+.header_container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 56px;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: fixed;
+}
+
+
+.main-nav {
+  flex-direction: row !important;
+  align-items: center;
+
+  li {
+    padding: 0px 15px;
+    a {
+      color: $main_nav_gray;
+      @include transition(0.2s, color);
+
+      &:hover {
+        color: $main_nav_border_orange;
+
+        &:after {
+          width: 100%;
+        }
+      }
+
+      &:after {
+        background-color: $main_nav_orange;
+        content: "";
+        display: block;
+        height: 2px;
+        width: 0%;
+        @include transition(0.2s, width);
+      }
+    }
+  }
+}
+
+.height-24 {
+  height: 24px !important;
+}
+
+#sidebarCollapse {
+  cursor: pointer;
+  font-size: 28px;
+  margin-left: 17px;
+  @include transition(0.2s, color);
+
+  &:hover {
+    color: $main_nav_orange;
+  }
+}
+
+.side-nav {
+  display: inherit;
+  align-items: center;
+}
+
+.search_icon {
+  width: 35px;
+  height: 35px;
+}
+
+.search-box-container {
+  right: 15px;
+}
+
+.search-box {
+  border: 1px solid $search_border_gray;
+  border-radius: 3px;
+  display: inherit;
+  padding: 4px 4px 4px 10px;
+  position: relative;
+  width: 33%;
+
+  input[type=text] {
+    border: none;
+    box-shadow: none;
+    display: inline-block;
+    padding: 0;
+    background: transparent;
+  }
+
+  .search-btn {
+    border: 0;
+    color: $search_btn_gray;
+    padding: 0px 5px 0px 5px !important;
+
+    &:hover {
+      color: $main_nav_orange;
+      @include transition(0.2s, color);
+    }
+  }
+}
+
+.search-form {
+  display: inherit;
+  width: 100%;
+}

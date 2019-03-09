@@ -1,0 +1,32 @@
+<header class="header">
+  <div class="row">
+    <div class="col header_container">
+      <div class="side-nav">
+        <div id="sidebarCollapse">
+          <%= icon "fa", "bars" %>
+        </div>
+
+        <%= link_to root_path do %>
+          <%= image_tag Settings.assets.images.fpt_logo, class: "logo" %>
+        <% end %>
+      </div>
+
+      <div class="search-box">
+        <form class="search-form">
+          <input class="form-control height-24" placeholder="<%= t ".search_anything" %>" type="text">
+          <button class="btn btn-link search-btn">
+            <%= icon "fa", "search" %>
+          </button>
+        </form>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right main-nav">
+        <li><%= link_to t(".ic_staffs"), "#" %></li>
+        <li><%= link_to t(".international_partners"), "#" %></li>
+        <li><%= link_to t(".about"), "#" %></li>
+        <li><%= icon "fa", "bell" %></li>
+        <li><%= icon "fa", "user-circle" %></li>
+      </ul>
+    </div>
+  </div>
+</header>
