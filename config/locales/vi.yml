@@ -1,7 +1,31 @@
 vi:
   events:
     index:
-      welcome: "Đăng nhập thành công!"
-      logout: "Đăng xuất"
-      vn: "Tiếng Việt"
-      en: "Tiếng Anh"
+      welcome: Đăng nhập thành công!
+      logout: Đăng xuất
+      vn: Tiếng Việt
+      en: Tiếng Anh
+  users:
+    sessions:
+      new:
+        password: Mật khẩu
+        forgot_password: Quên mật khẩu?
+        log_in: Đăng nhập
+        log_in_with_google: Đăng nhập bằng Google
+        sign_up: "Đăng kí"
+        remember_me: Duy trì đăng nhập
+        or: hoặc
+  layouts:
+    header:
+      search_anything: Tìm kiếm mọi thứ
+      ic_staffs: Cán bộ phòng IC
+      international_partners: Đối tác quốc tế
+      about: Đội phát triển
+    sidebar:
+      home: Trang chủ
+      courses: Khoá học
+      lastest: Mới nhất
+      most_popular: Phổ biến nhất
+      enrolling: Đang mở đơn
+      my_enroll: Đang/đã đăng kí
+      my_following: Đang theo dõi

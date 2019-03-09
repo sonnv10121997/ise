@@ -1,46 +1,42 @@
-<%= link_to t(".en"), {locale: :en} %>
-<%= link_to t(".vn"), {locale: :vi} %>
-<% if user_signed_in? %>
-  <%= t ".welcome" %>
+<div class="content">
+  <%= link_to t(".en"), {locale: :en} %>
+  <%= link_to t(".vn"), {locale: :vi} %>
   <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
-<% end %>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h1>Events </h1>
+  <h1>Events </h1>
 
-<table border="1">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Max Participants</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-    <th>Semester</th>
-    <td colspan="3">Actions</td>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @events.each do |event| %>
+  <table border="1">
+    <thead>
     <tr>
-      <td><%= event.name %></td>
-      <td><%= event.description %></td>
-      <td><%= number_to_currency(event.price, unit: "VND", format: "%n %u",
-                                 precision: 0, delimiter: ".") %></td>
-      <td><%= event.max_participants %></td>
-      <td><%= event.start_date.strftime("%e, %B %Y") %></td>
-      <td><%= event.end_date.strftime("%e, %B %Y") %></td>
-      <td><%= event.semester %></td>
-      <td><%= link_to 'Show', event %></td>
-      <td><%= link_to 'Edit', edit_event_path(event) %></td>
-      <td><%= link_to 'Destroy', event, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Max Participants</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Semester</th>
+      <td colspan="3">Actions</td>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+    <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.description %></td>
+        <td><%= number_to_currency(event.price, unit: "VND", format: "%n %u",
+                                  precision: 0, delimiter: ".") %></td>
+        <td><%= event.max_participants %></td>
+        <td><%= event.start_date.strftime("%e, %B %Y") %></td>
+        <td><%= event.end_date.strftime("%e, %B %Y") %></td>
+        <td><%= event.semester %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'New Event', new_event_path %>
+</div>

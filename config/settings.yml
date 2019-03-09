@@ -3,3 +3,6 @@ model:
     max_name_length: 30
     min_name_length: 3
     start_dob_year: 1950
+assets:
+  images:
+    fpt_logo: fpt_logo.png

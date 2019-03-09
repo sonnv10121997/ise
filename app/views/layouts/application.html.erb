@@ -10,7 +10,21 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
+    <% if user_signed_in? %>
+      <%= render "layouts/header" %>
+      <%= render "layouts/sidebar" %>
+    <% end %>
+
     <%= yield %>
+
+    <div id="preloader">
+      <div class="preloader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
   </body>
 </html>

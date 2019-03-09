@@ -1,26 +1,50 @@
-<h2>Log in</h2>
-
 <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+  <div class="row justify-content-center mt-60">
+    <h3 class="label-uppercase align-center"><%= t ".log_in" %></h3>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="row justify-content-center">
+    <%= f.label :email, class: "label no-padding mb-15" %>
+    <div class="col-md-3 mr-42">
+      <%= f.email_field :email, autofocus: true, required: true,
+        autocomplete: "email", class: "input border_bottom" %>
     </div>
-  <% end %>
+  </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="row justify-content-center">
+    <%= f.label :password, t(".password"), class: "label no-padding mb-15" %>
+    <div class="col-md-3 mr-68">
+      <%= f.password_field :password, required: true, class: "input border_bottom" %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center align-items-center mb-15">
+    <% if devise_mapping.rememberable? %>
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me, t(".remember_me"), class: "remember_me" %>
+    <% end %>
+    <% if devise_mapping.recoverable? && controller_name != "passwords" && controller_name != "registrations" %>
+      <%= link_to t(".forgot_password"), new_password_path(resource_name), class: "ml-45" %>
+    <% end %>
+  </div>
+
+  <div class="row justify-content-center">
+    <%= f.submit t(".log_in"), class: "button mx-15" %>
+    <% if devise_mapping.registerable? && controller_name != "registrations" %>
+      <%= link_to new_registration_path(resource_name), class: "btn sign_up mx-15" do %>
+        <%= t ".sign_up" %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<div class="row justify-content-center">
+  <div class="horizontal-text col-md-3"><span><%= t ".or" %></span></div>
+</div>
+
+<div class="row justify-content-center">
+  <%= link_to "#", class: "btn btn-danger button-text" do %>
+    <%= icon "fab", "google" %>
+    <span class="ml-8"><%= t ".log_in_with_google" %></span>
+  <% end %>
+</div>

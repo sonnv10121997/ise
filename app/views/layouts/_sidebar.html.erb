@@ -1,0 +1,18 @@
+<nav id="sidebar">
+  <ul class="list-unstyled">
+    <li>
+      <%= link_to t(".home"), root_path %>
+    </li>
+    <li>
+      <%= link_to t(".courses"), "#pageSubmenu", class: "dropdown-toggle",
+        aria_expanded: true, data: {toggle: "collapse"} %>
+      <ul class="collapse show list-unstyled" id="pageSubmenu">
+        <li><%= link_to t(".lastest"), "#" %></li>
+        <li><%= link_to t(".most_popular"), "#" %></li>
+        <li><%= link_to t(".enrolling"), "#" %></li>
+        <li><%= link_to t(".my_enroll"), "#" %></li>
+        <li><%= link_to t(".my_following"), "#" %></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
