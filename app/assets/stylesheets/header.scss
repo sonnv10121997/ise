@@ -73,7 +73,7 @@ $main_nav_orange: #ff8a00;
 #sidebarCollapse {
   cursor: pointer;
   font-size: 28px;
-  margin-left: 17px;
+  margin: 0 17px;
   @include transition(0.2s, color);
 
   &:hover {

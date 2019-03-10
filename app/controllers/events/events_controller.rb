@@ -4,27 +4,25 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    return redirect_to new_user_session_path if !user_signed_in?
+    return redirect_to new_user_session_path unless user_signed_in?
   end
 
-  def show;
-  end
+  def show; end
 
   def new
     @event = Event.new
   end
 
-  def edit;
-  end
+  def edit; end
 
   def create
     @event = Event.new(event_params)
 
     respond_to do |format|
       if @event.save
-        format.html {redirect_to @event, notice: 'Event was successfully created.'}
+        format.html { redirect_to @event, notice: 'Event was successfully created.' }
       else
-        format.html {render :new}
+        format.html { render :new }
       end
     end
   end
@@ -32,9 +30,9 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html {redirect_to @event, notice: 'Event was successfully updated.'}
+        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
       else
-        format.html {render :edit}
+        format.html { render :edit }
       end
     end
   end
@@ -42,7 +40,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html {redirect_to events_url, notice: 'Event was successfully destroyed.'}
+      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
     end
   end
 
@@ -54,8 +52,8 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-          .permit :name, :description, :price,
-                  :max_participants, :joined_participants,
-                  :start_date, :end_date, :semester
+        .permit :name, :description, :price,
+                :max_participants, :joined_participants,
+                :start_date, :end_date, :semester
   end
 end
