@@ -3,6 +3,8 @@ class User < ApplicationRecord
     :validatable, :confirmable, :omniauthable, omniauth_providers: %i(google_oauth2)
 
   enum gender: %i(male female)
+  enum type: {Admin: Admin.name, Manager: Manager.name,
+    Staff: Staff.name, Student: Student.name}
 
   validates_length_of :name,
     maximum: Settings.model.user.max_name_length,

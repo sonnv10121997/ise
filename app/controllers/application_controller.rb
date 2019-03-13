@@ -3,10 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
-    respond_to do |format|
-      redirect_with_flash :danger, t(".access_denied"),
-        redirect_back(fallback_location: root_path)
-    end
+    redirect_with_flash :danger, t(".access_denied"), request.referrer
   end
 
   private
@@ -25,6 +22,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_with_flash type, msg, url
     flash[type] = msg
-    redirect_to url
+    return redirect_to url if url
+    redirect_back fallback_location: main_app.root_path
   end
 end
