@@ -14,6 +14,7 @@
 //= require malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js
 //= require popper
 //= require bootstrap
+//= require ckeditor/init
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
