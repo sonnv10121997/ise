@@ -36,3 +36,7 @@ en:
       enrolling: Enrolling
       my_enroll: My enroll
       my_following: My following
+  rails_admin:
+    main:
+      dashboard:
+        access_denied: You don\'t have permission to access this content!

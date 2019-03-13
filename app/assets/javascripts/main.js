@@ -1,4 +1,3 @@
-
 $(document).on('turbolinks:load', function() {
   $('#sidebarCollapse').on('click', function () {
     console.log(`#sidebarCollapse click function`);

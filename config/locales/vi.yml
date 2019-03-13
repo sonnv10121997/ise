@@ -36,3 +36,7 @@ vi:
       enrolling: Đang mở đơn
       my_enroll: Đang/đã đăng kí
       my_following: Đang theo dõi
+  rails_admin:
+    main:
+      dashboard:
+        access_denied: Bạn không có quyền truy cập vào nội dung này!

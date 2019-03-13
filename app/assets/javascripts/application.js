@@ -15,7 +15,21 @@
 //= require popper
 //= require bootstrap
 //= require ckeditor/init
+//= require noty/lib/noty.js
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+function noty(text, type) {
+  return new Noty({
+    type: type,
+    text: text,
+    layout: "bottomRight",
+    theme: 'relax',
+    timeout: 3000,
+  }).show();
+};

@@ -1,10 +1,8 @@
 class EventsController < ApplicationController
-
   before_action :find_event, except: %i(index new create)
 
   def index
     @events = Event.all
-    return redirect_to new_user_session_path unless user_signed_in?
   end
 
   def show; end
