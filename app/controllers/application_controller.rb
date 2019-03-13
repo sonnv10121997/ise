@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_with_flash :danger, t(".access_denied"), request.referrer
+    redirect_with_flash :error, t(".access_denied"), request.referrer
   end
 
   private
@@ -13,11 +14,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
+    session[:locale] = I18n.locale
   end
 
-  def default_url_options
-    {locale: I18n.locale}
+  def default_url_options(options = {})
+    {locale: I18n.locale}.merge options
   end
 
   def redirect_with_flash type, msg, url

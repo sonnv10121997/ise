@@ -12,6 +12,8 @@
  *
  *= require font-awesome
  *= require malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css
+ *= require noty/lib/noty.css
+ *= require noty/lib/themes/relax.css
  *= require_tree .
  *= require_self
  */
