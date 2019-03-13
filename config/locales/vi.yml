@@ -5,6 +5,13 @@ vi:
       logout: Đăng xuất
       vn: Tiếng Việt
       en: Tiếng Anh
+    detail:
+      description: Mô tả
+      comment: Bình luận
+      requirement: Yêu cầu
+      course_feature: Thông tin khóa học
+      duration: Thời lượng
+      leader: Người dẫn đoàn
   users:
     sessions:
       new:
@@ -12,7 +19,7 @@ vi:
         forgot_password: Quên mật khẩu?
         log_in: Đăng nhập
         log_in_with_google: Đăng nhập bằng Google
-        sign_up: "Đăng kí"
+        sign_up: Đăng kí
         remember_me: Duy trì đăng nhập
         or: hoặc
   layouts:

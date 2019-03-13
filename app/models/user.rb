@@ -6,9 +6,12 @@ class User < ApplicationRecord
   enum type: {Admin: Admin.name, Manager: Manager.name,
     Staff: Staff.name, Student: Student.name}
 
+  enum type: {Admin: Admin.name, Manager: Manager.name,
+              Staff: Staff.name, Student: Student.name}
+
   validates_length_of :name,
     maximum: Settings.model.user.max_name_length,
-    minimum: Settings.model.user.min_name_length
+                      minimum: Settings.model.user.min_name_length
   validates_presence_of :gender
   validates_presence_of :dob
   validates_presence_of :code

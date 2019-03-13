@@ -5,6 +5,13 @@ en:
       logout: Log out
       vn: Vietnamese
       en: English
+    detail:
+      description: description
+      comment: comments
+      requirement: Requirements
+      course_feature: Course Feature
+      duration: Duration
+      leader: Leader
   users:
     sessions:
       new:
@@ -12,7 +19,7 @@ en:
         forgot_password: Forgot password?
         log_in: Log in
         log_in_with_google: Log in with Google
-        sign_up: "Sign up"
+        sign_up: Sign up
         remember_me: Remember me
         or: or
   layouts:
