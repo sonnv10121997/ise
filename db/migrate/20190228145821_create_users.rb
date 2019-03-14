@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.date :dob
       t.string :code
       t.string :phone
-      t.string :type
+      t.string :type, default: Student.name
 
       t.timestamps
     end
