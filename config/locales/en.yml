@@ -28,6 +28,9 @@ en:
       ic_staffs: IC Staffs
       international_partners: International Partners
       about: About
+      manage_page: Manage page
+      profile: Profile
+      logout: Log out
     sidebar:
       home: Home
       courses: Courses

@@ -1,4 +1,4 @@
-<header class="header">
+<header>
   <div class="row">
     <div class="col header_container">
       <div class="side-nav">
@@ -21,11 +21,27 @@
       </div>
 
       <ul class="nav navbar-nav navbar-right main-nav">
-        <li><%= link_to t(".ic_staffs"), "#" %></li>
-        <li><%= link_to t(".international_partners"), "#" %></li>
-        <li><%= link_to t(".about"), "#" %></li>
+        <li><%= link_to t(".ic_staffs"), "#", class: "child" %></li>
+        <li><%= link_to t(".international_partners"), "#", class: "child" %></li>
+        <li><%= link_to t(".about"), "#", class: "child" %></li>
         <li><%= fa_icon "bell" %></li>
-        <li><%= fa_icon "user-circle" %></li>
+        <li class="dropdown">
+          <%= link_to "#", class: "dropdown-toggle no-after",
+            data: {toggle: "dropdown"} do %>
+            <%= fa_icon "user-circle" %>
+          <% end %>
+
+          <ul class="dropdown-menu no-padding">
+            <% if current_user.Admin? || current_user.Manager? %>
+              <li>
+                <%= link_to t(".manage_page"), rails_admin.dashboard_path %>
+              </li>
+            <% end %>
+            <li><%= link_to t(".profile"), "#" %></li><hr class="no-margin"/>
+            <li><%= link_to t(".logout"), destroy_user_session_path,
+              method: :delete %></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

@@ -1,26 +1,4 @@
-<div class="super_container content">
-
-  <!-- Home -->
-
-  <div class="home">
-    <div class="breadcrumbs_container">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="breadcrumbs">
-              <ul>
-                <li><a href="#thumbnail">Latest</a></li>
-                <li><%= link_to @event.name %></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Course -->
-
+<div class="super_container">
   <div class="course">
     <div class="container">
       <div class="row">
@@ -36,7 +14,7 @@
 
             <!-- Course Image -->
             <div class="course_image">
-              <%= image_tag("course_3.jpg") %></div>
+            </div>
 
             <!-- Course Tabs -->
             <div class="course_tabs_container">
@@ -89,7 +67,6 @@
                         <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
                           <div class="comment_image">
                             <div>
-                              <%= image_tag("course_3.jpg") %></div>
                           </div>
                           <div class="comment_content">
                             <div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
@@ -116,7 +93,6 @@
                             <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
                               <div class="comment_image">
                                 <div>
-                                  <%= image_tag("course_3.jpg") %></div>
                               </div>
                               <div class="comment_content">
                                 <div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
@@ -146,7 +122,6 @@
                         <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
                           <div class="comment_image">
                             <div>
-                              <%= image_tag("course_3.jpg") %></div>
                           </div>
                           <div class="comment_content">
                             <div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
@@ -211,7 +186,8 @@
               <div class="sidebar_section_title"><%= t "events.detail.leader" %></div>
               <div class="sidebar_teacher">
                 <div class="teacher_title_container d-flex flex-row align-items-center justify-content-start">
-                  <div class="teacher_image"><%= image_tag("teacher.jpg") %></div>
+                  <div class="teacher_image">
+                  </div>
                   <div class="teacher_title">
                     <div class="teacher_name"><a href="#">Nguyễn Văn Phú</a></div>
                     <div class="teacher_position">Marketing & Management</div>
@@ -245,27 +221,6 @@
                     <% end %>
                   </div>
                 </div>
-
-                <!-- Latest Course -->
-                <div class="sidebar_section">
-                  <div class="sidebar_section_title">Latest Courses</div>
-                  <div class="sidebar_latest">
-                    <% Event.order(:created_at).first(3).each {|event| %>
-                      <!-- Latest Course -->
-                      <div class="latest d-flex flex-row align-items-start justify-content-start">
-                        <div class="latest_image">
-                          <div>
-                            <%= image_tag("course_3.jpg") %></div>
-                        </div>
-                        <div class="latest_content">
-                          <div class="latest_title"><%= link_to @event.name %></div>
-                          <div class="latest_price"><%= number_to_currency (@event.price) %></div>
-                        </div>
-                      </div>
-                    <% } %>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>

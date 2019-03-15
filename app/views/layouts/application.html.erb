@@ -15,7 +15,9 @@
       <%= render "layouts/sidebar" %>
     <% end %>
 
-    <%= yield %>
+    <div class="<%= "#{devise_controller? ? "" : "content"}" %>">
+      <%= yield %>
+    </div>
 
     <div id="preloader">
       <div class="preloader">

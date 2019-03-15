@@ -21,7 +21,7 @@ $content_gray: #fafafa;
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: bold;
   background: white;
   color: $body_gray;
   margin: 0;
@@ -92,6 +92,11 @@ a, a:hover, a:visited, a:active, a:link {
 
 .pl-45 {
   padding-left: 45px;
+}
+
+.py-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .m-30 {
@@ -200,7 +205,7 @@ a, a:hover, a:visited, a:active, a:link {
   position: fixed;
   top: 56px;
   left: 0;
-  height: 92vh;
+  height: 91vh;
   background: $sidebar_gray;
   color: white;
   transition: all 0.3s;
@@ -261,7 +266,7 @@ a[data-toggle="collapse"] {
 
 .content {
   background-color: $content_gray;
-  height: 92vh;
+  height: 91vh;
   padding: 0px 30px ;
   position: fixed;
   right: 0;

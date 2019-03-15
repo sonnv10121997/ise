@@ -28,6 +28,9 @@ vi:
       ic_staffs: Cán bộ phòng IC
       international_partners: Đối tác quốc tế
       about: Đội phát triển
+      manage_page: Trang quản lý
+      profile: Trang cá nhân
+      logout: Đăng xuất
     sidebar:
       home: Trang chủ
       courses: Khoá học
