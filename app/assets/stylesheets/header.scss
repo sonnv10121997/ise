@@ -3,7 +3,9 @@
 $header_container_gray: #ececec;
 $search_border_gray: #ddd;
 $search_btn_gray: #aaa;
+$sidebar_hover_gray: #e4e4e4;
 $main_nav_gray: #4e4e4e;
+$main_nav_icon_gray: #6c6a74;
 $main_nav_border_orange: #ff6600;
 $main_nav_orange: #ff8a00;
 
@@ -12,16 +14,32 @@ $main_nav_orange: #ff8a00;
   -webkit-transition: $duration $property;
 }
 
-.header {
+header {
   position: fixed;
   width: 100%;
   box-shadow: 0px 1px 1px 1px $header_container_gray;
   z-index: 1;
 }
 
-.logo {
-  height: 56px;
-  margin-left: 30px;
+.logo {height: 56px}
+
+.dropdown-toggle.no-after::after {
+  display: none;
+}
+
+.dropdown-menu.show li {
+  padding: 0;
+
+  a {
+    color: $main_nav_gray;
+    display: block;
+    font-size: 0.9em;
+    padding: 10px 15px;
+
+    &:hover {
+      background: $sidebar_hover_gray;
+    }
+  }
 }
 
 .header_container {
@@ -42,7 +60,8 @@ $main_nav_orange: #ff8a00;
 
   li {
     padding: 0px 15px;
-    a {
+    a {color: $main_nav_icon_gray}
+    a.child {
       color: $main_nav_gray;
       @include transition(0.2s, color);
 
@@ -76,9 +95,8 @@ $main_nav_orange: #ff8a00;
   margin: 0 17px;
   @include transition(0.2s, color);
 
-  &:hover {
-    color: $main_nav_orange;
-  }
+  a {margin-left: 15px}
+  &:hover {color: $main_nav_orange}
 }
 
 .side-nav {
