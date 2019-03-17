@@ -22,6 +22,27 @@ en:
         sign_up: Sign up
         remember_me: Remember me
         or: or
+    registrations:
+      edit:
+        email_confirmation: Currently waiting confirmation for
+        change_password: Change password
+        password: Password
+        password_confirmation: Password Confirmation
+        current_password: Current password
+        current_password_message: we need your current password to confirm your changes
+        change_message: leave blank if you don't want to change it
+        minimum_character: Password must have at least %{count} characters minimum
+        update: Update
+        back: Back
+    show:
+      profile: Profile
+      name: Name
+      gender: Gender
+      dob: Date of Birth
+      roll_number: Roll number
+      phone: Phone
+      email: Email
+      reset_password: Reset password
   layouts:
     header:
       search_anything: Search anything

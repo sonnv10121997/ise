@@ -6,3 +6,6 @@ model:
 assets:
   images:
     fpt_logo: fpt_logo.png
+date:
+  formats:
+    long: "%e, %B %Y"

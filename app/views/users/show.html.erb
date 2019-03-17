@@ -1,0 +1,23 @@
+<h2><%= t ".profile" %></h2>
+
+<div><%= t ".name" %>: <%= @user.name %>
+</div>
+
+<div><%= t ".gender" %>: <%= @user.gender %>
+</div>
+
+<div><%= t ".dob" %>: <%= @user.dob.strftime(Settings.date.formats.long) %>
+</div>
+
+<div><%= t ".roll_number" %>: <%= @user.code %>
+</div>
+
+<div><%= t ".phone" %>: <%= @user.phone %>
+</div>
+
+<div><%= t ".email" %>: <%= @user.email %>
+</div>
+
+<div>
+  <%= link_to t(".reset_password"), edit_user_registration_path %>
+</div>
