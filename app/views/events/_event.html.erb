@@ -1,0 +1,20 @@
+<%= link_to event, class: "refactor_link" do %>
+  <div class="course mb-30">
+    <div class="course_thumbnail"><%= fa_icon "image" %></div>
+    <div class="course_title"><%= event.name %></div>
+    <div class="course_price"><%= number_to_vnd event.price %></div>
+    <div class="course_major">
+      <%= t ".major" %>: <%= event_major_acronym event %>
+    </div>
+    <div class="course_date">
+      <div class="date">
+        <%= fa_icon "calendar" %>
+        <%= event_date event %>
+      </div>
+      <div class="participants">
+        <%= fa_icon "users" %>
+        <%= event_participants event %>
+      </div>
+    </div>
+  </div>
+<% end %>

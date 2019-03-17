@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FPT International Student Exchange</title>
+    <title><%= Settings.application.title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -17,16 +17,6 @@
 
     <div class="<%= "#{devise_controller? ? "" : "content"}" %>">
       <%= yield %>
-    </div>
-
-    <div id="preloader">
-      <div class="preloader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
     </div>
   </body>
 

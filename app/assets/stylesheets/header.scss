@@ -8,6 +8,7 @@ $main_nav_gray: #4e4e4e;
 $main_nav_icon_gray: #6c6a74;
 $main_nav_border_orange: #ff6600;
 $main_nav_orange: #ff8a00;
+$content_gray: #fafafa;
 
 @mixin transition($duration, $property) {
   transition: $duration $property;
@@ -15,9 +16,10 @@ $main_nav_orange: #ff8a00;
 }
 
 header {
+  background: $content_gray;
+  box-shadow: 0px 1px 1px 1px $header_container_gray;
   position: fixed;
   width: 100%;
-  box-shadow: 0px 1px 1px 1px $header_container_gray;
   z-index: 1;
 }
 
@@ -57,6 +59,7 @@ header {
 .main-nav {
   flex-direction: row !important;
   align-items: center;
+  color: $main_nav_icon_gray;
 
   li {
     padding: 0px 15px;

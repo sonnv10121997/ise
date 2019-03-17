@@ -5,6 +5,9 @@ vi:
       logout: Đăng xuất
       vn: Tiếng Việt
       en: Tiếng Anh
+      lastest: Mới nhất
+      most_popular: Phổ biến nhất
+      enrolling_phase: Đang mở đơn
     detail:
       description: Mô tả
       comment: Bình luận
@@ -12,6 +15,8 @@ vi:
       course_feature: Thông tin khóa học
       duration: Thời lượng
       leader: Người dẫn đoàn
+    event:
+      major: Ngành
   users:
     sessions:
       new:

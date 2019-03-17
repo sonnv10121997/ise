@@ -1,0 +1,53 @@
+@import 'bootstrap';
+
+$sidebar_gray: #f7f7f7;
+$header_container_gray: #ececec;
+
+@mixin font_manage($size, $weight, $padding-top) {
+  font-size: $size;
+  font-weight: $weight;
+  padding-top: $padding-top;
+}
+
+.course {
+  display: inline-block;
+  padding-right: 5px;
+  width: 208px;
+}
+
+.course_thumbnail {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  height: 117px;
+}
+
+.course_title {
+  @include font_manage(1.1em, bold, 10px);
+  height: 61px;
+  padding-bottom: 5px;
+}
+
+.course_price {
+  @include font_manage(0.9em, bold, 5px);
+}
+
+.course_major {
+  @include font_manage(0.9em, normal, 5px);
+}
+
+.course_date {
+  @include font_manage(0.9em, normal, 5px);
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-image::before {
+  font-size: -webkit-xxx-large;
+}
+
+.participants {
+  padding-right: 5px;
+}

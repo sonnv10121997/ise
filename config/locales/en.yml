@@ -5,6 +5,9 @@ en:
       logout: Log out
       vn: Vietnamese
       en: English
+      lastest: Lastest
+      most_popular: Most popular
+      enrolling_phase: Enrolling phase
     detail:
       description: description
       comment: comments
@@ -12,6 +15,8 @@ en:
       course_feature: Course Feature
       duration: Duration
       leader: Leader
+    event:
+      major: Major
   users:
     sessions:
       new:

@@ -23,7 +23,7 @@ body {
   font-size: 14px;
   font-weight: bold;
   background: white;
-  color: $body_gray;
+  color: $sidebar_a_gray;
   margin: 0;
   padding: 0;
 }
@@ -51,6 +51,10 @@ a, a:hover, a:visited, a:active, a:link {
     padding: 0 15px;
     text-transform: uppercase;
   }
+}
+
+.separate_course {
+  border-top: 1px solid $body_gray;
 }
 
 .input {
@@ -99,12 +103,25 @@ a, a:hover, a:visited, a:active, a:link {
   padding-bottom: 15px;
 }
 
+.px-30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .m-30 {
   margin: 30px;
 }
 
 .mt-60 {
   margin-top: 60px;
+}
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
 }
 
 .mb-15 {
@@ -195,6 +212,10 @@ a, a:hover, a:visited, a:active, a:link {
   margin: 0px 0px 0px 5px;
 }
 
+.refactor_link, .refactor_link:hover {
+  color: $sidebar_a_gray;
+}
+
 .wrapper {
   display: flex;
   width: 100%;
@@ -266,99 +287,16 @@ a[data-toggle="collapse"] {
 
 .content {
   background-color: $content_gray;
-  height: 91vh;
   padding: 0px 30px ;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 56px;
   transition: all 0.3s;
   width: calc(100% - 190px);
+  z-index: -1;
 
   &.active {
     width: 100%;
-  }
-}
-
-#preloader {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgb(255, 255, 255);
-  z-index: 99999;
-}
-
-.preloader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-
-  span {
-    display: inline-block;
-    background-color: $button_orange;
-    width: 25px;
-    height: 25px;
-    -webkit-animation: 1s preload ease-in-out infinite;
-    animation: preload 1s ease-in-out infinite;
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0);
-    border-radius:50%;
-
-    &:nth-child(1) {
-      -webkit-animation-delay: 0s;
-      animation-delay: 0s;
-    }
-    &:nth-child(2) {
-      -webkit-animation-delay: 0.15s;
-      animation-delay: 0.15s;
-    }
-    &:nth-child(3) {
-      -webkit-animation-delay: 0.3s;
-      animation-delay: 0.3s;
-    }
-    &:nth-child(4) {
-      -webkit-animation-delay: 0.45s;
-      animation-delay: 0.45s;
-    }
-    &:nth-child(5) {
-      -webkit-animation-delay: 0.6s;
-      animation-delay: 0.6s;
-    }
-  }
-}
-
-@-webkit-keyframes preload {
-  0% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  }
-  50% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  }
-}
-
-@keyframes preload {
-  0% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  }
-  50% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
   }
 }
 

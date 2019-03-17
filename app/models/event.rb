@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  has_many :event_majors
+  has_many :majors, through: :event_majors
+
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :price, presence: true

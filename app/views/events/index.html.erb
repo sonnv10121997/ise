@@ -1,32 +1,11 @@
-<h1>Events </h1>
-
-<table border="1">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Max Participants</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-    <th>Semester</th>
-    <td colspan="3">Actions</td>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @events.each do |event| %>
-    <tr>
-      <td><%= event.name %></td>
-      <td><%= event.description %></td>
-      <td><%= number_to_currency(event.price, unit: "VND", format: "%n %u",
-                                precision: 0, delimiter: ".") %></td>
-      <td><%= event.max_participants %></td>
-      <td><%= event.start_date.strftime("%e, %B %Y") %></td>
-      <td><%= event.end_date.strftime("%e, %B %Y") %></td>
-      <td><%= event.semester %></td>
-      <td><%= link_to "Show", event %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<% Settings.model.event.sorted_by.keys.each do |filter| %>
+  <div class="row no-margin justify-content-center mb-15">
+    <div>
+      <h3 class="mt-25"><%= t ".#{filter}" %></h3>
+      <div id="<%= filter %>_courses">
+        <%= render @events %>
+      </div>
+      <hr class="separate_course"/>
+    </div>
+  </div>
+<% end %>
