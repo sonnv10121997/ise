@@ -28,7 +28,7 @@ function noty(text, type) {
   return new Noty({
     type: type,
     text: text,
-    layout: "bottomLeft",
+    layout: 'bottomLeft',
     theme: 'relax',
     timeout: 3000,
   }).show();

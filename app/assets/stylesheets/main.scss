@@ -23,7 +23,7 @@ body {
   font-size: 14px;
   font-weight: bold;
   background: white;
-  color: $body_gray;
+  color: $sidebar_a_gray;
   margin: 0;
   padding: 0;
 }
@@ -51,6 +51,10 @@ a, a:hover, a:visited, a:active, a:link {
     padding: 0 15px;
     text-transform: uppercase;
   }
+}
+
+.separate_course {
+  border-top: 1px solid $body_gray;
 }
 
 .input {
@@ -99,12 +103,25 @@ a, a:hover, a:visited, a:active, a:link {
   padding-bottom: 15px;
 }
 
+.px-30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .m-30 {
   margin: 30px;
 }
 
 .mt-60 {
   margin-top: 60px;
+}
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
 }
 
 .mb-15 {
@@ -195,6 +212,10 @@ a, a:hover, a:visited, a:active, a:link {
   margin: 0px 0px 0px 5px;
 }
 
+.refactor_link, .refactor_link:hover {
+  color: $sidebar_a_gray;
+}
+
 .wrapper {
   display: flex;
   width: 100%;
@@ -266,13 +287,13 @@ a[data-toggle="collapse"] {
 
 .content {
   background-color: $content_gray;
-  height: 91vh;
   padding: 0px 30px ;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 56px;
   transition: all 0.3s;
   width: calc(100% - 190px);
+  z-index: -1;
 
   &.active {
     width: 100%;

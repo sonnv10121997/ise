@@ -5,9 +5,5 @@ $(document).on('turbolinks:load', function() {
     $('.content').toggleClass('active');
   });
 
-  $("#sidebar, .content").mCustomScrollbar({
-    theme: "minimal-dark"
-  });
-
-  $("#preloader").delay(500).fadeOut();
+  $('#preloader').delay(500).fadeOut();
 });

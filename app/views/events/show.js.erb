@@ -1,0 +1,2 @@
+window.history.pushState(null, null, '<%= request.original_url %>');
+$('.content').html('<%= j render "show", event: @event %>');
