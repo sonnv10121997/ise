@@ -1,227 +1,103 @@
-<div class="super_container">
-  <div class="course">
-    <div class="container">
-      <div class="row">
-
-        <!-- Course -->
-        <div class="col-lg-8">
-
-          <div class="course_container">
-            <div class="course_title"><%= @event.name %></div>
-
-            <%= link_to t(".en"), {locale: :en} %>
-            <%= link_to t(".vn"), {locale: :vi} %>
-
-            <!-- Course Image -->
-            <div class="course_image">
+<div class="course_detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="course_container">
+          <h2><%= @event.name %></h2>
+          <div class="course_info">
+            <div class="course_info_item w-30">
+              <h5 class="course_info_header"><%= t ".leader" %>:</h5>
+              <%= @event.leaders.first.name %>
             </div>
-
-            <!-- Course Tabs -->
-            <div class="course_tabs_container">
-              <div class="tabs d-flex flex-row align-items-center justify-content-start">
-                <div class="tab active"><%= t "events.detail.description" %></div>
-                <div class="tab"><%= t "events.detail.comment" %></div>
+            <div class="course_info_item w-50">
+              <h5 class="course_info_header"><%= t ".partner" %>:</h5>
+              <%= @event.partner.name %>
+            </div>
+            <div class="course_info_item w-20">
+              <h5 class="course_info_header"><%= t ".major" %>:</h5>
+              <%= event_major_name @event %>
+            </div>
+          </div>
+          <div class="course_detail_thumbnail"></div>
+          <div class="course_tab_container">
+            <div class="tab button button-text"><%= t ".description" %></div>
+            <div class="tab btn button-text-default"><%= t ".reviews" %></div>
+          </div>
+          <div class="tab_panels">
+            <div class="tab_panel active"><%= @event.description %></div>
+            <div class="tab_panel"><%= t ".reviews" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="course_sidebar">
+          <div class="course_sidebar_section">
+            <h3><%= t ".course_features" %></h3>
+            <div class="course_features">
+              <h5><%= number_to_vnd @event.price %></h5>
+              <div class="course_features_list">
+                <div class="course_feature">
+                  <div><%= fa_icon "calendar" %> <%= t ".date" %></div>
+                  <%= event_date @event %>
+                </div>
+                <div class="course_feature">
+                  <div><%= fa_icon "calendar-o" %> <%= t ".semester" %></div>
+                  <%= @event.semester %>
+                </div>
+                <div class="course_feature">
+                  <div><%= fa_icon "map-o" %> <%= t ".country" %></div>
+                  <%= @event.partner.country %>
+                </div>
+                <div class="course_feature">
+                  <div><%= fa_icon "user-o" %> <%= t ".number_of_participants" %></div>
+                  <%= event_participants @event %>
+                </div>
+                <div class="mt-15">
+                  <div class="btn button-text-default mright-5"><%= t ".follow" %></div>
+                  <div class="button button-text"><%= t ".enroll" %></div>
+                </div>
               </div>
-              <div class="tab_panels">
-
-                <!-- Description -->
-                <div class="tab_panel active">
-                  <div class="tab_panel_title">Software Training</div>
-                  <div class="tab_panel_content">
-                    <div class="tab_panel_text">
-                      <p><%= @event.description %></p>
-                    </div>
-                    <div class="tab_panel_section">
-                      <div class="tab_panel_subtitle"><%= t "events.detail.requirement" %></div>
-                      <ul class="tab_panel_bullets">
-                        <li>Lorem Ipsn gravida nibh vel velit auctor aliquet. Class aptent taciti sociosquad litora
-                          torquent.
-                        </li>
-                        <li>Cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor
-                          a.
-                        </li>
-                        <li>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat.
-                        </li>
-                        <li>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</li>
-                      </ul>
-                    </div>
-                    <div class="tab_panel_section">
-                      <div class="tab_panel_subtitle">What is the target audience?</div>
-                      <div class="tab_panel_text">
-                        <p>This course is intended for anyone interested in learning to master his or her own body.This
-                          course is aimed at beginners, so no previous experience with hand balancing skillts is
-                          necessary Aenean viverra tincidunt nibh, in imperdiet nunc. Suspendisse eu ante pretium,
-                          consectetur leo at, congue quam. Nullam hendrerit porta ante vitae tristique. Vestibulum ante
-                          ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+            </div>
+          </div>
+          <div class="course_sidebar_section">
+            <h3><%= t ".leader" %></h3>
+            <div class="course_features">
+              <div class="course_feature justify_content_end">
+                <div class="user_image">
+                  <%= fa_icon "image" %>
+                </div>
+                <div class="user_title">
+                  <%= link_to "#" do %>
+                    <h5 class="no-margin"><%= @event.leaders.first.name %></h5>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="course_sidebar_section">
+            <h3><%= t ".latest" %></h3>
+            <div class="course_features">
+              <% 5.times do %>
+                <div class="row no-margin mb-15">
+                  <div class="col-md-5 no-padding">
+                    <div class="course_detail_thumbnail no-margin"></div>
+                  </div>
+                  <div class="col-md-7 pr-0">
+                    <div class="course_title no-padding h-55"><%= @event.name %></div>
+                    <div class="course_price no-padding"><%= number_to_vnd @event.price %></div>
+                    <div class="course_date no-padding">
+                      <div class="date">
+                        <%= fa_icon "calendar" %>
+                        <%= event_date @event %>
+                      </div>
+                      <div class="participants">
+                        <%= fa_icon "user-o" %>
+                        <%= event_participants @event %>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <!-- Comments -->
-                <div class="tab_panel tab_panel_3">
-                  <!-- Comments -->
-                  <div class="comments_container">
-                    <ul class="comments_list">
-                      <li>
-                        <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
-                          <div class="comment_image">
-                            <div>
-                          </div>
-                          <div class="comment_content">
-                            <div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
-                              <div class="comment_author"><a href="#">Milley Cyrus</a></div>
-                              <div class="comment_rating">
-                                <div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div>
-                              </div>
-                              <div class="comment_time ml-auto">1 day ago</div>
-                            </div>
-                            <div class="comment_text">
-                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                alteration in some form, by injected humour.</p>
-                            </div>
-                            <div class="comment_extras d-flex flex-row align-items-center justify-content-start">
-                              <div class="comment_extra comment_likes">
-                                <a href="#"><i class="fa fa-heart" aria-hidden="true"></i><span>15</span></a></div>
-                              <div class="comment_extra comment_reply">
-                                <a href="#"><i class="fa fa-reply" aria-hidden="true"></i><span>Reply</span></a></div>
-                            </div>
-                          </div>
-                        </div>
-                        <ul>
-                          <li>
-                            <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
-                              <div class="comment_image">
-                                <div>
-                              </div>
-                              <div class="comment_content">
-                                <div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
-                                  <div class="comment_author"><a href="#">John Tyler</a></div>
-                                  <div class="comment_rating">
-                                    <div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div>
-                                  </div>
-                                  <div class="comment_time ml-auto">1 day ago</div>
-                                </div>
-                                <div class="comment_text">
-                                  <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                    have alteration in some form, by injected humour.</p>
-                                </div>
-                                <div class="comment_extras d-flex flex-row align-items-center justify-content-start">
-                                  <div class="comment_extra comment_likes">
-                                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i><span>15</span></a></div>
-                                  <div class="comment_extra comment_reply">
-                                    <a href="#"><i class="fa fa-reply" aria-hidden="true"></i><span>Reply</span></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <div class="comment_item d-flex flex-row align-items-start jutify-content-start">
-                          <div class="comment_image">
-                            <div>
-                          </div>
-                          <div class="comment_content">
-                            <div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
-                              <div class="comment_author"><a href="#">Milley Cyrus</a></div>
-                              <div class="comment_rating">
-                                <div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div>
-                              </div>
-                              <div class="comment_time ml-auto">1 day ago</div>
-                            </div>
-                            <div class="comment_text">
-                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                alteration in some form, by injected humour.</p>
-                            </div>
-                            <div class="comment_extras d-flex flex-row align-items-center justify-content-start">
-                              <div class="comment_extra comment_likes">
-                                <a href="#"><i class="fa fa-heart" aria-hidden="true"></i><span>15</span></a></div>
-                              <div class="comment_extra comment_reply">
-                                <a href="#"><i class="fa fa-reply" aria-hidden="true"></i><span>Reply</span></a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <div class="add_comment_container">
-                      <div class="add_comment_title">Add a review</div>
-                      <div class="add_comment_text">You must be <a href="#">logged</a> in to post a comment.</div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Course Sidebar -->
-        <div class="col-lg-4">
-          <div class="sidebar">
-
-            <!-- Feature -->
-            <div class="sidebar_section">
-              <div class="sidebar_section_title"><%= t "events.detail.course_feature" %></div>
-              <div class="sidebar_feature">
-                <div class="course_price"><%= number_to_currency (@event.price) %></div>
-
-                <!-- Features -->
-                <div class="feature_list">
-
-                  <!-- Feature -->
-                  <div class="feature d-flex flex-row align-items-center justify-content-start">
-                    <div class="feature_title">
-                      <i class="fa fa-clock-o" aria-hidden="true"></i><span><%= t "events.detail.duration" %></span>
-                    </div>
-                    <div class="feature_text ml-auto"><%= pluralize(2, "week") %></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Feature -->
-            <div class="sidebar_section">
-              <div class="sidebar_section_title"><%= t "events.detail.leader" %></div>
-              <div class="sidebar_teacher">
-                <div class="teacher_title_container d-flex flex-row align-items-center justify-content-start">
-                  <div class="teacher_image">
-                  </div>
-                  <div class="teacher_title">
-                    <div class="teacher_name"><a href="#">Nguyễn Văn Phú</a></div>
-                    <div class="teacher_position">Marketing & Management</div>
-                  </div>
-                </div>
-                <div class="teacher_meta_container">
-                  <!-- Leader Email -->
-                  <div class="teacher_meta d-flex flex-row align-items-center justify-content-start">
-                    <div class="teacher_meta_title">
-                      <i class="fa fa-envelope" aria-hidden="true"></i> Email:
-                    </div>
-                    <div class="teacher_meta_text ml-auto">phunv@fpt.edu.vn</div>
-                  </div>
-                  <!-- Leader Phone number -->
-                  <div class="teacher_meta d-flex flex-row align-items-center justify-content-start">
-                    <div class="teacher_meta_title">
-                      <i class="fa fa-phone" aria-hidden="true"></i> Phone:
-                    </div>
-                    <div class="teacher_meta_text ml-auto">
-                      <%= number_to_phone(987814014, country_code: 84,
-                                          delimiter: " ", pattern: /(\d{3})(\d{3})(\d{3})$/) %>
-                    </div>
-                  </div>
-                  <!-- Action buttons -->
-                  <div class="form">
-                    <%= form_for :user do |f| %>
-                      <%= f.submit "Follow", class: "button" %>
-                    <% end %>
-                    <%= form_for :user do |f| %>
-                      <%= f.submit "Enroll", class: "button" %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>

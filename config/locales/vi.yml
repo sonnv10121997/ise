@@ -5,7 +5,7 @@ vi:
       logout: Đăng xuất
       vn: Tiếng Việt
       en: Tiếng Anh
-      lastest: Mới nhất
+      latest: Mới nhất
       most_popular: Phổ biến nhất
       enrolling_phase: Đang mở đơn
     detail:
@@ -17,6 +17,19 @@ vi:
       leader: Người dẫn đoàn
     event:
       major: Ngành
+    show:
+      leader: Phụ trách
+      reviews: Đánh giá
+      partner: Đối tác
+      major: Ngành
+      description: Chi tiết chương trình
+      course_features: Thông tin khoá học
+      date: Thời gian
+      semester: Học kì
+      country: Quốc gia
+      number_of_participants: Số lượng
+      follow: Theo dõi
+      enroll: Đăng kí
   users:
     sessions:
       new:
@@ -39,7 +52,7 @@ vi:
     sidebar:
       home: Trang chủ
       courses: Khoá học
-      lastest: Mới nhất
+      latest: Mới nhất
       most_popular: Phổ biến nhất
       enrolling: Đang mở đơn
       my_enroll: Đang/đã đăng kí

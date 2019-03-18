@@ -57,9 +57,10 @@ header {
 
 
 .main-nav {
-  flex-direction: row !important;
   align-items: center;
   color: $main_nav_icon_gray;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
 
   li {
     padding: 0px 15px;

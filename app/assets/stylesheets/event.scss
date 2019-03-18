@@ -1,0 +1,132 @@
+@import 'bootstrap';
+
+$sidebar_a_gray: #4e4e4e;
+$input_gray: #f2f1f8;
+$body_gray: #6c6a74;
+
+.course_detail {
+  font-weight: normal;
+  padding-bottom: 100px;
+  padding-top: 30px;
+}
+
+.course_info_header {
+  padding-bottom: 10px;
+}
+
+.course_info {
+  align-items: center;
+  background: $input_gray;
+  display: flex;
+  flex-flow: row;
+  height: 92px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.course_info_item {
+  padding-left: 30px;
+}
+
+.course_info_item:not(:last-child) {
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.course_detail_thumbnail {
+  border: 1px solid black;
+  margin-top: 33px;
+  padding-top: 56.25%;
+}
+
+.course_tab_container {
+  margin-top: 20px;
+}
+
+.tab_panel {
+  animation: fadeEffect 1s ease;
+  display: none;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  -webkit-animation: fadeEffect 1s ease;
+  -moz-animation: fadeEffect 1s ease;
+  -ms-animation: fadeEffect 1s ease;
+  -o-animation: fadeEffect 1s ease;
+
+  &.active {
+    display: block;
+  }
+}
+
+.course_features_list {
+  margin-top: 20px;
+}
+
+.course_features {
+  margin-top: 33px;
+}
+
+.course_feature {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.course_sidebar_section {
+  margin-bottom: 66px;
+}
+
+.course_sidebar_thumbnail {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  padding-top: 56.25%;
+}
+
+.user_image {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  height: 102px;
+  width: 102px;
+}
+
+.user_title {
+  margin-left: 15px;
+
+  a, a:hover {
+    color: $sidebar_a_gray;
+  }
+}
+
+.justify_content_end {
+  justify-content: end !important;
+}
+
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@-moz-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@-ms-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@-o-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

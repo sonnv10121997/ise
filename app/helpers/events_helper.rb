@@ -3,6 +3,10 @@ module EventsHelper
     event.majors.first ? event.majors.first.acronym : ""
   end
 
+  def event_major_name event
+    event.majors.first ? event.majors.first.name : ""
+  end
+
   def event_date event
     "#{event.start_date.strftime "%d/%m/%y"} - #{event.end_date.strftime "%d/%m/%y"}"
   end

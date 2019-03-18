@@ -12,7 +12,7 @@ model:
     start_dob_year: 1950
   event:
     sorted_by:
-      lastest: lastest
+      latest: latest
       most_popular: most_popular
       enrolling_phase: enrolling_phase
     per_page: 5

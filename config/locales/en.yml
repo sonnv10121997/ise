@@ -5,7 +5,7 @@ en:
       logout: Log out
       vn: Vietnamese
       en: English
-      lastest: Lastest
+      latest: Latest
       most_popular: Most popular
       enrolling_phase: Enrolling phase
     detail:
@@ -17,6 +17,19 @@ en:
       leader: Leader
     event:
       major: Major
+    show:
+      leader: Leader
+      reviews: Reviews
+      partner: Partner
+      major: Major
+      description: Description
+      course_features: Course features
+      date: Date
+      semester: Semester
+      country: Country
+      number_of_participants: Number of participants
+      follow: Follow
+      enroll: Enroll
   users:
     sessions:
       new:
@@ -39,7 +52,7 @@ en:
     sidebar:
       home: Home
       courses: Courses
-      lastest: Lastest
+      latest: Latest
       most_popular: Most popular
       enrolling: Enrolling
       my_enroll: My enroll

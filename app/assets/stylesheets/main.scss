@@ -53,6 +53,14 @@ a, a:hover, a:visited, a:active, a:link {
   }
 }
 
+.h-55 {
+  height: 55%;
+}
+
+.h-45 {
+  height: 45%;
+}
+
 .separate_course {
   border-top: 1px solid $body_gray;
 }
@@ -98,6 +106,10 @@ a, a:hover, a:visited, a:active, a:link {
   padding-left: 45px;
 }
 
+.pr-0 {
+  padding-right: 0;
+}
+
 .py-15 {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -116,8 +128,16 @@ a, a:hover, a:visited, a:active, a:link {
   margin-top: 60px;
 }
 
+.mt-15 {
+  margin-top: 15px;
+}
+
 .mt-25 {
   margin-top: 25px;
+}
+
+.mt-33 {
+  margin-top: 33px;
 }
 
 .mb-30 {
@@ -148,6 +168,10 @@ a, a:hover, a:visited, a:active, a:link {
   margin-left: 8px;
 }
 
+.mright-5 {
+  margin-right: 5px;
+}
+
 .mr-42 {
   margin-right: 42px;
 }
@@ -171,7 +195,7 @@ a, a:hover, a:visited, a:active, a:link {
 
 .button {
   background: $button_orange;
-  border: 0px;
+  border: 1px solid;
   border-radius: 5px;
   color: white;
   cursor: pointer;
@@ -222,14 +246,14 @@ a, a:hover, a:visited, a:active, a:link {
 }
 
 #sidebar {
-  width: 190px;
+  background: $sidebar_gray;
+  bottom: 0;
+  color: white;
+  left: 0;
   position: fixed;
   top: 56px;
-  left: 0;
-  height: 91vh;
-  background: $sidebar_gray;
-  color: white;
   transition: all 0.3s;
+  width: 190px;
 
   &.active {
     margin-left: -190px;
@@ -268,7 +292,22 @@ a[data-toggle="collapse"] {
   transform: translateY(-50%);
 }
 
-@media (max-width: 480px) {
+.content {
+  background-color: $content_gray;
+  bottom: 0;
+  overflow: auto;
+  position: absolute;
+  right: 0;
+  top: 56px;
+  transition: all 0.3s;
+  width: calc(100% - 190px);
+
+  &.active {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1275px) {
   #sidebar {
     margin-left: -190px;
 
@@ -285,22 +324,7 @@ a[data-toggle="collapse"] {
   }
 }
 
-.content {
-  background-color: $content_gray;
-  padding: 0px 30px ;
-  position: absolute;
-  right: 0;
-  top: 56px;
-  transition: all 0.3s;
-  width: calc(100% - 190px);
-  z-index: -1;
-
-  &.active {
-    width: 100%;
-  }
-}
-
-.sign_up {
+.button-text-default {
   border: 1px solid $body_gray;
   @include button_text(12px, bold, $body_gray, 24px, uppercase);
 
@@ -309,4 +333,16 @@ a[data-toggle="collapse"] {
     cursor: pointer;
     background-color: $input_gray;
   }
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.w-50 {
+  width: 30%;
+}
+
+.w-20 {
+  width: 30%;
 }
