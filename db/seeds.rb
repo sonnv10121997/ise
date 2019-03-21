@@ -28,7 +28,7 @@ end
     6.times do
       UserEventRequirement.create! event_id: event_idx + 1, user_id: user_idx + 1,
         requirement_id: Faker::Number.within(1..10), deadline: Time.now.utc + 1.week,
-        is_verified: Faker::Boolean.boolean
+        verified: Faker::Boolean.boolean
     end
   end
 end
