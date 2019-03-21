@@ -1,4 +1,8 @@
 module EventsHelper
+  def rescue_title title
+    title.first(Settings.model.event.max_title_length) << "..."
+  end
+
   def event_major_acronym event
     event.majors.first ? event.majors.first.acronym : ""
   end
@@ -8,7 +12,8 @@ module EventsHelper
   end
 
   def event_date event
-    "#{event.start_date.strftime "%d/%m/%y"} - #{event.end_date.strftime "%d/%m/%y"}"
+    "#{event.start_date.strftime Settings.model.event.date_format} - " <<
+      "#{event.end_date.strftime Settings.model.event.date_format}"
   end
 
   def event_participants event

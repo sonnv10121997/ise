@@ -6,6 +6,9 @@ class User < ApplicationRecord
   enum type: {Admin: Admin.name, Manager: Manager.name,
     Staff: Staff.name, Student: Student.name}
 
+  has_many :user_enroll_events
+  has_many :enrolls, through: :user_enroll_events
+
   validates_length_of :name,
     maximum: Settings.model.user.max_name_length,
     minimum: Settings.model.user.min_name_length

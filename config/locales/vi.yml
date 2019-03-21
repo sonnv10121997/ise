@@ -16,20 +16,30 @@ vi:
       duration: Thời lượng
       leader: Người dẫn đoàn
     event:
-      major: Ngành
+      major: Chuyên ngành
     show:
       leader: Phụ trách
       reviews: Đánh giá
       partner: Đối tác
-      major: Ngành
+      major: Chuyên ngành
       description: Chi tiết chương trình
       course_features: Thông tin khoá học
       date: Thời gian
       semester: Học kì
       country: Quốc gia
       number_of_participants: Số lượng
-      follow: Theo dõi
       enroll: Đăng kí
+  user_enroll_events:
+    show:
+      partner: Đối tác
+      major: Chuyên ngành
+      enrolling: Đang gửi yêu cầu
+      date: Thời gian
+      country: Quốc gia
+      price: Học phí
+      semester: Học kì
+      requirements: Các yêu cầu
+      discussions: Thảo luận
   users:
     sessions:
       new:
