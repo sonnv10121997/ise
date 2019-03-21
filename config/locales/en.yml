@@ -29,8 +29,7 @@ en:
       country: Country
       number_of_participants: Number of participants
       enroll: Enroll
-      following: Following
-      follow: Follow
+      enrolling: Enrolling
   user_enroll_events:
     show:
       partner: Partner

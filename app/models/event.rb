@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :partner
 
+  has_many :user_enroll_events
   has_many :event_requirements, class_name: UserEventRequirement.name,
     foreign_key: :event_id
   has_many :event_majors
