@@ -50,6 +50,27 @@ vi:
         sign_up: Đăng kí
         remember_me: Duy trì đăng nhập
         or: hoặc
+    registrations:
+      edit:
+        email_confirmation: Đang chờ xác nhận cho
+        change_password: Đổi mật khẩu
+        password: Mật khẩu
+        password_confirmation: Nhập lại mập khẩu
+        current_password: Mật khảu hiện tại
+        current_password_message: Bạn cần nhập mật khẩu để xác nhận thay đổi
+        change_message: Để trống nếu bạn không muốn đổi mật khẩu
+        minimum_character: Mật khẩu phải có ít nhất %{count} ký tự
+        update: Cập nhật
+        back: Quay lại
+    show:
+      profile: Trang cá nhân
+      name: Tên
+      gender: Giới tính
+      dob: Ngày sinh
+      roll_number: Mã số sinh viên
+      phone: Số điện thoại
+      email: Email
+      reset_password: Đổi mật khẩu
   layouts:
     header:
       search_anything: Tìm kiếm mọi thứ
