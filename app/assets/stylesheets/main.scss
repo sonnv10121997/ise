@@ -53,12 +53,20 @@ a, a:hover, a:visited, a:active, a:link {
   }
 }
 
+.h-6833px {
+  height: 68.33px;
+}
+
 .h-55 {
   height: 55%;
 }
 
 .h-45 {
   height: 45%;
+}
+
+.h-51px {
+  height: 51px;
 }
 
 .separate_course {
@@ -94,6 +102,10 @@ a, a:hover, a:visited, a:active, a:link {
   text-transform: uppercase;
 }
 
+.lh-27 {
+  line-height: 27px;
+}
+
 .no-padding {
   padding: 0;
 }
@@ -106,8 +118,37 @@ a, a:hover, a:visited, a:active, a:link {
   padding-left: 45px;
 }
 
+.pl-15 {
+  padding-left: 15px;
+}
+
+.pl-5px {
+  padding-left: 5px;
+}
+
+.pr-20 {
+  padding-right: 20px;
+}
+
+.pr-15 {
+  padding-right: 15px;
+}
+
 .pr-0 {
   padding-right: 0;
+}
+
+.pt-6833 {
+  padding-top: 68.33px;
+}
+
+.pt-17 {
+  padding-top: 17px;
+}
+
+.py-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .py-15 {
@@ -120,6 +161,11 @@ a, a:hover, a:visited, a:active, a:link {
   padding-right: 30px;
 }
 
+.px-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .m-30 {
   margin: 30px;
 }
@@ -128,16 +174,20 @@ a, a:hover, a:visited, a:active, a:link {
   margin-top: 60px;
 }
 
-.mt-15 {
-  margin-top: 15px;
+.mt-33 {
+  margin-top: 33px;
 }
 
 .mt-25 {
   margin-top: 25px;
 }
 
-.mt-33 {
-  margin-top: 33px;
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-15 {
+  margin-top: 15px;
 }
 
 .mb-30 {
@@ -185,11 +235,15 @@ a, a:hover, a:visited, a:active, a:link {
   margin-right: 15px;
 }
 
-.border_left {
-  border-left: solid 1px $body_gray;
+.border_right {
+  border-right: solid 1px rgba(0, 0, 0, 0.1);
 }
 
-.border_bottom:hover, .border_bottom:focus {
+.border_bottom:not(:last-child) {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.input_border_bottom:hover, .input_border_bottom:focus {
   border-bottom: solid 3px $border_bottom_orange;
 }
 
@@ -301,6 +355,7 @@ a[data-toggle="collapse"] {
   top: 56px;
   transition: all 0.3s;
   width: calc(100% - 190px);
+  z-index: 9;
 
   &.active {
     width: 100%;
@@ -335,14 +390,14 @@ a[data-toggle="collapse"] {
   }
 }
 
+.w-51px {
+  width: 51px;
+}
+
 .w-30 {
   width: 30%;
 }
 
-.w-50 {
-  width: 30%;
-}
-
-.w-20 {
-  width: 30%;
+.w-40 {
+  width: 40%;
 }

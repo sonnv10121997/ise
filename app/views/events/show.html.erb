@@ -1,4 +1,4 @@
-<div class="course_detail">
+<div class="content_detail">
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -9,21 +9,21 @@
               <h5 class="course_info_header"><%= t ".leader" %>:</h5>
               <%= @event.leaders.first.name %>
             </div>
-            <div class="course_info_item w-50">
+            <div class="course_info_item w-40">
               <h5 class="course_info_header"><%= t ".partner" %>:</h5>
               <%= @event.partner.name %>
             </div>
-            <div class="course_info_item w-20">
+            <div class="course_info_item w-30">
               <h5 class="course_info_header"><%= t ".major" %>:</h5>
               <%= event_major_name @event %>
             </div>
           </div>
           <div class="course_detail_thumbnail"></div>
-          <div class="course_tab_container">
+          <div class="mt-20">
             <div class="tab button button-text"><%= t ".description" %></div>
             <div class="tab btn button-text-default"><%= t ".reviews" %></div>
           </div>
-          <div class="tab_panels">
+          <div class="tab_panels mt-20">
             <div class="tab_panel active"><%= @event.description %></div>
             <div class="tab_panel"><%= t ".reviews" %></div>
           </div>
@@ -52,8 +52,7 @@
                   <div><%= fa_icon "user-o" %> <%= t ".number_of_participants" %></div>
                   <%= event_participants @event %>
                 </div>
-                <div class="mt-15">
-                  <div class="btn button-text-default mright-5"><%= t ".follow" %></div>
+                <div class="mt-20">
                   <div class="button button-text"><%= t ".enroll" %></div>
                 </div>
               </div>
@@ -83,8 +82,10 @@
                     <div class="course_detail_thumbnail no-margin"></div>
                   </div>
                   <div class="col-md-7 pr-0">
-                    <div class="course_title no-padding h-55"><%= @event.name %></div>
-                    <div class="course_price no-padding"><%= number_to_vnd @event.price %></div>
+                    <div class="course_title no-padding h-55">
+                      <%= rescue_title @event.name %></div>
+                    <div class="course_price no-padding">
+                      <%= number_to_vnd @event.price %></div>
                     <div class="course_date no-padding">
                       <div class="date">
                         <%= fa_icon "calendar" %>

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     redirect_with_flash :error, t(".access_denied"), request.referrer
   end
 
-  private
+  protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit :sign_up, keys: %i(name gender code dob phone)
@@ -26,5 +26,13 @@ class ApplicationController < ActionController::Base
     flash[type] = msg
     return redirect_to url if url
     redirect_back fallback_location: main_app.root_path
+  end
+
+  def find_event
+    @event = Event.find_by id: params[:id]
+  end
+
+  def find_user_event
+    @user_event = Event.find_by id: params[:event_id]
   end
 end

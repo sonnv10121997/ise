@@ -16,6 +16,8 @@ model:
       most_popular: most_popular
       enrolling_phase: enrolling_phase
     per_page: 5
+    max_title_length: 35
+    date_format: "%d/%m/%y"
 assets:
   images:
     fpt_logo: fpt_logo.png
