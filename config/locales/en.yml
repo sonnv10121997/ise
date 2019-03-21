@@ -87,7 +87,7 @@ en:
       most_popular: Most popular
       enrolling: Enrolling
       my_enroll: My enroll
-      my_following: My following
+      my_enrolled: My enrolled
   rails_admin:
     main:
       dashboard:

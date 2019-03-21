@@ -1,0 +1,50 @@
+$failed: #dc3545;
+$pass: #28a745;
+$content_gray: #fafafa;
+
+@mixin display($type, $item, $content) {
+  display: $type;
+  align-items: $item;
+  justify-content: $content;
+}
+
+@mixin check_requirement($color, $size) {
+  color: $color;
+
+  &::before {
+    font-size: $size;
+  }
+}
+
+.tabs {
+  margin-bottom: 20px;
+}
+
+.fixed_header {
+  position: fixed;
+  top: 57px;
+}
+
+.event_requirements {
+  @include display(flex, center, space-between);
+  height: 50px;
+}
+
+.req_description {
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+#user_event_tabs {
+  background-color: $content_gray;
+  width: 100%;
+  z-index: 8;
+}
+
+.pass {
+  @include check_requirement($pass, x-large);
+}
+
+.failed {
+  @include check_requirement($failed, x-large);
+}

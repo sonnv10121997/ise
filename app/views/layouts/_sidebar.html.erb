@@ -7,8 +7,17 @@
       <%= link_to t(".courses"), "#pageSubmenu", class: "dropdown-toggle",
         aria_expanded: true, data: {toggle: "collapse"} %>
       <ul class="collapse show list-unstyled" id="pageSubmenu">
-        <li><%= link_to t(".my_enroll"), "#" %></li>
-        <li><%= link_to t(".my_following"), "#" %></li>
+        <li><%= link_to t(".lastest"), "#" %>
+        </li>
+        <li><%= link_to t(".most_popular"), "#" %>
+        </li>
+        <li><%= link_to t(".enrolling"), "#" %>
+        </li>
+        <li><%= link_to t(".my_enroll"),
+          user_enroll_event_path(event_id: current_user.enrolls.last.id) %>
+        </li>
+        <li><%= link_to t(".my_enrolled"), "#" %>
+        </li>
       </ul>
     </li>
   </ul>

@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_041601) do
     t.bigint "event_id"
     t.bigint "requirement_id"
     t.date "deadline"
-    t.boolean "is_verified"
+    t.boolean "verified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_user_event_requirements_on_event_id"

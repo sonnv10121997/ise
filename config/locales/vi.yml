@@ -86,8 +86,8 @@ vi:
       latest: Mới nhất
       most_popular: Phổ biến nhất
       enrolling: Đang mở đơn
-      my_enroll: Đang/đã đăng kí
-      my_following: Đang theo dõi
+      my_enroll: Đang tham gia
+      my_enrolled: Đã tham gia
   devise:
     confirmations:
       confirmed: Xác nhận tài khoản thành công! Bạn hiện đang đăng nhập.

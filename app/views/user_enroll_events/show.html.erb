@@ -1,0 +1,75 @@
+<div class="content_detail pt-17">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="course_feature no-margin">
+        <div class="user_image w-51px h-51px"></div>
+        <div class="user_title">
+          <%= link_to "#" do %>
+            <h5 class="no-margin"><%= @user_event.leaders.first.name %></h5>
+          <% end %>
+        </div>
+      </div>
+
+      <h5 class="no-margin">
+        <%= t ".partner" %>: <%= @user_event.partner.name %>
+      </h5>
+
+      <h5 class="no-margin">
+        <%= t ".major" %>: <%= event_major_name @user_event %>
+      </h5>
+
+      <div>
+        <div class="button button-text"><%= t ".enrolling" %></div>
+      </div>
+    </div>
+    <hr class="separate_course">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <div><%= fa_icon "calendar" %> <%= t ".date" %>:
+        <%= event_date @user_event %></div>
+      <div><%= fa_icon "map-o" %> <%= t ".country" %>:
+        <%= @user_event.partner.country %></div>
+      <div><%= t ".price" %>: <%= number_to_vnd @user_event.price %></div>
+      <div><%= fa_icon "calendar-o" %> <%= t ".semester" %>:
+        <%= @user_event.semester %></div>
+      <div><%= fa_icon "user-o" %> <%= event_participants @user_event %></div>
+    </div>
+
+    <hr class="separate_course mb-0">
+    <div class="h-6833px">
+      <div id="user_event_tabs" class="py-15">
+        <div class="tab button button-text"><%= t ".requirements" %></div>
+        <div class="tab btn button-text-default"><%= t ".discussions" %></div>
+      </div>
+    </div>
+
+    <div class="tab_panels">
+      <div class="tab_panel active row no-margin no-padding px-20">
+        <div class="col-md-6 border_right no-padding pr-20">
+          <% @user_event.event_requirements.by_user(current_user.id)
+            .each do |event_requirement| %>
+              <div class="border_bottom">
+                <div class="event_requirements">
+                  <span>
+                    <% if event_requirement.verified? %>
+                      <%= fa_icon "check", class: "pass" %>
+                    <% else %>
+                      <%= fa_icon "times", class: "failed" %>
+                    <% end %>
+                    <span class="pl-5px">
+                      <%= event_requirement.requirement.name %></span>
+                  </span>
+                  <span><%= t ".deadline" %>:
+                    <%= rescue_req_deadline event_requirement %></span>
+                </div>
+                <div class="req_description">
+                  <%= event_requirement.requirement.description %></div>
+              </div>
+          <% end %>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+      <div class="tab_panel row no-margin"></div>
+    </div>
+  </div>
+</div>
