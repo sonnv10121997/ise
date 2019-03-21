@@ -29,6 +29,8 @@ vi:
       country: Quốc gia
       number_of_participants: Số lượng
       enroll: Đăng kí
+      following: Đang theo dõi
+        follow: Theo dõi
   user_enroll_events:
     show:
       partner: Đối tác

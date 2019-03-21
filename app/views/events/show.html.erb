@@ -97,6 +97,15 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form">
+                    <% if current_user_is_following(current_user.id, @event.id) %>
+                      <%= link_to t(".following"), unfollow_event_path(event_id: @event.id),
+                                  method: :delete, id: "unfollow-button", remote: true, class: "button" %>
+                    <% else %>
+                      <%= link_to t(".follow"), follow_event_path(event_id: @event.id), method: :post, id: "follow-button",
+                                  remote: true, class: "button" %>
+                    <% end %>
+                  </div>
                 </div>
               <% end %>
             </div>

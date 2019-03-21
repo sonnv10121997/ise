@@ -31,8 +31,8 @@ class ApplicationController < ActionController::Base
   def find_event
     @event = Event.find_by id: params[:id]
   end
+end
 
-  def find_user_event
-    @user_event = Event.find_by id: params[:event_id]
-  end
+def find_user_event
+  @user_event = Event.find_by id: params[:event_id]
 end

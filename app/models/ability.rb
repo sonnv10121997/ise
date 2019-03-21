@@ -48,7 +48,7 @@ class Ability
 
   def staff_manage_authorization
     student_manage_authorization << [Transcript, Grade, Requirement,
-      UserEventRequirement, UserEnrollEvent,]
+      UserEventRequirement, UserEnrollEvent]
   end
 
   def student_read_authorization
