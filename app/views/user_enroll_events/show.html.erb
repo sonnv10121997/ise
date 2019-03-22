@@ -18,8 +18,8 @@
         <%= t ".major" %>: <%= event_major_name @user_event %>
       </h5>
 
-      <div>
-        <div class="button button-text"><%= t ".enrolling" %></div>
+      <div id="enroll_button">
+        <%= render "events/enroll_button", current_user: current_user, event: @user_event %>
       </div>
     </div>
     <hr class="separate_course">
@@ -71,9 +71,11 @@
                 <%= form_for event_requirement, url: user_event_requirement_path(event_requirement),
                   method: :patch do |event_requirement| %>
                   <%= event_requirement.fields_for :images do |image| %>
-                    <%= image.file_field :file %>
+                    <%= image.label :file, t(".choose_file"),
+                      class: "btn button-text-default no-margin" %>
+                    <%= image.file_field :file, hidden: true %>
                   <% end %>
-                  <%= event_requirement.submit "submit" %>
+                  <%= event_requirement.submit t(".upload"), class: "button button-text" %>
                 <% end %>
               </div>
             <% end %>
