@@ -30,6 +30,10 @@ en:
       number_of_participants: Number of participants
       enroll: Enroll
       enrolling: Enrolling
+      latest: Latest
+    enroll_button:
+      enrolling: Enrolling
+      enroll: Enroll
   user_enroll_events:
     show:
       partner: Partner
@@ -41,6 +45,9 @@ en:
       semester: Semester
       requirements: Requirements
       discussions: Discussions
+      deadline: Deadline
+      upload: Upload
+      choose_file: Choose file
   users:
     sessions:
       new:
@@ -72,10 +79,12 @@ en:
       phone: Phone
       email: Email
       reset_password: Reset password
-      deadline: Deadline
+  searches:
+    index:
+      partner: Partner
   layouts:
     header:
-      search_anything: Search anything
+      search: Search
       ic_staffs: IC Staffs
       international_partners: International Partners
       about: About

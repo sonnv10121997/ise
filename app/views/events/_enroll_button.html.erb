@@ -1,7 +1,10 @@
-<% if current_user.enrolls.last.id == event.id %>
-  <%= link_to t(".enrolling"), user_enroll_event_path(event_id: event.id),
-    method: :delete, remote: true, class: "button button-text" %>
-<% else %>
-  <%= link_to t(".enroll"), user_enroll_events_path(event_id: event.id),
-    method: :post, remote: true, class: "btn button-text-default" %>
+<% if current_user.enrolls.empty? %>
+  <%= form_tag user_enroll_events_path(event_id: event.id), remote: true do  %>
+    <%= button_tag t(".enroll"), type: :submit, class: "btn button-text-default" %>
+  <% end %>
+<% elsif current_user.enrolls.last.id == event.id %>
+  <%= form_tag user_enroll_event_path(event_id: event.id), remote: true,
+    method: :delete do  %>
+    <%= button_tag t(".enrolling"), type: :submit, class: "button button-text" %>
+  <% end %>
 <% end %>

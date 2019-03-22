@@ -30,6 +30,10 @@ vi:
       number_of_participants: Số lượng
       enroll: Đăng kí
       enrolling: Đang tham gia
+      latest: Mới nhất
+    enroll_button:
+      enrolling: Đang gửi yêu cầu
+      enroll: Đăng kí
   user_enroll_events:
     show:
       partner: Đối tác
@@ -41,6 +45,9 @@ vi:
       semester: Học kì
       requirements: Các yêu cầu
       discussions: Thảo luận
+      deadline: Hạn chót
+      upload: Gửi ảnh
+      choose_file: Chọn ảnh
   users:
     sessions:
       new:
@@ -72,10 +79,12 @@ vi:
       phone: Số điện thoại
       email: Email
       reset_password: Đổi mật khẩu
-      deadline: Hạn chót
+  searches:
+    index:
+      partner: Đối tác
   layouts:
     header:
-      search_anything: Tìm kiếm mọi thứ
+      search: Tìm kiếm
       ic_staffs: Cán bộ phòng IC
       international_partners: Đối tác quốc tế
       about: Đội phát triển
