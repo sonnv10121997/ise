@@ -1,0 +1,40 @@
+<div class="content_detail">
+  <div class="container">
+    <% if @items %>
+      <% @items.each_with_index do |item, idx| %>
+        <div class="display_center">
+          <%= link_to item, class: "w-80 refactor_link" do %>
+            <% unless idx.zero? %>
+              <hr class="separate_course my-30" />
+            <% end %>
+
+            <div class="row no-margin">
+              <% if item.is_a? Event %>
+                <div class="w-215px no-padding">
+                  <div class="course_detail_thumbnail no-margin"></div>
+                </div>
+                <div class="col-md-8 pr-0 display_vertical_between">
+                  <div class="course_title h-auto no-padding">
+                    <%= item.name %></div>
+                  <h6 class="no-margin"><%= number_to_vnd item.price %></h6>
+                  <div class="d-flex fs-09em">
+                    <div class="date">
+                      <%= fa_icon "calendar" %>
+                      <%= event_date item %>
+                    </div>
+                    <div class="pl-5">
+                      <%= fa_icon "user-o" %>
+                      <%= event_participants item %>
+                    </div>
+                  </div>
+                </div>
+              <% elsif item.is_a? Partner %>
+                <%= t ".partner" %>: <%= item.name %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -69,6 +69,10 @@ a, a:hover, a:visited, a:active, a:link {
   height: 51px;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .separate_course {
   border-top: 1px solid $body_gray;
 }
@@ -154,6 +158,10 @@ a, a:hover, a:visited, a:active, a:link {
   padding-top: 17px;
 }
 
+.pt-0 {
+  padding-top: 0;
+}
+
 .py-20 {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -236,6 +244,11 @@ a, a:hover, a:visited, a:active, a:link {
 
 .mr-68 {
   margin-right: 68px;
+}
+
+.my-30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .mx-15 {
@@ -402,8 +415,16 @@ a[data-toggle="collapse"] {
   }
 }
 
+.w-215px {
+  width: 215px;
+}
+
 .w-51px {
   width: 51px;
+}
+
+.w-80 {
+  width: 80%;
 }
 
 .w-30 {

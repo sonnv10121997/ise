@@ -12,12 +12,13 @@
       </div>
 
       <div class="search-box">
-        <form class="search-form">
-          <input class="form-control height-24" placeholder="<%= t ".search_anything" %>" type="text">
-          <button class="btn btn-link search-btn">
+        <%= form_tag searches_path, method: :get, class: "search-form" do  %>
+          <%= text_field_tag :q, params[:q], autocomplete: :off, required: true,
+            class: "form-control height-24", placeholder: t(".search") %>
+          <%= button_tag type: :submit, class: "btn search-btn" do %>
             <%= fa_icon "search" %>
-          </button>
-        </form>
+          <% end %>
+        <% end %>
       </div>
 
       <ul class="nav navbar-nav navbar-right main-nav">

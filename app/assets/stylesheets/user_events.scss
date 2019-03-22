@@ -2,9 +2,10 @@ $failed: #dc3545;
 $pass: #28a745;
 $content_gray: #fafafa;
 
-@mixin display($type, $item, $content) {
-  display: $type;
+@mixin display($type, $item, $content, $direction) {
   align-items: $item;
+  display: $type;
+  flex-direction: $direction;
   justify-content: $content;
 }
 
@@ -26,12 +27,21 @@ $content_gray: #fafafa;
 }
 
 .event_requirements {
-  @include display(flex, center, space-between);
+  @include display(flex, center, space-between, row);
 }
 
 .display_start {
-  @include display(flex, center, start);
+  @include display(flex, center, start, row);
 }
+
+.display_center {
+  @include display(flex, center, center, row);
+}
+
+.display_vertical_between {
+  @include display(flex, inherit, space-between, column);
+}
+
 
 .req_description {
   padding-top: 10px;
