@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :events, only: %i(index show)
     resources :user_enroll_events, only: %i(show create destroy), param: :event_id
     resources :user_event_requirements, only: :update
+    resources :searches, only: :index
+    resources :partners, only: :show
     root "events#index"
   end
 end
