@@ -27,11 +27,14 @@ $content_gray: #fafafa;
 
 .event_requirements {
   @include display(flex, center, space-between);
-  height: 50px;
+}
+
+.display_start {
+  @include display(flex, center, start);
 }
 
 .req_description {
-  padding-top: 5px;
+  padding-top: 10px;
   padding-bottom: 20px;
 }
 

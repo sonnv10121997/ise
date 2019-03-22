@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_041601) do
+ActiveRecord::Schema.define(version: 2019_03_21_042715) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 2019_03_12_041601) do
     t.datetime "updated_at", null: false
     t.index ["grade_category_id"], name: "index_grades_on_grade_category_id"
     t.index ["transcript_id"], name: "index_grades_on_transcript_id"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
