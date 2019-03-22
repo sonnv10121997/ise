@@ -35,41 +35,51 @@
       <div><%= fa_icon "user-o" %> <%= event_participants @user_event %></div>
     </div>
 
-    <hr class="separate_course mb-0">
-    <div class="h-6833px">
-      <div id="user_event_tabs" class="py-15">
-        <div class="tab button button-text"><%= t ".requirements" %></div>
-        <div class="tab btn button-text-default"><%= t ".discussions" %></div>
-      </div>
-    </div>
+    <hr class="separate_course">
 
     <div class="tab_panels">
-      <div class="tab_panel active row no-margin no-padding px-20">
-        <div class="col-md-6 border_right no-padding pr-20">
-          <% @user_event.event_requirements.by_user(current_user.id)
-            .each do |event_requirement| %>
-              <div class="border_bottom">
+      <div class="tab_panel active no-padding px-20">
+        <div class="row no-margin fs-09em">
+          <div class="col-md-3 border_right no-padding pr-20"></div>
+          <div class="col-md-6 border_right no-padding px-20"></div>
+          <div class="col-md-3 no-padding pl-20">
+            <% @user_event.event_requirements.by_user(current_user.id)
+              .each_with_index do |event_requirement, idx| %>
+
+              <div class="border_bottom py-20">
                 <div class="event_requirements">
-                  <span>
+                  <div class="display_start">
                     <% if event_requirement.verified? %>
                       <%= fa_icon "check", class: "pass" %>
                     <% else %>
                       <%= fa_icon "times", class: "failed" %>
                     <% end %>
-                    <span class="pl-5px">
-                      <%= event_requirement.requirement.name %></span>
-                  </span>
-                  <span><%= t ".deadline" %>:
-                    <%= rescue_req_deadline event_requirement %></span>
+                    <div class="pl-5px">
+                      <%= event_requirement.requirement.name %></div>
+                  </div>
+                  <div><%= t ".deadline" %>:
+                    <%= rescue_req_deadline event_requirement %></div>
                 </div>
                 <div class="req_description">
                   <%= event_requirement.requirement.description %></div>
+
+                <% event_requirement.images.new if event_requirement.images.empty? %>
+                <% event_requirement.images.each do |image| %>
+                  <%= image_tag(image.file_url) if image.file? %>
+                <% end %>
+
+                <%= form_for event_requirement, url: user_event_requirement_path(event_requirement),
+                  method: :patch do |event_requirement| %>
+                  <%= event_requirement.fields_for :images do |image| %>
+                    <%= image.file_field :file %>
+                  <% end %>
+                  <%= event_requirement.submit "submit" %>
+                <% end %>
               </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-6"></div>
       </div>
-      <div class="tab_panel row no-margin"></div>
     </div>
   </div>
 </div>

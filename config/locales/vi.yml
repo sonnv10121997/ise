@@ -72,6 +72,7 @@ vi:
       phone: Số điện thoại
       email: Email
       reset_password: Đổi mật khẩu
+      deadline: Hạn chót
   layouts:
     header:
       search_anything: Tìm kiếm mọi thứ
@@ -87,8 +88,8 @@ vi:
       latest: Mới nhất
       most_popular: Phổ biến nhất
       enrolling: Đang mở đơn
-      my_enroll: Đang tham gia
-      my_enrolled: Đã tham gia
+      participating: Đang tham gia
+      completed: Đã hoàn thành
   devise:
     confirmations:
       confirmed: Xác nhận tài khoản thành công! Bạn hiện đang đăng nhập.

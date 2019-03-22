@@ -23,7 +23,6 @@ end
     end_date: Time.now.utc + 1.week, semester: "Spring 2019", partner_id: Faker::Number.within(1..10)
   EventMajor.create! event_id: event_idx + 1, major_id: Faker::Number.within(1..4)
   UserLeadEvent.create! event_id: event_idx + 1, user_id: Faker::Number.within(1..4)
-  UserEnrollEvent.create! event_id: event_idx + 1, user_id: Faker::Number.within(1..4)
   4.times do |user_idx|
     6.times do
       UserEventRequirement.create! event_id: event_idx + 1, user_id: user_idx + 1,
@@ -31,4 +30,9 @@ end
         verified: Faker::Boolean.boolean
     end
   end
+end
+
+4.times do |user_idx|
+  UserEnrollEvent.create! event_id: Faker::Number.within(1..20),
+    user_id: user_idx + 1
 end
