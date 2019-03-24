@@ -40,8 +40,17 @@
     <div class="tab_panels">
       <div class="tab_panel active no-padding px-20">
         <div class="row no-margin fs-09em">
-          <div class="col-md-3 border_right no-padding pr-20"></div>
-          <div class="col-md-6 border_right no-padding px-20"></div>
+          <div class="col-md-3 border_right no-padding pr-20">
+            <% @user_event.users.where.not(id: current_user).each do |user| %>
+              <%= form_tag conversations_path(sender_id: current_user,
+                receiver_id: user), remote: true do  %>
+                <%= button_tag user.name, type: :submit, class: "btn button-text-default" %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-md-6 border_right no-padding px-20">
+            <div id="messages_form"></div>
+          </div>
           <div class="col-md-3 no-padding pl-20">
             <% @user_event.event_requirements.by_user(current_user.id)
               .each_with_index do |event_requirement, idx| %>

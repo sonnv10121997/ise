@@ -33,6 +33,5 @@ end
 end
 
 4.times do |user_idx|
-  UserEnrollEvent.create! event_id: Faker::Number.within(1..20),
-    user_id: user_idx + 1
+  UserEnrollEvent.create! event_id: 1, user_id: user_idx + 1
 end

@@ -79,6 +79,11 @@ en:
       phone: Phone
       email: Email
       reset_password: Reset password
+  messages:
+    messages:
+      at: at
+      your_message: Your message
+      send: Send
   searches:
     index:
       partner: Partner
