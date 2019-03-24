@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :user_event_requirements, only: :update
     resources :searches, only: :index
     resources :partners, only: :show
+    resources :conversations, only: :create do
+      resources :messages, only: %i(index create)
+    end
     root "events#index"
   end
 end

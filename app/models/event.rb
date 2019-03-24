@@ -8,6 +8,7 @@ class Event < ApplicationRecord
   has_many :user_lead_events
   has_many :leaders, through: :user_lead_events
   has_many :majors, through: :event_majors
+  has_many :users, through: :user_enroll_events
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true

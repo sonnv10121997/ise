@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_042715) do
+ActiveRecord::Schema.define(version: 2019_03_24_025928) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -24,16 +24,13 @@ ActiveRecord::Schema.define(version: 2019_03_21_042715) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "content"
-    t.bigint "user_id"
-    t.bigint "parent_id"
+  create_table "conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "event_id"
-    t.index ["event_id"], name: "index_comments_on_event_id"
-    t.index ["parent_id"], name: "index_comments_on_parent_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "event_majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,6 +83,17 @@ ActiveRecord::Schema.define(version: 2019_03_21_042715) do
     t.string "acronym"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "conversation_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "mmos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -158,15 +166,6 @@ ActiveRecord::Schema.define(version: 2019_03_21_042715) do
     t.index ["user_id"], name: "index_user_event_requirements_on_user_id"
   end
 
-  create_table "user_follow_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_user_follow_events_on_event_id"
-    t.index ["user_id"], name: "index_user_follow_events_on_user_id"
-  end
-
   create_table "user_lead_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
@@ -201,12 +200,14 @@ ActiveRecord::Schema.define(version: 2019_03_21_042715) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "events"
-  add_foreign_key "comments", "users"
+  add_foreign_key "conversations", "users", column: "receiver_id"
+  add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "event_majors", "events"
   add_foreign_key "event_majors", "majors"
   add_foreign_key "events", "partners"
   add_foreign_key "grades", "transcripts"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "mmos", "partners"
   add_foreign_key "notifications", "events"
   add_foreign_key "notifications", "users", column: "notifier_id"
@@ -218,8 +219,6 @@ ActiveRecord::Schema.define(version: 2019_03_21_042715) do
   add_foreign_key "user_event_requirements", "events"
   add_foreign_key "user_event_requirements", "requirements"
   add_foreign_key "user_event_requirements", "users"
-  add_foreign_key "user_follow_events", "events"
-  add_foreign_key "user_follow_events", "users"
   add_foreign_key "user_lead_events", "events"
   add_foreign_key "user_lead_events", "users"
   add_foreign_key "users", "majors"

@@ -57,6 +57,6 @@ class Ability
   end
 
   def student_manage_authorization
-    [Comment, UserFollowEvent]
+    [Message, Conversation, UserFollowEvent]
   end
 end
