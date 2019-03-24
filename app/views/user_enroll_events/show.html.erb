@@ -56,6 +56,18 @@
               .each_with_index do |event_requirement, idx| %>
 
               <div class="border_bottom py-20">
+                <%= form_for event_requirement, url: user_event_requirement_path(event_requirement),
+                  method: :put do |f| %>
+                  <%= hidden_field_tag "user_event_requirement[verified]", !event_requirement.verified? %>
+                  <%= f.button do %>
+                    <% if event_requirement.verified? %>
+                      <%= fa_icon "times", class: "failed" %>
+                    <% else %>
+                      <%= fa_icon "check", class: "pass" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
                 <div class="event_requirements">
                   <div class="display_start">
                     <% if event_requirement.verified? %>
@@ -76,13 +88,15 @@
                 <% event_requirement.images.each do |image| %>
                   <%= image_tag(image.file_url) if image.file? %>
                 <% end %>
-
-                <%= form_for event_requirement, url: user_event_requirement_path(event_requirement),
+                <%= form_for event_requirement,
+                  url: user_event_requirement_path(event_requirement),
                   method: :patch do |event_requirement| %>
                   <%= event_requirement.fields_for :images do |image| %>
                     <%= image.label :file, t(".choose_file"),
-                      class: "btn button-text-default no-margin" %>
-                    <%= image.file_field :file, hidden: true %>
+                      class: "btn button-text-default no-margin",
+                      for: event_requirement.hash %>
+                    <%= image.file_field :file, hidden: true,
+                      id: event_requirement.hash %>
                   <% end %>
                   <%= event_requirement.submit t(".upload"), class: "button button-text" %>
                 <% end %>
