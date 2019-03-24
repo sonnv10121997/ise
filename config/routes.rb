@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :searches, only: :index
     resources :partners, only: :show
     resources :conversations, only: :create do
-      resources :messages, only: %i(index create)
+      resources :messages, only: :create
     end
     root "events#index"
   end

@@ -4,10 +4,5 @@ class Message < ApplicationRecord
 
   validates_presence_of :content, :conversation, :user
 
-  private
-
-  def time at
-    created_at.strftime "#{Settings.model.message.date_format} #{at}
-      #{Settings.model.message.time_format}"
-  end
+  scope :not_read_by, ->(user) {where.not({user: user, read: true})}
 end

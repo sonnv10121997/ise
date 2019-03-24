@@ -79,6 +79,11 @@ vi:
       phone: Số điện thoại
       email: Email
       reset_password: Đổi mật khẩu
+  messages:
+    messages:
+      at: lúc
+      your_message: Nhập tin nhắn
+      send: Gửi
   searches:
     index:
       partner: Đối tác
