@@ -18,6 +18,9 @@ model:
     per_page: 5
     max_title_length: 35
     date_format: "%d/%m/%y"
+  message:
+    date_format: "%d/%m/%y"
+    time_format: "%l:%M %p"
 assets:
   images:
     fpt_logo: fpt_logo.png
