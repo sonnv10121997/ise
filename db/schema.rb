@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_025928) do
     t.index ["partner_id"], name: "index_events_on_partner_id"
   end
 
-  create_table "grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "grade_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.float "weight"
     t.float "value"
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2019_03_24_025928) do
     t.bigint "grade_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["grade_category_id"], name: "index_grades_on_grade_category_id"
-    t.index ["transcript_id"], name: "index_grades_on_transcript_id"
+    t.index ["grade_category_id"], name: "index_grade_categories_on_grade_category_id"
+    t.index ["transcript_id"], name: "index_grade_categories_on_transcript_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_025928) do
   add_foreign_key "event_majors", "events"
   add_foreign_key "event_majors", "majors"
   add_foreign_key "events", "partners"
-  add_foreign_key "grades", "transcripts"
+  add_foreign_key "grade_categories", "transcripts"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "mmos", "partners"

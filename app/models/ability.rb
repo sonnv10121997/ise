@@ -9,9 +9,11 @@ class Ability
       dashboard_rules
       manager_rules
     elsif user.Staff?
+      dashboard_rules
       staff_rules
     else
       student_rules
+      can :read, Student, id: user.id
     end
   end
 
@@ -31,32 +33,36 @@ class Ability
   def staff_rules
     can :manage, staff_manage_authorization.flatten!
     can :update, Event
-    can :read, :all
+    can :read, staff_read_authorization.flatten!
   end
 
   def student_rules
     can :manage, student_manage_authorization
     can :read, student_read_authorization.flatten!
-    can :read, Student, id: user.id
   end
 
   def manager_manage_authorization
-    student_manage_authorization << [Event, EventMajor, Grade, Major, Mmo,
-      Partner, Requirement, Transcript, UserEnrollEvent, UserEventRequirement,
-      UserLeadEvent, Ckeditor::Asset, Ckeditor::AttachmentFile, Ckeditor::Picture]
+    student_manage_authorization << [Event, EventMajor, GradeCategory, Major,
+      Mmo, Partner, Requirement, Transcript, UserEnrollEvent,
+      UserEventRequirement, UserLeadEvent, Ckeditor::Asset,
+      Ckeditor::AttachmentFile, Ckeditor::Picture]
+  end
+
+  def staff_read_authorization
+    staff_manage_authorization << [User, Event]
   end
 
   def staff_manage_authorization
-    student_manage_authorization << [Transcript, Grade, Requirement,
+    student_manage_authorization << [Transcript, GradeCategory, Requirement,
       UserEventRequirement, UserEnrollEvent]
   end
 
   def student_read_authorization
-    student_manage_authorization << [Event, Grade, Mmo, Partner, Transcript,
-      UserEnrollEvent, UserEventRequirement, UserFollowEvent, UserLeadEvent]
+    student_manage_authorization << [Event, GradeCategory, Mmo, Partner,
+      Transcript, UserEnrollEvent, UserEventRequirement, UserLeadEvent]
   end
 
   def student_manage_authorization
-    [Message, Conversation, UserFollowEvent]
+    [Message, Conversation]
   end
 end

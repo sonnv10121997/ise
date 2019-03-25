@@ -32,7 +32,7 @@
           <% end %>
 
           <ul class="dropdown-menu no-padding">
-            <% if current_user.Admin? || current_user.Manager? %>
+            <% if can?(:access, :rails_admin) && can?(:dashboard, :all) %>
               <li>
                 <%= link_to t(".manage_page"), rails_admin.dashboard_path %>
               </li>
