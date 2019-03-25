@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   has_many :user_enroll_events
   has_many :enrolls, through: :user_enroll_events
+  has_one :avatar, as: :imageable, dependent: :destroy, class_name: Image.name
+
+  accepts_nested_attributes_for :avatar, allow_destroy: true,
+    reject_if: proc {|attributes| attributes["file"].blank?}
 
   validates_length_of :name,
     maximum: Settings.model.user.max_name_length,

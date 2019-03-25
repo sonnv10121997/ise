@@ -8,5 +8,5 @@ class UserEventRequirement < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true,
     reject_if: proc {|attributes| attributes["file"].blank?}
 
-  scope :by_user, ->(user_id) {where(user_id: user_id).order :verified}
+  scope :by, ->(user) {where(user: user).order :verified}
 end

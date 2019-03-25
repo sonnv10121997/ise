@@ -63,6 +63,6 @@ class Ability
   end
 
   def student_manage_authorization
-    [Message, Conversation]
+    [Message, Conversation, Image]
   end
 end

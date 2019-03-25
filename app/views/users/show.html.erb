@@ -1,23 +1,20 @@
+<%= image_tag(@user.avatar.file_url) if @user.avatar.file? %>
+
+<%= form_for user_path(@user), method: :patch do |f| %>
+  <%= f.fields_for :avatar do |a| %>
+    <%= a.label :file, t(".choose_file"),
+      class: "btn button-text-default no-margin" %>
+    <%= a.file_field :file, hidden: true, name: "user[avatar_attributes][file]" %>
+  <% end %>
+
+  <%= f.submit t(".upload"), class: "button button-text" %>
+<% end %>
+
 <h2><%= t ".profile" %></h2>
-
-<div><%= t ".name" %>: <%= @user.name %>
-</div>
-
-<div><%= t ".gender" %>: <%= @user.gender %>
-</div>
-
-<div><%= t ".dob" %>: <%= @user.dob.strftime(Settings.date.formats.long) %>
-</div>
-
-<div><%= t ".roll_number" %>: <%= @user.code %>
-</div>
-
-<div><%= t ".phone" %>: <%= @user.phone %>
-</div>
-
-<div><%= t ".email" %>: <%= @user.email %>
-</div>
-
-<div>
-  <%= link_to t(".reset_password"), edit_user_registration_path %>
-</div>
+<div><%= t ".name" %>: <%= @user.name %></div>
+<div><%= t ".gender" %>: <%= @user.gender %></div>
+<div><%= t ".dob" %>: <%= @user.dob.strftime(Settings.date.formats.long) %></div>
+<div><%= t ".roll_number" %>: <%= @user.code %></div>
+<div><%= t ".phone" %>: <%= @user.phone %></div>
+<div><%= t ".email" %>: <%= @user.email %></div>
+<div><%= link_to t(".reset_password"), edit_user_registration_path %></div>

@@ -52,6 +52,7 @@ RailsAdmin.config do |config|
   config.model Event do
     edit do
       field :name
+      field :thumbnail
       field :description, :ck_editor
       field :price
       field :max_participants

@@ -52,8 +52,8 @@
             <div id="messages_form"></div>
           </div>
           <div class="col-md-3 no-padding pl-20">
-            <% @user_event.event_requirements.by_user(current_user.id)
-              .each_with_index do |event_requirement, idx| %>
+            <% @user_event.event_requirements.by(current_user).each do
+              |event_requirement| %>
 
               <div class="border_bottom py-20">
                 <%= form_for event_requirement, url: user_event_requirement_path(event_requirement),
@@ -83,7 +83,6 @@
                 </div>
                 <div class="req_description">
                   <%= event_requirement.requirement.description %></div>
-
                 <% event_requirement.images.new if event_requirement.images.empty? %>
                 <% event_requirement.images.each do |image| %>
                   <%= image_tag(image.file_url) if image.file? %>

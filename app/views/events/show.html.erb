@@ -18,7 +18,9 @@
               <%= event_major_name @event %>
             </div>
           </div>
-          <div class="course_detail_thumbnail"></div>
+          <div class="course_detail_thumbnail">
+            <%= image_tag(@event.thumbnail.file_url) if @event.thumbnail %>
+          </div>
           <div class="mt-20">
             <div class="tab button button-text"><%= t ".description" %></div>
           </div>
