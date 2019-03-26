@@ -1,12 +1,5 @@
 <div id="messages">
-  <% conversation.messages.reject(&:new_record?).each do |message| %>
-    <div class="media-body">
-      <h5 class="media-heading"><%= message.user.name %>
-        <small class="text-muted"><%= format_message_time message %></small>
-      </h5>
-      <p><%= message.content %></p>
-    </div>
-  <% end %>
+  <%= render conversation.messages.reject(&:new_record?) %>
 </div>
 
 <%= form_for [conversation, message], method: :post, remote: true do |f| %>

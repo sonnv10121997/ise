@@ -81,9 +81,11 @@ en:
       reset_password: Reset password
   messages:
     messages:
-      at: at
       your_message: Your message
       send: Send
+    message:
+      delete: Delete
+      at: at
   searches:
     index:
       partner: Partner

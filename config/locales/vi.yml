@@ -81,9 +81,11 @@ vi:
       reset_password: Đổi mật khẩu
   messages:
     messages:
-      at: lúc
       your_message: Nhập tin nhắn
       send: Gửi
+    message:
+      delete: Xoá
+      at: lúc
   searches:
     index:
       partner: Đối tác
