@@ -1,7 +1,8 @@
-User.types.each do |key, value|
-  User.create! name: key, email: "#{key.downcase}@fpt.edu.vn",
-    type: key, password: "123456", gender: Faker::Number.within(0..1),
-    code: key.downcase, phone: Faker::Number.leading_zero_number(10), dob: Time.now.utc,
+User.types.keys.each_with_index do |type, index|
+  name = index.zero? ? "Administrator" : type
+  User.create! name: name, email: "#{type.downcase}@fpt.edu.vn",
+    type: type, password: "123456", gender: Faker::Number.within(0..1),
+    code: type.downcase, phone: Faker::Number.leading_zero_number(10), dob: Time.now.utc,
     confirmed_at: Time.now.utc
 end
 

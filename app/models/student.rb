@@ -1,1 +1,4 @@
-class Student < User; end
+class Student < User
+  include FriendlyId
+  friendly_id :name, use: :slugged
+end

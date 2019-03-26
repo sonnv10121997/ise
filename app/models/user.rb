@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include FriendlyId
+  friendly_id :name, use: :slugged
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
     :validatable, :confirmable, :omniauthable, omniauth_providers: %i(google_oauth2)
 
