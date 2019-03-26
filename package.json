@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "noty": "^3.2.0-beta"
+    "noty": "^3.2.0-beta",
+    "sweetalert2": "^8.6.0"
   }
 }
