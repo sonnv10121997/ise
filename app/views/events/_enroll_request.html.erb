@@ -1,0 +1,11 @@
+<div id="enroll_request">
+  <%= hidden_field_tag :event_id, event.id %>
+
+  <% if current_user.enrolls.empty? %>
+    <%= button_tag t(".enroll"), class: "btn button-text-default",
+      id: "enroll_button" %>
+  <% elsif current_user.enrolls.last.id == event.id %>
+    <%= button_tag t(".enrolling"), class: "button button-text",
+      id: "unenroll_button" %>
+  <% end %>
+</div>

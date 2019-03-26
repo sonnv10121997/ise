@@ -53,9 +53,7 @@
                   <%= event_participants @event %>
                 </div>
                 <div class="mt-20">
-                  <div id="enroll_button">
-                    <%= render "enroll_button", current_user: current_user, event: @event %>
-                  </div>
+                  <%= render "enroll_request", current_user: current_user, event: @event %>
                 </div>
               </div>
             </div>
