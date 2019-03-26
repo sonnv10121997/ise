@@ -1,4 +1,16 @@
 vi:
+  swal:
+    confirm: Đồng ý!
+    cancel: Huỷ bỏ!
+    ok: OK
+    warning:
+      stop_sending_enroll_request: Bạn có chắc chắn muốn huỷ gửi yêu cầu tham gia khoá học này?
+      send_enrolling_request: Bạn có chắc chắn muốn gửi yêu cầu tham gia khoá học này?
+      wait_to_be_approved: Bạn cần phải chờ để được chấp thuận bởi cán bộ phòng IC
+    success:
+      stop_sending_enroll_request: Huỷ gửi yêu cầu tham gia khoá học thành công!
+      send_enrolling_request: Gửi yêu cầu tham gia khoá học thành công!
+      wait_to_be_approved: Giờ bạn phải chờ để được cán bộ phòng IC chấp thuận. Bạn có thể vào mục "Đang tham gia" để nhắn tin với cán bộ phụ trách!
   events:
     index:
       welcome: Đăng nhập thành công!
@@ -31,7 +43,7 @@ vi:
       enroll: Đăng kí
       enrolling: Đang tham gia
       latest: Mới nhất
-    enroll_button:
+    enroll_request:
       enrolling: Đang gửi yêu cầu
       enroll: Đăng kí
   user_enroll_events:

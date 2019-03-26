@@ -18,9 +18,7 @@
         <%= t ".major" %>: <%= event_major_name @user_event %>
       </h5>
 
-      <div id="enroll_button">
-        <%= render "events/enroll_button", current_user: current_user, event: @user_event %>
-      </div>
+      <%= render "events/enroll_request", current_user: current_user, event: @user_event %>
     </div>
     <hr class="separate_course">
 

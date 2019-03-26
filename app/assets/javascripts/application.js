@@ -31,6 +31,19 @@ function noty(text, type) {
     text: text,
     layout: 'bottomLeft',
     theme: 'relax',
-    timeout: 3000,
+    timeout: 3000
   }).show();
+};
+
+function swal(title, text, type, showCancelButton, confirmButtonText, cancelButtonText) {
+  return Swal.fire({
+    title: title,
+    text: text,
+    type: type,
+    showCancelButton: showCancelButton,
+    confirmButtonColor: `#28a745`,
+    cancelButtonColor: `#dc3545`,
+    confirmButtonText: confirmButtonText,
+    cancelButtonText: cancelButtonText
+  });
 };

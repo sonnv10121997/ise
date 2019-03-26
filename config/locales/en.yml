@@ -1,4 +1,16 @@
 en:
+  swal:
+    confirm: Yes!
+    cancel: No!
+    ok: OK
+    warning:
+      stop_sending_enroll_request: Are you sure to stop sending enroll request to this course?
+      send_enrolling_request: Are you sure to send enrolling request to this course?
+      wait_to_be_approved: You need to wait to be approved by staff!
+    success:
+      stop_sending_enroll_request: Stop sending enroll request successfully!
+      send_enrolling_request: Send enrolling request successfully!
+      wait_to_be_approved: You now need to wait to be approved. Check "Participating" tab to inbox the staff!
   events:
     index:
       welcome: Log in successful!
@@ -31,7 +43,7 @@ en:
       enroll: Enroll
       enrolling: Enrolling
       latest: Latest
-    enroll_button:
+    enroll_request:
       enrolling: Enrolling
       enroll: Enroll
   user_enroll_events:
