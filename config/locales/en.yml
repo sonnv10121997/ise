@@ -83,6 +83,8 @@ en:
         update: Update
         back: Back
     show:
+      upload: Upload
+      choose_file: Choose file
       profile: Profile
       name: Name
       gender: Gender

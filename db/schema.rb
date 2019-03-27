@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_093143) do
+ActiveRecord::Schema.define(version: 2019_03_27_163141) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 2019_03_26_093143) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_majors_on_event_id"
     t.index ["major_id"], name: "index_event_majors_on_major_id"
+  end
+
+  create_table "event_requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "requirement_id"
+    t.index ["event_id"], name: "index_event_requirements_on_event_id"
+    t.index ["requirement_id"], name: "index_event_requirements_on_requirement_id"
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -172,14 +179,12 @@ ActiveRecord::Schema.define(version: 2019_03_26_093143) do
 
   create_table "user_event_requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "event_id"
-    t.bigint "requirement_id"
     t.date "deadline"
     t.boolean "verified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_user_event_requirements_on_event_id"
-    t.index ["requirement_id"], name: "index_user_event_requirements_on_requirement_id"
+    t.bigint "event_requirement_id"
+    t.index ["event_requirement_id"], name: "index_user_event_requirements_on_event_requirement_id"
     t.index ["user_id"], name: "index_user_event_requirements_on_user_id"
   end
 
@@ -223,6 +228,8 @@ ActiveRecord::Schema.define(version: 2019_03_26_093143) do
   add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "event_majors", "events"
   add_foreign_key "event_majors", "majors"
+  add_foreign_key "event_requirements", "events"
+  add_foreign_key "event_requirements", "requirements"
   add_foreign_key "events", "partners"
   add_foreign_key "grade_categories", "transcripts"
   add_foreign_key "messages", "conversations"
@@ -235,8 +242,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_093143) do
   add_foreign_key "transcripts", "users"
   add_foreign_key "user_enroll_events", "events"
   add_foreign_key "user_enroll_events", "users"
-  add_foreign_key "user_event_requirements", "events"
-  add_foreign_key "user_event_requirements", "requirements"
+  add_foreign_key "user_event_requirements", "event_requirements"
   add_foreign_key "user_event_requirements", "users"
   add_foreign_key "user_lead_events", "events"
   add_foreign_key "user_lead_events", "users"

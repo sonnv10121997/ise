@@ -2,7 +2,7 @@ class UserEnrollEventsController < ApplicationController
   attr_reader :user_event, :user_enroll_event
 
   before_action ->{find_user_event params[:event_id]}
-  before_action :find_user_enroll_event
+  before_action :find_user_enroll_event, only: :destroy
 
   def show; end
 

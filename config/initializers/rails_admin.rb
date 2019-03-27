@@ -51,14 +51,9 @@ RailsAdmin.config do |config|
 
   config.model Event do
     edit do
-      field :name
-      field :thumbnail
+      include_all_fields
       field :description, :ck_editor
-      field :price
-      field :max_participants
-      field :start_date
-      field :end_date
-      field :semester
+      exclude_fields :slug, :user_enroll_events, :event_requirements, :event_majors, :user_lead_events
     end
   end
 end
