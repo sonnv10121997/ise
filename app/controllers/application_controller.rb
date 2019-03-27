@@ -28,11 +28,15 @@ class ApplicationController < ActionController::Base
     redirect_back fallback_location: main_app.root_path
   end
 
-  def find_event
-    @event = Event.find_by id: params[:id]
+  def find_user slug
+    @user = User.find_by_slug slug
   end
 
-  def find_user_event
-    @user_event = Event.find_by id: params[:event_id]
+  def find_event slug
+    @event = Event.find_by_slug slug
+  end
+
+  def find_user_event slug
+    @user_event = Event.find_by_slug slug
   end
 end

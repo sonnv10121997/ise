@@ -87,7 +87,7 @@
                 <% end %>
                 <%= form_for event_requirement,
                   url: user_event_requirement_path(event_requirement),
-                  method: :patch do |event_requirement| %>
+                  method: :patch, html: {class: "d-flex"} do |event_requirement| %>
                   <%= event_requirement.fields_for :images do |image| %>
                     <%= image.label :file, t(".choose_file"),
                       class: "btn button-text-default no-margin",

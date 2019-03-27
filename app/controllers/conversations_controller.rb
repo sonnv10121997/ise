@@ -1,17 +1,28 @@
 class ConversationsController < ApplicationController
-  def create
-    if Conversation.between(params[:sender_id], params[:receiver_id]).present?
-      @conversation =
-        Conversation.between(params[:sender_id], params[:receiver_id]).first
-    else
-      @conversation = Conversation.create conversation_params
-    end
-    respond_to :js
-  end
+  attr_reader :sender, :receiver
+
+  before_action :find_sender, :find_receiver
+  before_action :find_conversation_between_sender_and_receiver
+
+  def create; end
 
   private
 
+  def find_conversation_between_sender_and_receiver
+    @conversation =
+      Conversation.between(sender, receiver).first ||
+      Conversation.create(conversation_params)
+  end
+
   def conversation_params
-    params.permit :sender_id, :receiver_id
+    {sender_id: sender.id, receiver_id: receiver.id}
+  end
+
+  def find_sender
+    @sender = find_user params[:sender_id]
+  end
+
+  def find_receiver
+    @receiver = find_user params[:receiver_id]
   end
 end
