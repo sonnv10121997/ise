@@ -45,7 +45,7 @@ class Ability
     student_manage_authorization << [Event, EventMajor, GradeCategory, Major,
       Mmo, Partner, Requirement, Transcript, UserEnrollEvent,
       UserEventRequirement, UserLeadEvent, Ckeditor::Asset,
-      Ckeditor::AttachmentFile, Ckeditor::Picture]
+      Ckeditor::AttachmentFile, Ckeditor::Picture, EventRequirement]
   end
 
   def staff_read_authorization
@@ -54,7 +54,7 @@ class Ability
 
   def staff_manage_authorization
     student_manage_authorization << [Transcript, GradeCategory, Requirement,
-      UserEventRequirement, UserEnrollEvent]
+      UserEventRequirement, UserEnrollEvent, EventRequirement]
   end
 
   def student_read_authorization

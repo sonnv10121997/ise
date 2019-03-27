@@ -1,7 +1,6 @@
 class UserEventRequirement < ApplicationRecord
   belongs_to :user
-  belongs_to :event_requirement, class_name: Event.name, foreign_key: :event_id
-  belongs_to :requirement
+  belongs_to :event_requirement
 
   has_many :images, as: :imageable, dependent: :destroy
 
