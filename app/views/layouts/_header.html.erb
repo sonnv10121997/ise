@@ -37,7 +37,7 @@
                 <%= link_to t(".manage_page"), rails_admin.dashboard_path %>
               </li>
             <% end %>
-            <li><%= link_to t(".profile"), user_path(id: current_user.id) %></li>
+            <li><%= link_to t(".profile"), user_path(id: current_user) %></li>
             <hr class="no-margin"/>
             <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
           </ul>

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   attr_reader :user
 
-  before_action :find_user
+  before_action ->{find_user params[:id]}
 
   def show
     user.build_avatar
@@ -12,10 +12,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def find_user
-    @user = User.find_by id: params[:id]
-  end
 
   def user_params
     params.require(:user).permit :id, avatar_attributes: [:id, :file,
