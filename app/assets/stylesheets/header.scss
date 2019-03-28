@@ -147,3 +147,17 @@ header {
   display: inherit;
   width: 100%;
 }
+
+.user_image_header {
+  border-radius: 16px;
+  height: 32px;
+  width: 32px;
+}
+
+.user_name {
+  color: $main_nav_gray;
+  background: $sidebar_hover_gray;
+  display: block;
+  font-size: 0.9em;
+  padding: 10px 15px;
+}

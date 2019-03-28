@@ -20,7 +20,7 @@ model:
       most_popular: most_popular
       enrolling_phase: enrolling_phase
     per_page: 5
-    max_title_length: 35
+    max_title_length: 30
     date_format: "%d/%m/%y"
   message:
     date_format: "%d/%m/%y"

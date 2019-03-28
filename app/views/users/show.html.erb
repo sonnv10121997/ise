@@ -1,4 +1,4 @@
-<%= image_tag(@user.avatar.file_url) if @user.avatar.file? %>
+<%= image_tag(@user.avatar.file_url, class: "user_image") if @user.avatar.file? %>
 
 <%= form_for user_path(@user), method: :patch do |f| %>
   <%= f.fields_for :avatar do |a| %>

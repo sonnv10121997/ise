@@ -19,6 +19,5 @@ class Event < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates_presence_of :description, :price, :max_participants, :start_date,
-    :end_date, :semester, :leaders, :majors, :requirements, :thumbnail,
-    :joined_participants
+    :end_date, :semester, :thumbnail, :joined_participants
 end

@@ -2,9 +2,10 @@
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
       <div class="course_feature no-margin">
-        <div class="user_image w-51px h-51px"></div>
+        <%= image_tag(@user_event.leaders.first.avatar.file_url,
+          class: "user_image w-51px h-51px") if @user_event.leaders.first.avatar %>
         <div class="user_title">
-          <%= link_to "#" do %>
+          <%= link_to user_path @user_event.leaders.first do %>
             <h5 class="no-margin"><%= @user_event.leaders.first.name %></h5>
           <% end %>
         </div>
