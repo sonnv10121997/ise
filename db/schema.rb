@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_015529) do
     t.string "name"
     t.string "address"
     t.string "country"
-    t.integer "status"
+    t.boolean "signed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"

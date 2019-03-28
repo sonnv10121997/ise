@@ -39,13 +39,11 @@ RailsAdmin.config do |config|
     history_show
   end
 
-  models = [Notification.name].freeze
+  models = [Conversation.name, Message.name, UserEventRequirement.name].freeze
 
   models.each do |model|
     config.model model do
-      visible do
-        bindings[:controller].current_user.Manager? ? false : true
-      end
+      visible false
     end
   end
 
@@ -53,7 +51,8 @@ RailsAdmin.config do |config|
     edit do
       include_all_fields
       field :description, :ck_editor
-      exclude_fields :slug, :user_enroll_events, :event_requirements, :event_majors, :user_lead_events
+      exclude_fields :slug, :user_enroll_events, :event_requirements,
+        :event_majors, :user_lead_events, :participants
     end
   end
 
@@ -61,7 +60,7 @@ RailsAdmin.config do |config|
     create do
       user_fields
     end
-    
+
     update do
       user_fields
       exclude_fields :password
@@ -74,7 +73,7 @@ RailsAdmin.config do |config|
       create do
         user_fields
       end
-      
+
       update do
         user_fields
         exclude_fields :password
@@ -83,15 +82,30 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Requirement do
+    edit do
+      include_fields :name, :description
+    end
+  end
+
+  config.model Partner do
+    edit do
+      include_all_fields
+      exclude_fields :slug
+    end
+  end
+
+  config.model Major do
+    edit do
+      include_all_fields
+      exclude_fields :event_majors
+    end
+  end
+
   private
 
   def user_fields
-    include_all_fields
-    exclude_fields :confirmation_token
-    exclude_fields :reset_password_sent_at
-    exclude_fields :remember_created_at
-    exclude_fields :confirmation_sent_at
-    exclude_fields :unconfirmed_email
-    exclude_fields :major_id
+    include_fields :name, :gender, :dob, :code, :phone, :type, :email,
+      :password, :password_confirmation, :confirmed_at
   end
 end

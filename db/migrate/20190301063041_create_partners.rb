@@ -4,7 +4,7 @@ class CreatePartners < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :address
       t.string :country
-      t.integer :status
+      t.boolean :signed
 
       t.timestamps
     end

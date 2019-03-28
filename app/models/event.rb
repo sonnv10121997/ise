@@ -18,10 +18,7 @@ class Event < ApplicationRecord
     reject_if: proc {|attributes| attributes["file"].blank?}
 
   validates :name, presence: true, uniqueness: true
-  validates :description, presence: true
-  validates :price, presence: true
-  validates :max_participants, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :semester, presence: true
+  validates_presence_of :description, :price, :max_participants, :start_date,
+    :end_date, :semester, :leaders, :majors, :requirements, :thumbnail,
+    :joined_participants
 end
