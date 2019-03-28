@@ -2,8 +2,8 @@ User.types.keys.each_with_index do |type, index|
   name = index.zero? ? "Administrator" : type
   User.create! name: name, email: "#{type.downcase}@fpt.edu.vn",
     type: type, password: "123456", gender: Faker::Number.within(0..1),
-    code: type.downcase, phone: Faker::Number.leading_zero_number(10), dob: Time.now.utc,
-    confirmed_at: Time.now.utc
+    code: type.downcase, phone: Faker::Number.leading_zero_number(10), dob: Date.today,
+    confirmed_at: Date.today
 end
 
 Major.create! name: "English", acronym: "EN"
@@ -20,12 +20,12 @@ end
 
 20.times do |event_idx|
   Event.create! name: Faker::Lorem.sentence(10), description: Faker::Lorem.paragraph(100),
-    price: Faker::Number.decimal(8, 2), max_participants: 30, start_date: Time.now.utc,
-    end_date: Time.now.utc + 1.week, semester: "Spring 2019", partner_id: Faker::Number.within(1..10)
+    price: Faker::Number.decimal(8, 2), max_participants: 30, start_date: Date.today,
+    end_date: Date.today + 1.week, semester: "Spring 2019", partner_id: Faker::Number.within(1..10)
   EventMajor.create! event_id: event_idx + 1, major_id: Faker::Number.within(1..4)
   UserLeadEvent.create! event_id: event_idx + 1, user_id: Faker::Number.within(1..4)
   6.times do
-    EventRequirement.create! event_id: event_idx + 1,
+    EventRequirement.create! event_id: event_idx + 1, deadline: Date.today + 1.week,
       requirement_id: Faker::Number.within(1..10)
   end
 end

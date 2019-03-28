@@ -39,7 +39,7 @@
       <div class="tab_panel active no-padding px-20">
         <div class="row no-margin fs-09em">
           <div class="col-md-3 border_right no-padding pr-20">
-            <% @user_event.users.where.not(id: current_user).each do |user| %>
+            <% @user_event.participants.where.not(id: current_user).each do |user| %>
               <%= form_tag conversations_path(sender_id: current_user,
                 receiver_id: user), remote: true do  %>
                 <%= button_tag user.name, type: :submit, class: "btn button-text-default" %>
@@ -50,15 +50,14 @@
             <div id="messages_form"></div>
           </div>
           <div class="col-md-3 no-padding pl-20">
-            <% @user_event.event_requirements.by(current_user).each do
-              |event_requirement| %>
+            <% current_user.requirements.each do |requirement| %>
 
               <div class="border_bottom py-20">
-                <%= form_for event_requirement, url: user_event_requirement_path(event_requirement),
+                <%= form_for requirement, url: user_event_requirement_path(requirement),
                   method: :put do |f| %>
-                  <%= hidden_field_tag "user_event_requirement[verified]", !event_requirement.verified? %>
+                  <%= hidden_field_tag "user_event_requirement[verified]", !requirement.verified? %>
                   <%= f.button do %>
-                    <% if event_requirement.verified? %>
+                    <% if requirement.verified? %>
                       <%= fa_icon "times", class: "failed" %>
                     <% else %>
                       <%= fa_icon "check", class: "pass" %>
@@ -68,34 +67,34 @@
 
                 <div class="event_requirements">
                   <div class="display_start">
-                    <% if event_requirement.verified? %>
+                    <% if requirement.verified? %>
                       <%= fa_icon "check", class: "pass" %>
                     <% else %>
                       <%= fa_icon "times", class: "failed" %>
                     <% end %>
                     <div class="pl-5px">
-                      <%= event_requirement.requirement.name %></div>
+                      <%= requirement.detail.name %></div>
                   </div>
                   <div><%= t ".deadline" %>:
-                    <%= rescue_req_deadline event_requirement %></div>
+                    <%= rescue_req_deadline requirement %></div>
                 </div>
                 <div class="req_description">
-                  <%= event_requirement.requirement.description %></div>
-                <% event_requirement.images.new if event_requirement.images.empty? %>
-                <% event_requirement.images.each do |image| %>
+                  <%= requirement.detail.description %></div>
+                <% requirement.images.new if requirement.images.empty? %>
+                <% requirement.images.each do |image| %>
                   <%= image_tag(image.file_url) if image.file? %>
                 <% end %>
-                <%= form_for event_requirement,
-                  url: user_event_requirement_path(event_requirement),
-                  method: :patch, html: {class: "d-flex"} do |event_requirement| %>
-                  <%= event_requirement.fields_for :images do |image| %>
+                <%= form_for requirement,
+                  url: user_event_requirement_path(requirement),
+                  method: :patch, html: {class: "d-flex"} do |f| %>
+                  <%= f.fields_for :images do |image| %>
                     <%= image.label :file, t(".choose_file"),
                       class: "btn button-text-default no-margin",
-                      for: event_requirement.hash %>
+                      for: f.hash %>
                     <%= image.file_field :file, hidden: true,
-                      id: event_requirement.hash %>
+                      id: f.hash %>
                   <% end %>
-                  <%= event_requirement.submit t(".upload"), class: "button button-text" %>
+                  <%= f.submit t(".upload"), class: "button button-text" %>
                 <% end %>
               </div>
             <% end %>
