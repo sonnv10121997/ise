@@ -56,4 +56,42 @@ RailsAdmin.config do |config|
       exclude_fields :slug, :user_enroll_events, :event_requirements, :event_majors, :user_lead_events
     end
   end
+
+  config.model User do
+    create do
+      user_fields
+    end
+    
+    update do
+      user_fields
+      exclude_fields :password
+      exclude_fields :password_confirmation
+    end
+  end
+
+  User.types.keys.each do |type|
+    config.model type do
+      create do
+        user_fields
+      end
+      
+      update do
+        user_fields
+        exclude_fields :password
+        exclude_fields :password_confirmation
+      end
+    end
+  end
+
+  private
+
+  def user_fields
+    include_all_fields
+    exclude_fields :confirmation_token
+    exclude_fields :reset_password_sent_at
+    exclude_fields :remember_created_at
+    exclude_fields :confirmation_sent_at
+    exclude_fields :unconfirmed_email
+    exclude_fields :major_id
+  end
 end
