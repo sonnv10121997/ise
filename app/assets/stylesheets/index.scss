@@ -15,10 +15,10 @@ $header_container_gray: #ececec;
 
 .course_thumbnail {
   align-items: center;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   height: 117px;
+  img { width: 100% }
 }
 
 .course_title {

@@ -22,7 +22,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :avatar, allow_destroy: true,
     reject_if: proc {|attributes| attributes["file"].blank?}
 
-  validates :name, presence: true
+  validates :name, presence: true,
     length: {maximum: Settings.model.user.max_name_length,
       minimum: Settings.model.user.min_name_length}
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}

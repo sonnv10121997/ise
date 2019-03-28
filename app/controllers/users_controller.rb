@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action ->{find_user params[:id]}
 
   def show
-    user.build_avatar
+    user.build_avatar unless user.avatar
   end
 
   def update

@@ -18,9 +18,8 @@
               <%= event_major_name @event %>
             </div>
           </div>
-          <div class="course_detail_thumbnail">
-            <%= image_tag(@event.thumbnail.file_url) if @event.thumbnail %>
-          </div>
+          <%= image_tag(@event.thumbnail.file_url,
+            class: "course_detail_thumbnail") if @event.thumbnail %>
           <div class="mt-20">
             <div class="tab button button-text"><%= t ".description" %></div>
           </div>
@@ -62,11 +61,10 @@
             <h3><%= t ".leader" %></h3>
             <div class="course_features">
               <div class="course_feature justify_content_end">
-                <div class="user_image">
-                  <%= fa_icon "image" %>
-                </div>
+                <%= image_tag(@event.leaders.first.avatar.file_url,
+                  class: "user_image") if @event.leaders.first.avatar %>
                 <div class="user_title">
-                  <%= link_to "#" do %>
+                  <%= link_to user_path @event.leaders.first do %>
                     <h5 class="no-margin"><%= @event.leaders.first.name %></h5>
                   <% end %>
                 </div>
@@ -78,8 +76,9 @@
             <div class="course_features">
               <% 5.times do %>
                 <div class="row no-margin mb-15">
-                  <div class="col-md-5 no-padding">
-                    <div class="course_detail_thumbnail no-margin"></div>
+                  <div class="col-md-5 no-padding d-flex align-items-center">
+                    <%= image_tag(@event.thumbnail.file_url,
+                      class: "course_detail_thumbnail no-margin") if @event.thumbnail %>
                   </div>
                   <div class="col-md-7 pr-0">
                     <div class="course_title no-padding h-55">

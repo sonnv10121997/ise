@@ -27,17 +27,24 @@
         <li><%= link_to t(".about"), "#", class: "child" %></li>
         <li><%= fa_icon "bell" %></li>
         <li class="dropdown">
-          <%= link_to "#", class: "dropdown-toggle no-after", data: {toggle: "dropdown"} do %>
-            <%= fa_icon "user-circle" %>
+          <%= link_to "#", class: "dropdown-toggle no-after",
+            data: {toggle: "dropdown"} do %>
+            <% if current_user.avatar %>
+              <%= image_tag current_user.avatar.file_url,
+                class: "user_image_header" %>
+            <% else %>
+              <%= fa_icon "user-circle" %>
+            <% end %>
           <% end %>
 
           <ul class="dropdown-menu no-padding">
+            <li><span class="user_name"><%= current_user.name %></span></li>
             <% if can?(:access, :rails_admin) && can?(:dashboard, :all) %>
               <li>
                 <%= link_to t(".manage_page"), rails_admin.dashboard_path %>
               </li>
             <% end %>
-            <li><%= link_to t(".profile"), user_path(id: current_user) %></li>
+            <li><%= link_to t(".profile"), user_path(current_user) %></li>
             <hr class="no-margin"/>
             <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
           </ul>

@@ -31,9 +31,8 @@ $body_gray: #6c6a74;
 }
 
 .course_detail_thumbnail {
-  border: 1px solid black;
   margin-top: 33px;
-  padding-top: 56.25%;
+  width: 100%;
 }
 
 .tab_panels {
@@ -85,7 +84,6 @@ $body_gray: #6c6a74;
 
 .user_image {
   align-items: center;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   height: 102px;
