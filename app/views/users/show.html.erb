@@ -4,7 +4,8 @@
   <%= f.fields_for :avatar do |a| %>
     <%= a.label :file, t(".choose_file"),
       class: "btn button-text-default no-margin" %>
-    <%= a.file_field :file, hidden: true, name: "user[avatar_attributes][file]" %>
+    <%= a.file_field :file, hidden: true, name: "user[avatar_attributes][file]",
+    accept: "image/png, image/gif, image/jpeg"%>
   <% end %>
 
   <%= f.submit t(".upload"), class: "button button-text" %>
