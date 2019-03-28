@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   has_many :user_lead_events
   has_many :leaders, through: :user_lead_events
   has_many :majors, through: :event_majors
-  has_many :students, through: :user_enroll_events
+  has_many :participants, through: :user_enroll_events
   has_many :requirements, through: :event_requirements
   has_one :thumbnail, as: :imageable, dependent: :destroy, class_name: Image.name
 

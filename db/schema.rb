@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_163141) do
+ActiveRecord::Schema.define(version: 2019_03_28_015529) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_03_27_163141) do
   create_table "event_requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_id"
     t.bigint "requirement_id"
+    t.date "deadline"
     t.index ["event_id"], name: "index_event_requirements_on_event_id"
     t.index ["requirement_id"], name: "index_event_requirements_on_requirement_id"
   end
@@ -179,7 +180,6 @@ ActiveRecord::Schema.define(version: 2019_03_27_163141) do
 
   create_table "user_event_requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.date "deadline"
     t.boolean "verified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
