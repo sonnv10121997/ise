@@ -4,36 +4,38 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %><br/>
     <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: :email %>
+    <%= f.label :email %><br/>
+    <%= f.email_field :email %>
   </div>
 
   <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code, autocomplete: :code %>
+    <%= f.label :code %><br/>
+    <%= f.text_field :code %>
   </div>
 
   <div class="field">
-    <%= f.label :gender %> <br />
+    <%= f.label :gender %> <br/>
     <% User.genders.each do |key, value| %>
       <%= f.radio_button :gender, key %>
-      <%= f.label :gender, key.capitalize, value: key %><br />
+      <%= f.label :gender, key.capitalize, value: key %><br/>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :dob, "Date of Birth" %><br />
+    <%= f.label :dob, "Date of Birth" %><br/>
     <%= f.date_select :dob, order: %i(day month year),
-      start_year: Settings.model.user.start_dob_year, autocomplete: :dob %>
+      start_year: Settings.model.user.start_dob_year,
+      end_year: Settings.model.user.start_dob_year + Settings.model.user.year_interval,
+      default: Date.today, autocomplete: :dob %>
   </div>
 
   <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.label :phone %><br/>
     <%= f.text_field :phone %>
   </div>
 
@@ -41,12 +43,12 @@
     <%= f.label :password %>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %><br/>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %><br/>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
