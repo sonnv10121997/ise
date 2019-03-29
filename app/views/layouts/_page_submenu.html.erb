@@ -1,0 +1,8 @@
+<li><%= link_to t(".latest"), "#" %></li>
+<li><%= link_to t(".most_popular"), "#" %></li>
+<li><%= link_to t(".enrolling"), "#" %></li>
+<% unless current_user.enrolls.empty? %>
+  <li><%= link_to t(".participating"),
+    user_enroll_event_path(event_id: current_user.enrolls.last) %></li>
+  <li><%= link_to t(".completed"), "#" %></li>
+<% end %>

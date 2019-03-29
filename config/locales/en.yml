@@ -115,6 +115,7 @@ en:
     sidebar:
       home: Home
       courses: Courses
+    page_submenu:
       latest: Latest
       most_popular: Most popular
       enrolling: Enrolling

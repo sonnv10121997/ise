@@ -115,6 +115,7 @@ vi:
     sidebar:
       home: Trang chủ
       courses: Khoá học
+    page_submenu:
       latest: Mới nhất
       most_popular: Phổ biến nhất
       enrolling: Đang mở đơn

@@ -1,20 +1,11 @@
-<nav id="sidebar">
+<nav id="sidebar" class="<%= cookies[:sidebarCollapse] %>">
   <ul class="list-unstyled">
-    <li>
-      <%= link_to t(".home"), root_path %>
-    </li>
+    <li><%= link_to t(".home"), root_path %></li>
     <li>
       <%= link_to t(".courses"), "#pageSubmenu", class: "dropdown-toggle",
         aria_expanded: true, data: {toggle: "collapse"} %>
       <ul class="collapse show list-unstyled" id="pageSubmenu">
-        <li><%= link_to t(".latest"), "#" %></li>
-        <li><%= link_to t(".most_popular"), "#" %></li>
-        <li><%= link_to t(".enrolling"), "#" %></li>
-        <% unless current_user.enrolls.empty? %>
-          <li><%= link_to t(".participating"),
-            user_enroll_event_path(event_id: current_user.enrolls.last) %></li>
-          <li><%= link_to t(".completed"), "#" %></li>
-        <% end %>
+        <%= render "layouts/page_submenu" %>
       </ul>
     </li>
   </ul>

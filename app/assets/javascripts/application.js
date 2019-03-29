@@ -17,6 +17,7 @@
 //= require ckeditor/init
 //= require noty/lib/noty.js
 //= require sweetalert2/dist/sweetalert2.all.min.js
+//= require js-cookie/src/js.cookie.js
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
@@ -29,8 +30,8 @@ function noty(text, type) {
   return new Noty({
     type: type,
     text: text,
-    layout: 'bottomLeft',
-    theme: 'relax',
+    layout: `bottomLeft`,
+    theme: `relax`,
     timeout: 3000
   }).show();
 };
