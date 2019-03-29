@@ -387,23 +387,6 @@ a[data-toggle="collapse"] {
   }
 }
 
-@media (max-width: 1275px) {
-  #sidebar {
-    margin-left: -190px;
-
-    &.active {
-      margin-left: 0;
-    }
-  }
-  .content {
-    width: 100%;
-
-    &.active {
-    width: calc(100% - 190px);
-    }
-  }
-}
-
 .button-text-default {
   border: 1px solid $body_gray;
   @include button_text(12px, bold, $body_gray, 24px, uppercase);

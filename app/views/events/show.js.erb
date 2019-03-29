@@ -1,3 +1,3 @@
-$('#enroll_request').html('<%= j render "events/enroll_request",
-  current_user: current_user, event: @user_event %>');
-$('#sidebar').html(`<%= j render "layouts/sidebar" %>`);
+$(`#enroll_request`).html(`<%= j render "events/enroll_request",
+  current_user: current_user, event: @user_event %>`);
+$(`#pageSubmenu`).html(`<%= j render "layouts/page_submenu" %>`);
