@@ -60,7 +60,7 @@
           <div class="course_sidebar_section">
             <h3><%= t ".leader" %></h3>
             <div class="course_features">
-              <div class="course_feature justify_content_end">
+              <div class="course_feature justify-content-start">
                 <%= image_tag(@event.leaders.first.avatar.file_url,
                   class: "user_image") if @event.leaders.first.avatar %>
                 <div class="user_title">
