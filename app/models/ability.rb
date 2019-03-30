@@ -18,6 +18,7 @@ class Ability
     else
       student_rules
       can :read, Student, id: user.id
+      can :upload_image, UserEventRequirement, user_id: user.id
       manage_message user.id
     end
   end
@@ -32,12 +33,14 @@ class Ability
   def manager_rules
     can :manage, manager_manage_authorization.flatten!
     can :update, User
+    can :check_requirement, UserEventRequirement
     can :read, manager_manage_authorization.flatten!
   end
 
   def staff_rules
     can :manage, staff_manage_authorization.flatten!
     can :update, Event
+    can :check_requirement, UserEventRequirement
     can :read, manager_manage_authorization.flatten!
   end
 
@@ -62,8 +65,7 @@ class Ability
 
   def student_read_authorization
     student_manage_authorization << [Event, GradeCategory, Mmo, Partner,
-      Transcript, UserEnrollEvent, UserLeadEvent, Requirement, Major, EventMajor,
-      UserEventRequirement]
+      Transcript, UserEnrollEvent, UserLeadEvent, Requirement, Major, EventMajor]
   end
 
   def student_manage_authorization

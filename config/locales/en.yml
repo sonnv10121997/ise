@@ -58,6 +58,7 @@ en:
       requirements: Requirements
       discussions: Discussions
       deadline: Deadline
+    requirement:
       upload: Upload
       choose_file: Choose file
   users:
@@ -94,7 +95,7 @@ en:
       email: Email
       reset_password: Reset password
   messages:
-    messages:
+    index:
       your_message: Your message
       send: Send
     message:

@@ -25,7 +25,9 @@ $(document).on(`turbolinks:load`, function() {
             swal(I18n.t(`swal.success.send_enrolling_request`),
               I18n.t(`swal.success.wait_to_be_approved`), `success`, false,
               I18n.t(`swal.ok`)
-            )
+            ).then(function() {
+              location.href = `/user_enroll_events/${event_id}`;
+            });
           }
         });
       }
@@ -45,7 +47,9 @@ $(document).on(`turbolinks:load`, function() {
           success: function() {
             swal(I18n.t(`swal.success.stop_sending_enroll_request`), ``,
               `success`, false, I18n.t(`swal.ok`)
-            )
+            ).then(function() {
+              location.href = `/events/${event_id}`;
+            });
           }
         });
       }
