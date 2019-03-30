@@ -1,2 +1,4 @@
-$('#messages_form').html('<%= j render "messages/messages", conversation: @conversation,
-  message: @conversation.messages.new %>');
+$(`#messages_form`).html(`<%= j render "messages/index", conversation: @conversation,
+  message: @conversation.messages.new %>`);
+$(`#requirement`).html(`<%= j render partial: "user_enroll_events/requirement",
+  collection: requirement_collection(@conversation) %>`);

@@ -2,6 +2,8 @@ class UserEnrollEventsController < ApplicationController
   attr_reader :user_event, :user_enroll_event
 
   before_action ->{find_user_event params[:event_id]}
+  before_action ->{find_conversation current_user,
+    user_event.participants.where.not(id: current_user).first}
   before_action :find_user_enroll_event, only: :destroy
 
   def show; end

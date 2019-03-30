@@ -58,6 +58,7 @@ vi:
       requirements: Các yêu cầu
       discussions: Thảo luận
       deadline: Hạn chót
+    requirement:
       upload: Gửi ảnh
       choose_file: Chọn ảnh
   users:
@@ -94,7 +95,7 @@ vi:
       email: Email
       reset_password: Đổi mật khẩu
   messages:
-    messages:
+    index:
       your_message: Nhập tin nhắn
       send: Gửi
     message:

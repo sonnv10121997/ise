@@ -39,4 +39,10 @@ class ApplicationController < ActionController::Base
   def find_user_event slug
     @user_event = Event.find_by_slug slug
   end
+
+  def find_conversation sender, receiver
+    @conversation =
+      Conversation.between(sender, receiver).first ||
+      Conversation.create(sender_id: sender.id, receiver_id: receiver.id)
+  end
 end
