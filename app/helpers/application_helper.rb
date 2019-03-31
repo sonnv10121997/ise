@@ -7,4 +7,13 @@ module ApplicationHelper
     end
     noty_types[0]
   end
+
+  def user_image_for user, css_class
+    return fa_icon "user-circle" unless user.avatar
+    image_tag user.avatar.file_url, class: css_class
+  end
+
+  def rescue_body_class
+    devise_controller? ? "" : "content #{cookies[:sidebarCollapse]}"
+  end
 end

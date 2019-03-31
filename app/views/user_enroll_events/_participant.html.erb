@@ -1,4 +1,14 @@
-<%= form_tag conversations_path(sender_id: current_user, receiver_id: user),
-  remote: true do  %>
-  <%= button_tag user.name, type: :submit, class: "btn button-text-default" %>
+<% unless user_counter.zero? %>
+  <hr class="no-margin" />
+<% end %>
+
+<%= label_tag user.slug, class: "no-margin cursor_pointer d-block" do %>
+  <%= form_tag conversations_path(sender_id: current_user, receiver_id: user),
+    remote: true, class: "p-10 participant" do  %>
+    <div class="course_feature no-margin justify-content-start">
+      <%= user_image_for user, "user_image_small" %>
+      <div class="user_title"><h5 class="no-margin"><%= user.name %></h5></div>
+    </div>
+    <%= button_tag type: :submit, hidden: true, id: user.slug %>
+  <% end %>
 <% end %>

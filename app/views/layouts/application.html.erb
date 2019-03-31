@@ -16,7 +16,7 @@
       <%= render "layouts/sidebar" %>
     <% end %>
 
-    <div class="<%= devise_controller? ? "" : "content #{cookies[:sidebarCollapse]}" %>">
+    <div class="<%= rescue_body_class %>">
       <%= yield %>
     </div>
   </body>

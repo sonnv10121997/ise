@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   attr_reader :user
 
   before_action ->{find_user params[:id]}
+  authorize_resource
 
   def show
     user.build_avatar unless user.avatar

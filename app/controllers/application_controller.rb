@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_with_flash :error, t(".access_denied"), request.referrer
+    redirect_with_flash :error, t("rails_admin.access_denied")
   end
 
   protected
@@ -22,9 +22,8 @@ class ApplicationController < ActionController::Base
     {locale: I18n.locale}.merge options
   end
 
-  def redirect_with_flash type, msg, url
+  def redirect_with_flash type, msg
     flash[type] = msg
-    return redirect_to url if url
     redirect_back fallback_location: main_app.root_path
   end
 

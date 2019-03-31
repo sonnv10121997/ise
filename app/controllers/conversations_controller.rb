@@ -3,6 +3,7 @@ class ConversationsController < ApplicationController
 
   before_action :find_sender, :find_receiver
   before_action ->{find_conversation sender, receiver}
+  authorize_resource
 
   def create; end
 

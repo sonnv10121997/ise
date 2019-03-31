@@ -44,6 +44,7 @@ en:
       enrolling: Enrolling
       latest: Latest
     enroll_request:
+      assigned: Assigned
       enrolling: Enrolling
       enroll: Enroll
   user_enroll_events:
@@ -123,6 +124,4 @@ en:
       participating: Participating
       completed: Completed
   rails_admin:
-    main:
-      dashboard:
-        access_denied: You don\'t have permission to access this content!
+    access_denied: You don\'t have permission to access this content!
