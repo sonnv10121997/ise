@@ -1,6 +1,7 @@
 $failed: #dc3545;
 $pass: #28a745;
 $content_gray: #fafafa;
+$input_gray: #f2f1f8;
 
 @mixin display($type, $item, $content, $direction) {
   align-items: $item;
@@ -64,4 +65,16 @@ $content_gray: #fafafa;
 
 .req_img {
   width: 100%;
+}
+
+.participant {
+  cursor: pointer;
+
+  &:hover {
+    background: $input_gray;
+  }
+}
+
+.cursor_pointer {
+  cursor: pointer;
 }

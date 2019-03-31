@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
 
   before_action :find_conversation
   before_action :find_message
+  authorize_resource
 
   def create
     conversation.messages.not_read_by(current_user).update_all read: true

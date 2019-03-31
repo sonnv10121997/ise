@@ -44,6 +44,7 @@ vi:
       enrolling: Đang tham gia
       latest: Mới nhất
     enroll_request:
+      assigned: Đang phụ trách
       enrolling: Đang gửi yêu cầu
       enroll: Đăng kí
   user_enroll_events:
@@ -238,9 +239,7 @@ vi:
         one: '1 lỗi khi lưu %{resource}:'
         other: "%{count} lỗi khi lưu %{resource}:"
   rails_admin:
-    main:
-      dashboard:
-        access_denied: Bạn không có quyền truy cập vào nội dung này!
+    access_denied: Bạn không có quyền truy cập vào nội dung này!
   admin:
     js:
       true: True

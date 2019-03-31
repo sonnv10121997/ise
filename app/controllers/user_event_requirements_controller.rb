@@ -2,6 +2,7 @@ class UserEventRequirementsController < ApplicationController
   attr_reader :user_event_requirement
 
   before_action :find_user_event_requirement
+  authorize_resource
 
   def upload_image
     user_event_requirement.update_attributes upload_image_params

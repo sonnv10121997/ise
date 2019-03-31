@@ -9,6 +9,7 @@ $sidebar_gray: #f7f7f7;
 $sidebar_a_gray: #4e4e4e;
 $sidebar_hover_gray: #e4e4e4;
 $content_gray: #fafafa;
+$pass: #28a745;
 
 @mixin button_text($size, $weight, $color, $line-height, $text-transform) {
   font-size: $size;
@@ -122,6 +123,10 @@ a, a:hover, a:visited, a:active, a:link {
   padding: 20px;
 }
 
+.p-10 {
+  padding: 10px;
+}
+
 .pl-45 {
   padding-left: 45px;
 }
@@ -170,6 +175,11 @@ a, a:hover, a:visited, a:active, a:link {
 .py-15 {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.py-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .px-30 {

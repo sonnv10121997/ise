@@ -40,14 +40,9 @@ $body_gray: #6c6a74;
 }
 
 .tab_panel {
-  animation: fadeEffect 1s ease;
   display: none !important;
   border: solid 1px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  -webkit-animation: fadeEffect 1s ease;
-  -moz-animation: fadeEffect 1s ease;
-  -ms-animation: fadeEffect 1s ease;
-  -o-animation: fadeEffect 1s ease;
 
   &.active {
     display: block !important;
@@ -83,8 +78,15 @@ $body_gray: #6c6a74;
 }
 
 .user_image {
+  border-radius: 51px;
   height: 102px;
   width: 102px;
+}
+
+.user_image_small {
+  border-radius: 26px;
+  height: 51px;
+  width: 51px;
 }
 
 .user_title {

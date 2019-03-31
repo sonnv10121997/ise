@@ -2,9 +2,11 @@
   <h5 class="media-heading"><%= message.user.name %>
     <small class="text-muted"><%= format_message_time message %></small>
     <small>
-      <%= form_for message, url: conversation_message_path(conversation_id:
-        message.conversation, id: message), method: :delete, remote: true do |f| %>
-        <%= f.submit t(".delete"), class: "btn btn-primary pull-right" %>
+      <% if can? :destroy, message %>
+        <%= form_for message, url: conversation_message_path(conversation_id:
+          message.conversation, id: message), method: :delete, remote: true do |f| %>
+          <%= f.submit t(".delete"), class: "btn btn-primary pull-right" %>
+        <% end %>
       <% end %>
     </small>
   </h5>

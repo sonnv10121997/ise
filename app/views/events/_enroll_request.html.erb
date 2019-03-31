@@ -1,11 +1,15 @@
 <div id="enroll_request">
-  <%= hidden_field_tag :event_id, event.slug %>
+  <% if event.leaders.first == current_user %>
+    <div class="btn btn-success button-text"><%= t ".assigned" %></div>
+  <% else %>
+    <%= hidden_field_tag :event_id, event.slug %>
 
-  <% if current_user.enrolls.empty? %>
-    <%= button_tag t(".enroll"), class: "btn button-text-default",
-      id: "enroll_button" %>
-  <% elsif current_user.enrolls.last.id == event.id %>
-    <%= button_tag t(".enrolling"), class: "button button-text",
-      id: "unenroll_button" %>
+    <% if current_user.enrolls.empty? %>
+      <%= button_tag t(".enroll"), class: "btn button-text-default",
+        id: "enroll_button" %>
+    <% elsif current_user.enrolls.last == event %>
+      <%= button_tag t(".enrolling"), class: "button button-text",
+        id: "unenroll_button" %>
+    <% end %>
   <% end %>
 </div>

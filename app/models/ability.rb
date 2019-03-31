@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     if user.Admin?
       dashboard_rules
-      can %i(read update create), User
+      can %i(show update create), User
       manage_message user.id
     elsif user.Manager?
       dashboard_rules
@@ -13,11 +13,11 @@ class Ability
     elsif user.Staff?
       dashboard_rules
       staff_rules
-      can :update, User, id: user.id
+      can :show, User, id: user.id
       manage_message user.id
     else
       student_rules
-      can :read, Student, id: user.id
+      can :show, User, id: user.id
       can :upload_image, UserEventRequirement, user_id: user.id
       manage_message user.id
     end
@@ -73,7 +73,8 @@ class Ability
   end
 
   def manage_message user_id
-    can :manage, Message, user_id: user_id
-    can :manage, Conversation, sender_id: user_id, receiver_id: user_id
+    can %i(create destroy), Message, user_id: user_id
+    can :create, Conversation, sender_id: user_id
+    can :create, Conversation, receiver_id: user_id
   end
 end

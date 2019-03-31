@@ -1,5 +1,5 @@
 <div class="border_bottom py-20">
-  <% if can? :check_requirement, UserEventRequirement %>
+  <% if can? :check_requirement, requirement %>
     <%= form_for requirement, url: user_event_requirement_path(requirement),
       method: :put do |f| %>
       <%= hidden_field_tag "user_event_requirement[verified]",
@@ -22,7 +22,7 @@
     <%= image_tag(image.file_url, class: "req_img") if image.file? %>
   <% end %>
 
-  <% if can? :upload_image, UserEventRequirement %>
+  <% if can? :upload_image, requirement %>
     <%= form_for requirement, url: user_event_requirement_path(requirement),
       method: :patch, html: {class: "d-flex"} do |f| %>
       <%= f.fields_for :images do |image| %>

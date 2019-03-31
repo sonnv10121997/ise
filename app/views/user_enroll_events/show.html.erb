@@ -2,12 +2,9 @@
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
       <div class="course_feature no-margin">
-        <%= image_tag(@user_event.leaders.first.avatar.file_url,
-          class: "user_image w-51px h-51px") if @user_event.leaders.first.avatar %>
+        <%= user_image_for @user_event.leaders.first, "user_image_small" %>
         <div class="user_title">
-          <%= link_to user_path @user_event.leaders.first do %>
-            <h5 class="no-margin"><%= @user_event.leaders.first.name %></h5>
-          <% end %>
+          <h5 class="no-margin"><%= @user_event.leaders.first.name %></h5>
         </div>
       </div>
 
@@ -37,9 +34,9 @@
     <hr class="separate_course">
 
     <div class="tab_panels">
-      <div class="tab_panel active no-padding px-20">
+      <div class="tab_panel active no-padding pr-20">
         <div class="row no-margin fs-09em">
-          <div class="col-md-3 border_right no-padding pr-20">
+          <div class="col-md-3 border_right no-padding">
             <%= render partial: "participant", collection: @user_event
               .participants.where.not(id: current_user), as: :user %>
           </div>
