@@ -8,6 +8,7 @@
       <%= button_tag t(".enroll"), class: "btn button-text-default",
         id: "enroll_button" %>
     <% elsif current_user.enrolls.last == event %>
+      <%= hidden_field_tag :user_id, current_user.slug %>
       <%= button_tag t(".enrolling"), class: "button button-text",
         id: "unenroll_button" %>
     <% end %>

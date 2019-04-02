@@ -2,13 +2,25 @@
   <hr class="no-margin" />
 <% end %>
 
-<%= label_tag user.slug, class: "no-margin cursor_pointer d-block" do %>
+<%= label_tag user.slug, class: "no-margin cursor_pointer d-flex flex-nowrap
+  participant justify-content-between" do %>
   <%= form_tag conversations_path(sender_id: current_user, receiver_id: user),
-    remote: true, class: "p-10 participant" do  %>
+    remote: true, class: "p-10" do  %>
     <div class="course_feature no-margin justify-content-start">
       <%= user_image_for user, "user_image_small" %>
-      <div class="user_title"><h5 class="no-margin"><%= user.name %></h5></div>
+      <div class="user_title"><%= user.name %></div>
     </div>
     <%= button_tag type: :submit, hidden: true, id: user.slug %>
+  <% end %>
+
+  <% unless current_user.Student? %>
+    <%= form_tag user_enroll_event_path(event_id: user_event), method: :patch,
+      remote: true, class: "p-10 d-flex align-items-center" do  %>
+      <%= hidden_field_tag "user_enroll_event[status]",
+        UserEnrollEvent.statuses.keys.second %>
+      <%= hidden_field_tag "user_id", user.slug %>
+      <%= button_tag t(".enroll"), class: "btn button-text-default",
+        type: :submit %>
+    <% end %>
   <% end %>
 <% end %>

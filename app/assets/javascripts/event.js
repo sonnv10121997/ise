@@ -39,11 +39,13 @@ $(document).on(`turbolinks:load`, function() {
       I18n.t(`swal.confirm`), I18n.t(`swal.cancel`)
     ).then((result) => {
       if (result.value) {
-        var event_id = $(`#event_id`).attr(`value`)
+        var event_id = $(`#event_id`).attr(`value`);
+        var user_id = $(`#user_id`).attr(`value`);
 
         $.ajax({
           url: `/user_enroll_events/${event_id}`,
           type: `DELETE`,
+          data: { 'user_id': user_id },
           success: function() {
             swal(I18n.t(`swal.success.stop_sending_enroll_request`), ``,
               `success`, false, I18n.t(`swal.ok`)

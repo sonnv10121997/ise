@@ -5,7 +5,7 @@ class CreateUserEventRequirements < ActiveRecord::Migration[5.2]
       t.references :event, foreign_key: true
       t.references :requirement, foreign_key: true
       t.date :deadline
-      t.boolean :verified
+      t.boolean :verified, default: false
 
       t.timestamps
     end
