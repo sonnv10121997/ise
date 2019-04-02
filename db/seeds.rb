@@ -1,12 +1,12 @@
 File.open("app/uploaders/avatar.jpg") do |file|
   User.types.keys.each_with_index do |type, index|
     name = index.zero? ? "Administrator" : type
-    code = Faker::Lorem.characters(2).upcase << Faker::Number.number(6)
+    code = ('A'..'Z').to_a.shuffle[0, 2].join << (0..9).to_a.shuffle[0, 8].join
     user = User.new
     user.build_avatar.file = file
     user.update_attributes name: name, email: "#{type.downcase}@fpt.edu.vn",
-      type: type, password: "123456", gender: Faker::Number.within(0..1),
-      code: code, phone: Faker::Number.leading_zero_number(10), dob: Date.today,
+      type: type, password: "123456", gender: (0..1).to_a.shuffle[0],
+      code: code, phone: (0..9).to_a.shuffle[0, 10].join, dob: Date.today,
       confirmed_at: Date.today
     user.save!
   end
@@ -17,8 +17,8 @@ Major.create! name: "Japanse", acronym: "JP"
 Major.create! name: "Software Engineering", acronym: "SE"
 Major.create! name: "Business", acronym: "SB"
 
-10.times do
-  Partner.create! name: Faker::University.unique.name, country: Faker::Nation.nationality,
-    address: Faker::Address.full_address
-  Requirement.create! name: Faker::Food.unique.dish
-end
+Requirement.create! name: "Visa"
+Requirement.create! name: "Passport"
+Requirement.create! name: "IELTS"
+Requirement.create! name: "TOEFL"
+Requirement.create! name: "Identity Card"
