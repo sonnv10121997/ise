@@ -37,8 +37,8 @@
       <div class="tab_panel active no-padding pr-20">
         <div class="row no-margin fs-09em">
           <div class="col-md-3 border_right no-padding">
-            <%= render partial: "participant", collection: @user_event
-              .participants.where.not(id: current_user), as: :user %>
+            <%= render partial: "participant", as: :user, locals: {user_event: @user_event},
+              collection: @user_event.participants.where.not(id: current_user) %>
           </div>
 
           <div id="messages_form" class="col-md-6 border_right no-padding px-20">

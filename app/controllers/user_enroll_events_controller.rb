@@ -4,7 +4,7 @@ class UserEnrollEventsController < ApplicationController
   before_action ->{find_user_event params[:event_id]}
   before_action ->{find_conversation current_user,
     user_event.participants.where.not(id: current_user).first}
-  before_action :find_user_enroll_event, only: :destroy
+  before_action :find_user_enroll_event, only: %i(update destroy)
 
   def show; end
 
@@ -14,6 +14,10 @@ class UserEnrollEventsController < ApplicationController
     respond_to do |format|
       format.js {render "events/show", event: user_event}
     end
+  end
+
+  def update
+    user_enroll_event.update_attributes user_enroll_event_params
   end
 
   def destroy
@@ -27,13 +31,18 @@ class UserEnrollEventsController < ApplicationController
   private
 
   def find_user_enroll_event
-    @user_enroll_event = current_user.user_enroll_events.find_by_event_id user_event
+    user = find_user params[:user_id]
+    @user_enroll_event =
+      UserEnrollEvent.find_by event_id: user_event, user_id: user.id
   end
 
   def create_user_event_requirement
     user_event.event_requirements.ids.each do |event_requirement_id|
-      UserEventRequirement.create user_id: current_user.id,
-        event_requirement_id: event_requirement_id, verified: false
+      current_user.requirements.create event_requirement_id: event_requirement_id
     end
+  end
+
+  def user_enroll_event_params
+    params.require(:user_enroll_event).permit :status
   end
 end

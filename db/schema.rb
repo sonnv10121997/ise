@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_015529) do
+ActiveRecord::Schema.define(version: 2019_04_01_150823) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_015529) do
     t.string "name"
     t.string "address"
     t.string "country"
-    t.boolean "signed"
+    t.boolean "signed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
@@ -174,13 +174,14 @@ ActiveRecord::Schema.define(version: 2019_03_28_015529) do
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["event_id"], name: "index_user_enroll_events_on_event_id"
     t.index ["user_id"], name: "index_user_enroll_events_on_user_id"
   end
 
   create_table "user_event_requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.boolean "verified"
+    t.boolean "verified", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "event_requirement_id"
