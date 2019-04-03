@@ -39,7 +39,9 @@ RailsAdmin.config do |config|
     history_show
   end
 
-  models = [Conversation.name, Message.name, UserEventRequirement.name].freeze
+  models = [Conversation.name, Message.name, UserEventRequirement.name,
+    EventMajor.name, EventRequirement.name, Image.name, UserEnrollEvent.name,
+    Notification.name].freeze
 
   models.each do |model|
     config.model model do
@@ -51,8 +53,7 @@ RailsAdmin.config do |config|
     edit do
       include_all_fields
       field :description, :ck_editor
-      exclude_fields :slug, :user_enroll_events, :event_requirements,
-        :event_majors, :user_lead_events, :participants
+      exclude_fields :slug, :event_majors, :participants, :requirements
     end
   end
 
@@ -97,8 +98,7 @@ RailsAdmin.config do |config|
 
   config.model Major do
     edit do
-      include_all_fields
-      exclude_fields :event_majors
+      include_fields :name, :acronym
     end
   end
 

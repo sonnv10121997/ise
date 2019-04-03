@@ -13,7 +13,7 @@ class Ability
     elsif user.Staff?
       dashboard_rules
       staff_rules
-      can :show, User, id: user.id
+      can :update, User, id: user.id
       manage_message user.id
     else
       student_rules
@@ -31,27 +31,22 @@ class Ability
   end
 
   def manager_rules
-    can :manage, manager_manage_authorization.flatten!
+    can :manage, student_read_authorization.flatten!
     can :update, User
     can :check_requirement, UserEventRequirement
-    can :read, manager_manage_authorization.flatten!
+    can :read, staff_read_authorization.flatten!
   end
 
   def staff_rules
     can :manage, staff_manage_authorization.flatten!
     can :update, Event
     can :check_requirement, UserEventRequirement
-    can :read, manager_manage_authorization.flatten!
+    can :read, staff_read_authorization.flatten!
   end
 
   def student_rules
     can :manage, student_manage_authorization
     can :read, student_read_authorization.flatten!
-  end
-
-  def manager_manage_authorization
-    staff_read_authorization << [Ckeditor::Asset,
-      Ckeditor::AttachmentFile, Ckeditor::Picture, EventRequirement]
   end
 
   def staff_read_authorization
@@ -65,7 +60,7 @@ class Ability
 
   def student_read_authorization
     student_manage_authorization << [Event, GradeCategory, Mmo, Partner,
-      Transcript, UserEnrollEvent, UserLeadEvent, Requirement, Major, EventMajor]
+      Transcript, UserEnrollEvent, Requirement, Major, EventMajor]
   end
 
   def student_manage_authorization

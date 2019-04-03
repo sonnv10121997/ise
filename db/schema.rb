@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_150823) do
   create_table "user_enroll_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
+    t.boolean "is_leader", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
@@ -187,15 +188,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_150823) do
     t.bigint "event_requirement_id"
     t.index ["event_requirement_id"], name: "index_user_event_requirements_on_event_requirement_id"
     t.index ["user_id"], name: "index_user_event_requirements_on_user_id"
-  end
-
-  create_table "user_lead_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_user_lead_events_on_event_id"
-    t.index ["user_id"], name: "index_user_lead_events_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -245,7 +237,5 @@ ActiveRecord::Schema.define(version: 2019_04_01_150823) do
   add_foreign_key "user_enroll_events", "users"
   add_foreign_key "user_event_requirements", "event_requirements"
   add_foreign_key "user_event_requirements", "users"
-  add_foreign_key "user_lead_events", "events"
-  add_foreign_key "user_lead_events", "users"
   add_foreign_key "users", "majors"
 end
