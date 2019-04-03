@@ -14,7 +14,7 @@ class User < ApplicationRecord
   belongs_to :major, optional: true
 
   has_many :user_enroll_events
-  has_many :enrolls, through: :user_enroll_events
+  has_many :enrolls, source: :event, through: :user_enroll_events
   has_many :requirements, ->{order verified: :desc}, foreign_key: :user_id,
     class_name: UserEventRequirement.name
   has_one :avatar, as: :imageable, dependent: :destroy, class_name: Image.name
