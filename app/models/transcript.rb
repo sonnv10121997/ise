@@ -2,7 +2,9 @@ class Transcript < ApplicationRecord
   belongs_to :user
   belongs_to :event
 
-  has_many :grade_categories, ->{where grade_category_id: nil}
-  has_many :grades, ->{where.not grade_category_id: nil},
-    class_name: GradeCategory.name, foreign_key: :grade_category_id
+  has_many :grade_categories, dependent: :destroy, inverse_of: :transcript
+
+  accepts_nested_attributes_for :grade_categories, allow_destroy: true
+
+  validates_presence_of :grade_categories
 end

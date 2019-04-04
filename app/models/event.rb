@@ -5,10 +5,10 @@ class Event < ApplicationRecord
   belongs_to :partner
 
   has_many :participant_details, class_name: UserEnrollEvent.name,
-    foreign_key: :event_id, inverse_of: :event
+    foreign_key: :event_id, inverse_of: :event, dependent: :destroy
   has_many :requirement_details, class_name: EventRequirement.name,
-    foreign_key: :event_id, inverse_of: :event
-  has_many :event_majors
+    foreign_key: :event_id, inverse_of: :event, dependent: :destroy
+  has_many :event_majors, dependent: :destroy
   has_many :majors, through: :event_majors
   has_many :participants, source: :user, through: :participant_details
   has_many :requirements, through: :requirement_details

@@ -5,7 +5,6 @@ class Ability
     if user.Admin?
       dashboard_rules
       can %i(read update create), User
-      manage_message user.id
     elsif user.Manager?
       dashboard_rules
       manager_rules
@@ -31,40 +30,34 @@ class Ability
   end
 
   def manager_rules
-    can :manage, student_read_authorization.flatten!
+    can :manage, staff_read_authorization.flatten!
     can :update, User
+    cannot :update, User, type: User.types.keys.first
     can :check_requirement, UserEventRequirement
-    can :read, staff_read_authorization.flatten!
+    can :read, manager_read_authorization.flatten!
   end
 
   def staff_rules
-    can :manage, staff_manage_authorization.flatten!
+    can :manage, staff_manage_authorization
     can :update, Event
     can :check_requirement, UserEventRequirement
-    can :read, staff_read_authorization.flatten!
+    can :read, manager_read_authorization.flatten!
   end
 
   def student_rules
-    can :manage, student_manage_authorization
-    can :read, student_read_authorization.flatten!
+    can :read, :all
+  end
+
+  def manager_read_authorization
+    staff_read_authorization << [User]
   end
 
   def staff_read_authorization
-    student_read_authorization << [User]
+    staff_manage_authorization << [Event, Mmo, Partner, Major]
   end
 
   def staff_manage_authorization
-    student_manage_authorization << [Transcript, GradeCategory, Requirement,
-      UserEnrollEvent, EventRequirement]
-  end
-
-  def student_read_authorization
-    student_manage_authorization << [Event, GradeCategory, Mmo, Partner,
-      Transcript, UserEnrollEvent, Requirement, Major, EventMajor]
-  end
-
-  def student_manage_authorization
-    [Image]
+    [Transcript, Requirement]
   end
 
   def manage_message user_id

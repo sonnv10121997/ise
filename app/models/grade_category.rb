@@ -1,8 +1,9 @@
 class GradeCategory < ApplicationRecord
-  belongs_to :transcript
+  belongs_to :transcript, inverse_of: :grade_categories
 
-  has_many :grades, foreign_key: :grade_category_id,
-    class_name: GradeCategory.name
+  has_many :grades, inverse_of: :grade_category, dependent: :destroy
 
-  validates_presence_of :name, :weight
+  accepts_nested_attributes_for :grades, allow_destroy: true
+
+  validates_presence_of :name, :grades
 end

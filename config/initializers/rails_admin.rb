@@ -41,7 +41,7 @@ RailsAdmin.config do |config|
 
   models = [Conversation.name, Message.name, UserEventRequirement.name,
     EventMajor.name, EventRequirement.name, Image.name, UserEnrollEvent.name,
-    Notification.name].freeze
+    Notification.name, Grade.name, GradeCategory.name].freeze
 
   models.each do |model|
     config.model model do
@@ -85,7 +85,14 @@ RailsAdmin.config do |config|
 
   config.model Requirement do
     edit do
-      include_fields :name, :description
+      field :name
+    end
+  end
+
+  config.model EventRequirement do
+    edit do
+      include_all_fields
+      exclude_fields :user_event_requirements
     end
   end
 

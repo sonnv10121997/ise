@@ -19,5 +19,5 @@ Major.create! name: "Business", acronym: "SB"
 10.times do
   Partner.create! name: Faker::University.name, country: Faker::Nation.nationality,
     address: Faker::Address.full_address
-  Requirement.create! name: Faker::Food.dish, description: Faker::Lorem.paragraph(3)
+  Requirement.create! name: Faker::Food.dish
 end
