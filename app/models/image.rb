@@ -5,6 +5,8 @@ class Image < ApplicationRecord
 
   validates_presence_of :file
 
+  alias_attribute :name, :file_identifier
+
   rails_admin do
     configure :imageable do
       visible false

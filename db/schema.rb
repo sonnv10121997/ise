@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_150823) do
+ActiveRecord::Schema.define(version: 2019_04_04_064139) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_150823) do
     t.bigint "event_id"
     t.bigint "requirement_id"
     t.date "deadline"
+    t.string "description"
     t.index ["event_id"], name: "index_event_requirements_on_event_id"
     t.index ["requirement_id"], name: "index_event_requirements_on_requirement_id"
   end
@@ -80,14 +81,20 @@ ActiveRecord::Schema.define(version: 2019_04_01_150823) do
 
   create_table "grade_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.bigint "transcript_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transcript_id"], name: "index_grade_categories_on_transcript_id"
+  end
+
+  create_table "grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.float "weight"
     t.float "value"
-    t.bigint "transcript_id"
     t.bigint "grade_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["grade_category_id"], name: "index_grade_categories_on_grade_category_id"
-    t.index ["transcript_id"], name: "index_grade_categories_on_transcript_id"
+    t.index ["grade_category_id"], name: "index_grades_on_grade_category_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -152,7 +159,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_150823) do
 
   create_table "requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
@@ -225,6 +231,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_150823) do
   add_foreign_key "event_requirements", "requirements"
   add_foreign_key "events", "partners"
   add_foreign_key "grade_categories", "transcripts"
+  add_foreign_key "grades", "grade_categories"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "mmos", "partners"

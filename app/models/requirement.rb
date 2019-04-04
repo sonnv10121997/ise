@@ -2,5 +2,8 @@ class Requirement < ApplicationRecord
   include FriendlyId
   friendly_id :name, use: :slugged
 
-  validates_presence_of :name, :description
+  has_many :event_requirements, dependent: :destroy
+  has_many :events, through: :event_requirements
+
+  validates_presence_of :name
 end
