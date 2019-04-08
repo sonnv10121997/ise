@@ -402,3 +402,7 @@ vi:
         default_col_sep: ","
         col_sep: "Column separator"
         col_sep_help: "Leave blank for default ('%{value}')"
+  valid_end_date: Ngày kết thúc không thể trước ngày bắt đầu
+  validate_max_participants: Số người tham gia tối đa không được nhỏ hơn %{number}
+  validate_joined_participants: Số người đã tham gia không được nhỏ hơn %{number}
+  validate_participants: Số người đã tham gia không thể lớn hơn số người tối đa

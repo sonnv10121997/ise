@@ -137,3 +137,7 @@ en:
       my_courses: My courses
   rails_admin:
     access_denied: You don\'t have permission to access this content!
+  valid_end_date: cannot be before start date
+  validate_max_participants: Max participants cannot be less than %{number}
+  validate_joined_participants: Joined participants cannot be less than %{number}
+  validate_participants: cannot be more than Max participants
