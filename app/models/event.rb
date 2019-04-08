@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   include FriendlyId
   friendly_id :name, use: :slugged
 
+  ONLY_WORD = /(\w|\s)/
   enum status: %i(unpublish publish enrolling ongoing finished)
 
   belongs_to :partner
@@ -21,8 +22,31 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :requirement_details, allow_destroy: true
   accepts_nested_attributes_for :participant_details, allow_destroy: true
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true,
+    format: {with: Regexp.new(ONLY_WORD)}
   validates_presence_of :description, :price, :max_participants, :start_date,
-    :end_date, :semester, :thumbnail, :joined_participants, :majors,
-    :requirement_details
+    :end_date, :semester, :thumbnail, :joined_participants, :majors, :requirement_details
+  validates :price, numericality: true
+  validate :number_of_participants
+  validate :end_date_is_after_start_date
+
+  private
+
+  def number_of_participants
+    if max_participants.negative?
+      errors.add :max_participants,
+        "#{I18n.t(".validate_max_participants", number: Settings.model.event.zero)}"
+    end
+    if joined_participants.negative?
+      errors.add :joined_participants,
+        "#{I18n.t(".validate_joined_participants", number: Settings.model.event.zero)}"
+    end
+    if max_participants < joined_participants
+      errors.add :joined_participants, "#{I18n.t ".validate_participants"}"
+    end
+  end
+
+  def end_date_is_after_start_date
+    errors.add(:end_date, "#{I18n.t ".valid_end_date"}") if end_date <= start_date
+  end
 end

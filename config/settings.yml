@@ -22,6 +22,7 @@ model:
     per_page: 5
     max_title_length: 30
     date_format: "%d/%m/%y"
+    zero: 0
   message:
     date_format: "%d/%m/%y"
     time_format: "%l:%M %p"
