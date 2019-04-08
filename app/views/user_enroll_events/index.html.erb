@@ -1,0 +1,30 @@
+<div class="content_detail">
+  <div class="container">
+    <% if @user_events.empty? %>
+      <div class="display_center">
+        <h3><%= t ".user_events_empty" %></h3>
+      </div>
+    <% else %>
+      <div class="filter_panel">
+        <% if current_user.Staff? || current_user.Manager? %>
+          <%= button_tag t(".unpublish"), class: "btn button-text-default tab" %>
+        <% end %>
+        <%= button_tag t(".publish"), class: "button button-text tab" %>
+        <%= button_tag t(".enrolling"), class: "btn button-text-default tab" %>
+        <%= button_tag t(".ongoing"), class: "btn button-text-default tab" %>
+        <%= button_tag t(".finished"), class: "btn button-text-default tab" %>
+      </div>
+      <div class="tab_panels mt-20">
+        <% if current_user.Staff? || current_user.Manager? %>
+          <div class="tab_panel no-padding no-border">
+            <%= render partial: "user_event", collection: @user_events %>
+          </div>
+        <% end %>
+        <div class="tab_panel active"></div>
+        <div class="tab_panel"></div>
+        <div class="tab_panel"></div>
+        <div class="tab_panel"></div>
+      </div>
+    <% end %>
+  </div>
+</div>

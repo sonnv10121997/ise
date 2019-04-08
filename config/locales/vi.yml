@@ -48,6 +48,19 @@ vi:
       enrolling: Đang gửi yêu cầu
       enroll: Đăng kí
   user_enroll_events:
+    index:
+      user_events_empty: Bạn chưa tham gia khoá học nào!
+      unpublish: Chưa công khai
+      publish: Công khai
+      enrolling: Đang mở đơn
+      ongoing: Đang diễn ra
+      finished: Đã kết thúc
+    user_event:
+      unpublish: Chưa công khai
+      publish: Công khai
+      enrolling: Đang mở đơn
+      ongoing: Đang diễn ra
+      finished: Đã kết thúc
     show:
       partner: Đối tác
       major: Chuyên ngành
@@ -121,8 +134,7 @@ vi:
       latest: Mới nhất
       most_popular: Phổ biến nhất
       enrolling: Đang mở đơn
-      participating: Đang tham gia
-      completed: Đã hoàn thành
+      my_courses: Khoá học của tôi
   devise:
     confirmations:
       confirmed: Xác nhận tài khoản thành công! Bạn hiện đang đăng nhập.

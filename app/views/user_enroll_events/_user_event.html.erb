@@ -1,0 +1,28 @@
+<% unless user_event_counter.zero? %>
+  <hr class="no-margin">
+<% end %>
+
+<%= link_to user_event, class: "refactor_link" do %>
+  <div class="my-3 display_space_between">
+    <div class="small_thumbnail">
+      <%= image_tag user_event.thumbnail.file_url if user_event.thumbnail %>
+    </div>
+    <div class="course_title no-padding h-55">
+      <%= rescue_title user_event.name %></div>
+    <div class="course_price no-padding">
+      <%= number_to_vnd user_event.price %></div>
+    <div class="date">
+      <%= fa_icon "calendar" %>
+      <%= event_date user_event %>
+    </div>
+    <div class="participants">
+      <%= fa_icon "user-o" %>
+      <%= event_participants user_event %>
+    </div>
+    <div class="course_status">
+      <span class="badge badge-<%= rescue_status user_event.status %>">
+        <%= t ".#{user_event.status}" %>
+      </span>
+    </div>
+  </div>
+<% end %>

@@ -3,6 +3,8 @@ class CreateEvents < ActiveRecord::Migration[5.2]
     create_table :events do |t|
       t.string :name
       t.text :description
+      t.references :leader, foreign_key: {to_table: :users}
+      t.integer :status, default: Event.statuses.values.first
       t.float :price
       t.integer :max_participants
       t.integer :joined_participants, default: 0

@@ -48,6 +48,19 @@ en:
       enrolling: Enrolling
       enroll: Enroll
   user_enroll_events:
+    index:
+      user_events_empty: You haven\'t participated in any courses yet!
+      unpublish: Unpublish
+      publish: Publish
+      enrolling: Enrolling
+      ongoing: Ongoing
+      finished: Finished
+    user_event:
+      unpublish: Unpublish
+      publish: Publish
+      enrolling: Enrolling
+      ongoing: Ongoing
+      finished: Finished
     show:
       partner: Partner
       major: Major
@@ -121,7 +134,6 @@ en:
       latest: Latest
       most_popular: Most popular
       enrolling: Enrolling
-      participating: Participating
-      completed: Completed
+      my_courses: My courses
   rails_admin:
     access_denied: You don\'t have permission to access this content!

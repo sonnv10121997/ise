@@ -1,7 +1,9 @@
 <div id="enroll_request">
-  <% if event.leaders.first == current_user %>
-    <div class="btn btn-success button-text"><%= t ".assigned" %></div>
-  <% else %>
+  <% if event.leader  == current_user %>
+    <%= link_to user_enroll_event_path event do %>
+      <div class="btn btn-success button-text"><%= t ".assigned" %></div>
+    <% end %>
+  <% elsif can? :create, UserEnrollEvent %>
     <%= hidden_field_tag :event_id, event.slug %>
 
     <% if current_user.enrolls.empty? %>

@@ -7,7 +7,7 @@
           <div class="course_info">
             <div class="course_info_item w-30">
               <h5 class="course_info_header"><%= t ".leader" %>:</h5>
-              <%= @event.leaders.first.name %>
+              <%= @event.leader.name %>
             </div>
             <div class="course_info_item w-40">
               <h5 class="course_info_header"><%= t ".partner" %>:</h5>
@@ -24,7 +24,7 @@
             <div class="tab button button-text"><%= t ".description" %></div>
           </div>
           <div class="tab_panels mt-20">
-            <div class="tab_panel active"><%= @event.description %></div>
+            <div class="tab_panel active"><%= @event.description.html_safe %></div>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
                   <%= event_participants @event %>
                 </div>
                 <div class="mt-20">
-                  <%= render "enroll_request", current_user: current_user, event: @event %>
+                  <%= render "enroll_request", event: @event %>
                 </div>
               </div>
             </div>
@@ -61,9 +61,9 @@
             <h3><%= t ".leader" %></h3>
             <div class="course_features">
               <div class="course_feature justify-content-start">
-                <%= user_image_for @event.leaders.first, "user_image" %>
+                <%= user_image_for @event.leader, "user_image" %>
                 <div class="user_title">
-                  <h5 class="no-margin"><%= @event.leaders.first.name %></h5>
+                  <h5 class="no-margin"><%= @event.leader.name %></h5>
                 </div>
               </div>
             </div>

@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.bigint "leader_id"
+    t.integer "status", default: 0
     t.float "price"
     t.integer "max_participants"
     t.integer "joined_participants", default: 0
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
     t.datetime "updated_at", null: false
     t.bigint "partner_id"
     t.string "slug"
+    t.index ["leader_id"], name: "index_events_on_leader_id"
     t.index ["partner_id"], name: "index_events_on_partner_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
@@ -178,10 +181,9 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   create_table "user_enroll_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
-    t.boolean "is_leader", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0
+    t.boolean "enrolled", default: false
     t.index ["event_id"], name: "index_user_enroll_events_on_event_id"
     t.index ["user_id"], name: "index_user_enroll_events_on_user_id"
   end
@@ -230,6 +232,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   add_foreign_key "event_requirements", "events"
   add_foreign_key "event_requirements", "requirements"
   add_foreign_key "events", "partners"
+  add_foreign_key "events", "users", column: "leader_id"
   add_foreign_key "grade_categories", "transcripts"
   add_foreign_key "grades", "grade_categories"
   add_foreign_key "messages", "conversations"
