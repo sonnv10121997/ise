@@ -2,7 +2,6 @@ class Event < ApplicationRecord
   include FriendlyId
   friendly_id :name, use: :slugged
 
-  ONLY_WORD = /(\w|\s)/
   enum status: %i(unpublish publish enrolling ongoing finished)
 
   belongs_to :partner
@@ -23,7 +22,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :participant_details, allow_destroy: true
 
   validates :name, presence: true, uniqueness: true,
-    format: {with: Regexp.new(ONLY_WORD)}
+    format: {with: Regexp.new(Settings.regex.only_word)}
   validates_presence_of :description, :price, :max_participants, :start_date,
     :end_date, :semester, :thumbnail, :joined_participants, :majors, :requirement_details
   validates :price, numericality: true

@@ -33,3 +33,6 @@ assets:
 date:
   formats:
     long: "%e, %B %Y"
+regex:
+  only_word: !ruby/regexp '/(\w|\s)/'
+  word_with_number: !ruby/regexp '/(\w|\d|\s)/'
