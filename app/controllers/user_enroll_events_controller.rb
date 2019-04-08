@@ -1,10 +1,14 @@
 class UserEnrollEventsController < ApplicationController
   attr_reader :user_event, :user_enroll_event
 
-  before_action ->{find_user_event params[:event_id]}
-  before_action ->{find_conversation current_user,
-    user_event.participants.where.not(id: current_user).first}
-  before_action :find_user_enroll_event, only: %i(update destroy)
+  # before_action ->{find_user_event params[:event_id]}
+  # before_action ->{find_conversation current_user,
+  #   user_event.participants.where.not(id: current_user).first}
+  # before_action :find_user_enroll_event, only: %i(update destroy)
+
+  def index
+    @user_events = current_user.enrolls + current_user.lead_events
+  end
 
   def show; end
 

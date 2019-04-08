@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     devise_for :users, module: :users, skip: :omniauth_callbacks
     resources :users, only: %i(show update)
     resources :events, only: %i(index show)
-    resources :user_enroll_events, except: %i(index new edit), param: :event_id
+    resources :user_enroll_events, except: %i(new edit), param: :event_id
     resources :user_event_requirements, only: %i(upload_image check_requirement) do
       member do
         patch "/", to: "user_event_requirements#upload_image"

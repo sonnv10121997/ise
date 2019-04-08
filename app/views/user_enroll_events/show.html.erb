@@ -2,9 +2,9 @@
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
       <div class="course_feature no-margin">
-        <%= user_image_for @user_event.leaders.first, "user_image_small" %>
+        <%= user_image_for @user_event.leader, "user_image_small" %>
         <div class="user_title">
-          <h5 class="no-margin"><%= @user_event.leaders.first.name %></h5>
+          <h5 class="no-margin"><%= @user_event.leader.name %></h5>
         </div>
       </div>
 

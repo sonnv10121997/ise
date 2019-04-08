@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   belongs_to :major, optional: true
 
+  has_many :lead_events, class_name: Event.name, foreign_key: :leader_id
   has_many :user_enroll_events, dependent: :destroy
   has_many :enrolls, source: :event, through: :user_enroll_events
   has_many :requirements, ->{order verified: :desc}, foreign_key: :user_id,

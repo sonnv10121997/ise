@@ -26,4 +26,19 @@ module EventsHelper
       unit: Settings.application.currency.vnd.unit,
       precision: Settings.application.currency.vnd.precision
   end
+
+  def rescue_status current_status
+    case current_status
+    when Event.statuses.keys[0]
+      "danger"
+    when Event.statuses.keys[1]
+      "success"
+    when Event.statuses.keys[2]
+      "primary"
+    when Event.statuses.keys[3]
+      "warning"
+    when Event.statuses.keys[4]
+      "secondary"
+    end
+  end
 end

@@ -7,18 +7,12 @@ class Ability
       can %i(read update create), User
     elsif user.Manager?
       dashboard_rules
-      manager_rules
-      manage_message user.id
+      manager_rules user.id
     elsif user.Staff?
       dashboard_rules
-      staff_rules
-      can :update, User, id: user.id
-      manage_message user.id
+      staff_rules user.id
     else
-      student_rules
-      can :show, User, id: user.id
-      can :upload_image, UserEventRequirement, user_id: user.id
-      manage_message user.id
+      student_rules user.id
     end
   end
 
@@ -29,23 +23,32 @@ class Ability
     can :dashboard, :all
   end
 
-  def manager_rules
+  def manager_rules user_id
     can :manage, staff_read_authorization.flatten!
     can :update, User
     cannot :update, User, type: User.types.keys.first
     can :check_requirement, UserEventRequirement
+    can :update, UserEnrollEvent
     can :read, manager_read_authorization.flatten!
+    manage_message user_id
   end
 
-  def staff_rules
+  def staff_rules user_id
     can :manage, staff_manage_authorization
     can :update, Event
     can :check_requirement, UserEventRequirement
+    can :update, UserEnrollEvent
     can :read, manager_read_authorization.flatten!
+    can :update, User, id: user_id
+    manage_message user_id
   end
 
-  def student_rules
+  def student_rules user_id
     can :read, :all
+    can :show, User, id: user_id
+    can :upload_image, UserEventRequirement, user_id: user_id
+    can :create, UserEnrollEvent
+    manage_message user_id
   end
 
   def manager_read_authorization

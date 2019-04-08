@@ -27,7 +27,7 @@ $input_gray: #f2f1f8;
   top: 57px;
 }
 
-.event_requirements {
+.display_space_between {
   @include display(flex, center, space-between, row);
 }
 
@@ -77,4 +77,14 @@ $input_gray: #f2f1f8;
 
 .cursor_pointer {
   cursor: pointer;
+}
+
+.small_thumbnail {
+  height: 70.27px;
+  width: 125px;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
 }
