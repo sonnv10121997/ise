@@ -408,3 +408,4 @@ vi:
   validate_max_participants: Số người tham gia tối đa không được nhỏ hơn %{number}
   validate_joined_participants: Số người đã tham gia không được nhỏ hơn %{number}
   validate_participants: Số người đã tham gia không thể lớn hơn số người tối đa
+  validate_price: Giá không thể nhỏ hơn %{number}
