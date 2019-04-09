@@ -35,7 +35,7 @@ class Ability
 
   def staff_rules user_id
     can :manage, staff_manage_authorization
-    can :update, Event
+    can %i(update show_in_app), Event
     can :check_requirement, UserEventRequirement
     can :update, UserEnrollEvent
     can :read, manager_read_authorization.flatten!

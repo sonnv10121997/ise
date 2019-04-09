@@ -307,6 +307,10 @@ a, a:hover, a:visited, a:active, a:link {
 
 .button-text {
   @include button_text(12px, bold, white, 24px, uppercase);
+
+  &:hover {
+    color: white !important;
+  }
 }
 
 .fa-google::before {

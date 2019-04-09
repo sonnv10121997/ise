@@ -32,4 +32,8 @@ class User < ApplicationRecord
       minimum: Settings.model.user.phone_number.minimum}
   validates :code, presence: true, uniqueness: true, format: {with: ROLL_NUMBER_FORMAT}
   validates_presence_of :gender, :dob
+
+  def check_enroll_status event
+    user_enroll_events.find_by(event_id: event.id)&.status || "unenroll"
+  end
 end

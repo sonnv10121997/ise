@@ -41,4 +41,24 @@ module EventsHelper
       "secondary"
     end
   end
+
+  def rescue_enroll_status current_status
+    case current_status
+    when UserEnrollEvent.statuses.keys[0]
+      "btn btn-warning button-text"
+    when UserEnrollEvent.statuses.keys[1]
+      "btn btn-success button-text"
+    else
+      "btn button-text-default"
+    end
+  end
+
+  def rescue_publish_status status
+    return "button button-text tab" if status == Event.statuses.values[1]
+    "btn button-text-default tab"
+  end
+
+  def rescue_active_panel status
+    return "active" if status == Event.statuses.values[1]
+  end
 end

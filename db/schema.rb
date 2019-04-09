@@ -181,9 +181,9 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   create_table "user_enroll_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "enrolled", default: false
     t.index ["event_id"], name: "index_user_enroll_events_on_event_id"
     t.index ["user_id"], name: "index_user_enroll_events_on_user_id"
   end

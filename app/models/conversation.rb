@@ -9,4 +9,8 @@ class Conversation < ApplicationRecord
   scope :between, (lambda do |sender, receiver|
     where sender: [sender, receiver], receiver: [sender, receiver]
   end)
+
+  def recipient current_user
+    sender == current_user ? receiver : sender
+  end
 end

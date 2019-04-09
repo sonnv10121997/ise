@@ -13,7 +13,6 @@ Rails.application.routes.draw do
       end
     end
     resources :searches, only: :index
-    resources :partners, only: :show
     resources :conversations, only: :create do
       resources :messages, only: %i(create destroy)
     end

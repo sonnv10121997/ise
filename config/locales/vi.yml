@@ -46,7 +46,7 @@ vi:
     enroll_request:
       assigned: Đang phụ trách
       enrolling: Đang gửi yêu cầu
-      enroll: Đăng kí
+      unenroll: Đăng kí
   user_enroll_events:
     index:
       user_events_empty: Bạn chưa tham gia khoá học nào!
@@ -72,6 +72,8 @@ vi:
       requirements: Các yêu cầu
       discussions: Thảo luận
       deadline: Hạn chót
+    participant:
+      enroll: Tham gia
     requirement:
       upload: Gửi ảnh
       choose_file: Chọn ảnh

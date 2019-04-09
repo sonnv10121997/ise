@@ -1,0 +1,8 @@
+<% Event.statuses.each do |key, value| %>
+  <% if value.zero? %>
+    <% next unless current_user.Staff? || current_user.Manager? %>
+    <%= button_tag t(".#{key}"), class: "#{rescue_publish_status value}" %>
+  <% else %>
+    <%= button_tag t(".#{key}"), class: "#{rescue_publish_status value}" %>
+  <% end %>
+<% end %>
