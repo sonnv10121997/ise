@@ -41,15 +41,16 @@
               collection: @user_event.participants.where.not(id: current_user) %>
           </div>
 
-          <div id="messages_form" class="col-md-6 border_right no-padding px-20">
-            <%= render "messages/index", conversation: @conversation,
-              message: @conversation.messages.new %>
-          </div>
-
-          <div id="requirement" class="col-md-3 no-padding pl-20">
-            <%= render partial: "requirement",
-              collection: requirement_collection(@conversation) %>
-          </div>
+          <% if @conversation.persisted? %>
+            <div id="messages_form" class="col-md-6 border_right no-padding px-20">
+              <%= render "messages/index", conversation: @conversation,
+                message: @conversation.messages.new %>
+            </div>
+            <div id="requirement" class="col-md-3 no-padding pl-20">
+              <%= render partial: "requirement",
+                collection: requirement_collection(@conversation) %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

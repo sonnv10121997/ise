@@ -9,7 +9,7 @@ $(document).on(`turbolinks:load`, function() {
     $(panels[clickedIndex]).addClass(`active`);
   });
 
-  $(document).on(`click`, `#enroll_button`, function() {
+  $(document).on(`click`, `#unenroll_button`, function() {
     swal(I18n.t(`swal.warning.send_enrolling_request`),
       I18n.t(`swal.warning.wait_to_be_approved`), `warning`, true,
       I18n.t(`swal.confirm`), I18n.t(`swal.cancel`)
@@ -34,7 +34,7 @@ $(document).on(`turbolinks:load`, function() {
     });
   });
 
-  $(document).on(`click`, `#unenroll_button`, function() {
+  $(document).on(`click`, `#enrolling_button`, function() {
     swal(I18n.t(`swal.warning.stop_sending_enroll_request`), ``, `warning`, true,
       I18n.t(`swal.confirm`), I18n.t(`swal.cancel`)
     ).then((result) => {

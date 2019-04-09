@@ -1,8 +1,8 @@
-<% unless user_event_counter.zero? %>
+<% if user_event_counter.zero? %>
   <hr class="no-margin">
 <% end %>
 
-<%= link_to user_event, class: "refactor_link" do %>
+<%= link_to user_enroll_event_path(user_event), class: "refactor_link" do %>
   <div class="my-3 display_space_between">
     <div class="small_thumbnail">
       <%= image_tag user_event.thumbnail.file_url if user_event.thumbnail %>
@@ -26,3 +26,5 @@
     </div>
   </div>
 <% end %>
+
+<hr class="no-margin">

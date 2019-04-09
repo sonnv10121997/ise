@@ -14,6 +14,6 @@ module RequirementsHelper
   end
 
   def requirement_collection conversation
-    current_user.Student? ? current_user.requirements : conversation.receiver.requirements
+    current_user.Student? ? current_user.requirements : conversation.recipient(current_user).requirements
   end
 end

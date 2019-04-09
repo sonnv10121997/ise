@@ -46,10 +46,10 @@ en:
     enroll_request:
       assigned: Assigned
       enrolling: Enrolling
-      enroll: Enroll
+      unenroll: Enroll
   user_enroll_events:
     index:
-      user_events_empty: You haven\'t participated in any courses yet!
+      user_events_empty: You haven't participated in any courses yet!
       unpublish: Unpublish
       publish: Publish
       enrolling: Enrolling
@@ -72,6 +72,8 @@ en:
       requirements: Requirements
       discussions: Discussions
       deadline: Deadline
+    participant:
+      enroll: Enroll
     requirement:
       upload: Upload
       choose_file: Choose file

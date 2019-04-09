@@ -1,0 +1,12 @@
+<% Event.statuses.each do |key, value| %>
+  <% if value.zero? %>
+    <% next unless current_user.Staff? || current_user.Manager? %>
+    <div class="tab_panel no-border no-padding <%= rescue_active_panel value %>">
+      <%= render partial: "user_event", collection: user_events.try(:"#{key}") %>
+    </div>
+  <% else %>
+    <div class="tab_panel no-border no-padding <%= rescue_active_panel value %>">
+      <%= render partial: "user_event", collection: user_events.try(:"#{key}") %>
+    </div>
+  <% end %>
+<% end %>

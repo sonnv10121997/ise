@@ -23,6 +23,7 @@ model:
     max_title_length: 30
     date_format: "%d/%m/%y"
     zero: 0
+    minimum_participant: 1
   message:
     date_format: "%d/%m/%y"
     time_format: "%l:%M %p"

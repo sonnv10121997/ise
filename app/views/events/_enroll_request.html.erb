@@ -4,15 +4,12 @@
       <div class="btn btn-success button-text"><%= t ".assigned" %></div>
     <% end %>
   <% elsif can? :create, UserEnrollEvent %>
-    <%= hidden_field_tag :event_id, event.slug %>
+    <% enroll_status = current_user.check_enroll_status event %>
+    <% css_status = rescue_enroll_status enroll_status %>
 
-    <% if current_user.enrolls.empty? %>
-      <%= button_tag t(".enroll"), class: "btn button-text-default",
-        id: "enroll_button" %>
-    <% elsif current_user.enrolls.last == event %>
-      <%= hidden_field_tag :user_id, current_user.slug %>
-      <%= button_tag t(".enrolling"), class: "button button-text",
-        id: "unenroll_button" %>
-    <% end %>
+    <%= hidden_field_tag :event_id, event.slug %>
+    <%= hidden_field_tag :user_id, current_user.slug %>
+    <%= button_tag t(".#{enroll_status}"), class: "#{css_status}",
+      id: "#{enroll_status}_button" %>
   <% end %>
 </div>
