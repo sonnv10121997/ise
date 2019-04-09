@@ -19,7 +19,7 @@ en:
       en: English
       latest: Latest
       most_popular: Most popular
-      enrolling_phase: Enrolling phase
+      enrolling: Enrolling phase
     detail:
       description: description
       comment: comments
@@ -50,6 +50,7 @@ en:
   user_enroll_events:
     index:
       user_events_empty: You haven't participated in any courses yet!
+    event_statuses:
       unpublish: Unpublish
       publish: Publish
       enrolling: Enrolling
