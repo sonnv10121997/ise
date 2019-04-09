@@ -19,7 +19,7 @@ vi:
       en: Tiếng Anh
       latest: Mới nhất
       most_popular: Phổ biến nhất
-      enrolling_phase: Đang mở đơn
+      enrolling: Đang mở đơn
     detail:
       description: Mô tả
       comment: Bình luận
@@ -50,6 +50,7 @@ vi:
   user_enroll_events:
     index:
       user_events_empty: Bạn chưa tham gia khoá học nào!
+    event_statuses:
       unpublish: Chưa công khai
       publish: Công khai
       enrolling: Đang mở đơn

@@ -1,14 +1,15 @@
 module EventsHelper
   def rescue_title title
+    return title unless title.length >= Settings.model.event.max_title_length
     title.first(Settings.model.event.max_title_length) << "..."
   end
 
   def event_major_acronym event
-    event.majors.first ? event.majors.first.acronym : ""
+    event.majors.first&.acronym
   end
 
   def event_major_name event
-    event.majors.first ? event.majors.first.name : ""
+    event.majors.first&.name
   end
 
   def event_date event

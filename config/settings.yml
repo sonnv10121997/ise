@@ -16,9 +16,9 @@ model:
       maximum: 15
   event:
     sorted_by:
-      latest: latest
+      enrolling: enrolling
       most_popular: most_popular
-      enrolling_phase: enrolling_phase
+      latest: latest
     per_page: 5
     max_title_length: 30
     date_format: "%d/%m/%y"

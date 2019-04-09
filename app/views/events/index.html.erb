@@ -1,10 +1,11 @@
 <div class="container">
   <% Settings.model.event.sorted_by.keys.each do |filter| %>
+    <% next if @events.try(filter).empty? %>
     <div class="row no-margin justify-content-center mb-15">
       <div>
         <h3 class="mt-25"><%= t ".#{filter}" %></h3>
         <div id="<%= filter %>_courses">
-          <%= render @events %>
+          <%= render partial: "event", collection: @events.try(filter) %>
         </div>
         <hr class="separate_course"/>
       </div>

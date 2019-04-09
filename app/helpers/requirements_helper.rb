@@ -1,6 +1,6 @@
 module RequirementsHelper
   def rescue_req_deadline req
-    req.deadline ? req.deadline.strftime(Settings.model.event.date_format) : ""
+    req.deadline&.strftime Settings.model.event.date_format
   end
 
   def req_verified? req
