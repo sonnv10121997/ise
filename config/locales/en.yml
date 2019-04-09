@@ -143,3 +143,4 @@ en:
   validate_max_participants: Max participants cannot be less than %{number}
   validate_joined_participants: Joined participants cannot be less than %{number}
   validate_participants: cannot be more than Max participants
+  validate_price: Price cannot be less than %{number}

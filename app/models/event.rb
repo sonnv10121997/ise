@@ -27,6 +27,7 @@ class Event < ApplicationRecord
   validates_presence_of :description, :price, :max_participants, :start_date,
     :end_date, :semester, :thumbnail, :joined_participants, :majors, :requirement_details
   validates :price, numericality: true
+  validate :validate_price
   validate :number_of_participants
   validate :end_date_is_after_start_date
 
@@ -43,6 +44,13 @@ class Event < ApplicationRecord
     end
     if max_participants < joined_participants
       errors.add :joined_participants, "#{I18n.t ".validate_participants"}"
+    end
+  end
+
+  def validate_price
+    if price.negative?
+      errors.add :price,
+        "#{I18n.t(".validate_price", number: Settings.model.event.zero)}"
     end
   end
 
