@@ -17,7 +17,7 @@ Major.create! name: "Software Engineering", acronym: "SE"
 Major.create! name: "Business", acronym: "SB"
 
 10.times do
-  Partner.create! name: Faker::University.name, country: Faker::Nation.nationality,
+  Partner.create! name: Faker::University.unique.name, country: Faker::Nation.nationality,
     address: Faker::Address.full_address
-  Requirement.create! name: Faker::Food.dish
+  Requirement.create! name: Faker::Food.unique.dish
 end
