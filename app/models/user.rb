@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  ROLL_NUMBER_FORMAT = /[a-zA-Z0-9]+/
 
   include FriendlyId
   friendly_id :name, use: :slugged
@@ -25,12 +24,14 @@ class User < ApplicationRecord
 
   validates :name, presence: true,
     length: {maximum: Settings.model.user.max_name_length,
-      minimum: Settings.model.user.min_name_length}
+      minimum: Settings.model.user.min_name_length},
+    format: {with: Regexp.new(Settings.regex.only_word)}
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}
   validates :phone, numericality: true, presence: true,
     length: {maximum: Settings.model.user.phone_number.maximum,
       minimum: Settings.model.user.phone_number.minimum}
-  validates :code, presence: true, uniqueness: true, format: {with: ROLL_NUMBER_FORMAT}
+  validates :code, presence: true, uniqueness: true,
+    format: {with: Regexp.new(Settings.regex.roll_number)}
   validates_presence_of :gender, :dob
 
   def check_enroll_status event
