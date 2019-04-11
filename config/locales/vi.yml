@@ -448,3 +448,4 @@ vi:
   validate_joined_participants: Số người đã tham gia không được nhỏ hơn %{number}
   validate_participants: Số người đã tham gia không thể lớn hơn số người tối đa
   validate_price: Giá không thể nhỏ hơn %{number}
+  validate_deadline: Deadline không thể sau ngày kết thúc của sự kiện

@@ -7,4 +7,14 @@ class EventRequirement < ApplicationRecord
   delegate :name, to: :requirement, allow_nil: true
 
   validates_presence_of :deadline
+  validate :validate_deadline
+  validates_uniqueness_of :requirement, scope: :event
+
+  private
+
+  def validate_deadline
+    if deadline >= event.end_date
+      errors.add :deadline, "#{I18n.t ".validate_deadline"}"
+    end
+  end
 end
