@@ -1,5 +1,9 @@
+$body_gray: #6c6a74;
+$sidebar_a_gray: #4e4e4e;
 $sidebar_gray: #f7f7f7;
 $header_container_gray: #ececec;
+$button_orange: #ff8a00;
+$page_link_border_gray: #dee2e6;
 
 @mixin font_manage($size, $weight, $padding-top) {
   font-size: $size;
@@ -52,4 +56,38 @@ $header_container_gray: #ececec;
 
 .participants {
   padding-right: 5px;
+}
+
+.page-item a, .page-item a:hover {
+  color: $sidebar_a_gray;
+}
+
+.page-item.active .page-link {
+  background-color: $button_orange !important;
+  border: 1px solid $button_orange !important;
+  border-right: 1px solid $page_link_border_gray !important;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.t-uppercase {
+  text-transform: uppercase;
+}
+
+.view_more {
+  color: $sidebar_a_gray;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $sidebar_a_gray;
+  }
+}
+
+.border_bottom_events {
+  border-bottom: 1px solid $body_gray;
 }

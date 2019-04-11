@@ -196,6 +196,19 @@ a, a:hover, a:visited, a:active, a:link {
   padding-right: 20px;
 }
 
+.px-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pb-15 {
+  padding-bottom: 15px;
+}
+
+.pb-100 {
+  padding-bottom: 100px;
+}
+
 .m-30 {
   margin: 30px;
 }
@@ -220,8 +233,16 @@ a, a:hover, a:visited, a:active, a:link {
   margin-top: 15px;
 }
 
+.mb-100 {
+  margin-bottom: 100px;
+}
+
 .mb-30 {
   margin-bottom: 30px;
+}
+
+.mb-25 {
+  margin-bottom: 25px;
 }
 
 .mb-15 {
@@ -263,6 +284,11 @@ a, a:hover, a:visited, a:active, a:link {
 .my-30 {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.my-15 {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .mx-15 {
@@ -327,6 +353,10 @@ a, a:hover, a:visited, a:active, a:link {
 
 .fs-09em {
   font-size: 0.9em;
+}
+
+.fs-13px {
+  font-size: 13px;
 }
 
 .remember_me {
@@ -435,4 +465,12 @@ a[data-toggle="collapse"] {
 
 .w-40 {
   width: 40%;
+}
+
+#error_explanation {
+  padding: 15px 50px;
+  background-color: #FF8181;
+  border: 1px solid #e25353;
+  display: inline-block;
+  color: white;
 }

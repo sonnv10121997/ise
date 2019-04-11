@@ -21,15 +21,18 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :requirement_details, allow_destroy: true
   accepts_nested_attributes_for :participant_details, allow_destroy: true
 
-  scope :latest, ->{order created_at: :desc}
-  scope :most_popular, (lambda do find_by_sql [
-    "SELECT events.*, COUNT(user_enroll_events.event_id) AS participants
-    FROM events INNER JOIN user_enroll_events
-    ON user_enroll_events.event_id = events.id
-    WHERE events.status IN (?)
-    GROUP BY user_enroll_events.event_id
-    ORDER BY participants DESC", [Event.statuses.values[1], Event.statuses.values[2]]]
-  end)
+  scope :latest, (lambda do
+      where(status: [Event.statuses.values[1], Event.statuses.values[2]])
+      .order created_at: :desc
+    end)
+
+  scope :most_popular, (lambda do
+      select("events.*, COUNT(user_enroll_events.event_id) AS participants")
+      .joins(:participant_details)
+      .where(status: [Event.statuses.values[1], Event.statuses.values[2]])
+      .group("user_enroll_events.event_id")
+      .order "participants DESC"
+    end)
 
   validates :name, presence: true, uniqueness: true,
     format: {with: Regexp.new(Settings.regex.only_word)}

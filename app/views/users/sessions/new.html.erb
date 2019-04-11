@@ -1,8 +1,8 @@
-<%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
-  <div class="row no-margin justify-content-center mt-60">
-    <h3 class="label-uppercase align-center"><%= t ".log_in" %></h3>
-  </div>
+<div class="row no-margin justify-content-center mt-60">
+  <h3 class="label-uppercase align-center"><%= t ".log_in" %></h3>
+</div>
 
+<%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
   <div class="row no-margin justify-content-center">
     <%= f.label :email, class: "label no-padding mb-15" %>
     <div class="col-md-3 mr-42">
@@ -37,14 +37,3 @@
     <% end %>
   </div>
 <% end %>
-
-<div class="row no-margin justify-content-center">
-  <div class="horizontal-text col-md-3"><span><%= t ".or" %></span></div>
-</div>
-
-<div class="row no-margin justify-content-center">
-  <%= link_to "#", class: "btn btn-danger button-text" do %>
-    <%= fa_icon "google" %>
-    <span class="ml-8"><%= t ".log_in_with_google" %></span>
-  <% end %>
-</div>

@@ -1,4 +1,5 @@
-<li><%= link_to t(".latest"), "#" %></li>
-<li><%= link_to t(".most_popular"), "#" %></li>
-<li><%= link_to t(".enrolling"), "#" %></li>
+<% Settings.model.event.sorted_by.keys.each do |filter| %>
+  <li><%= link_to t(".#{filter}"), root_path(filter: filter) %></li>
+<% end %>
+
 <li><%= link_to t(".my_courses"), user_enroll_events_path %></li>

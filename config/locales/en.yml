@@ -20,6 +20,7 @@ en:
       latest: Latest
       most_popular: Most popular
       enrolling: Enrolling phase
+      view_more: View more
     detail:
       description: description
       comment: comments
@@ -100,6 +101,34 @@ en:
         minimum_character: Password must have at least %{count} characters minimum
         update: Update
         back: Back
+      new:
+        sign_up: Sign up
+        log_in: Log in
+        name: Full name
+        code: Student code
+        gender: Gender
+        male: Male
+        female: Female
+        dob: Date of birth
+        phone: Phone number
+        password: Password
+        password_confirm: Password confirmation
+        minimum_password_length: (%{number} characters minimum)
+        new_confirmation: Didn't receive confirmation instructions?
+    confirmations:
+      new:
+        new_confirmation: Resend confirmation instructions
+        submit: Send
+        log_in: Log in
+        sign_up: Sign up
+        forgot_password: Forgot password?
+    passwords:
+      new:
+        new_password: New password
+        submit: Send
+        log_in: Log in
+        sign_up: Sign up
+        new_confirmation: Didn't receive confirmation instructions?
     show:
       upload: Upload
       choose_file: Choose file
@@ -138,6 +167,15 @@ en:
       most_popular: Most popular
       enrolling: Enrolling
       my_courses: My courses
+  kaminari:
+    first_page:
+      first: First
+    prev_page:
+      previous: Previous
+    next_page:
+      next: Next
+    last_page:
+      last: Last
   rails_admin:
     access_denied: You don\'t have permission to access this content!
   valid_end_date: cannot be before start date
