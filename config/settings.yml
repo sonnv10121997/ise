@@ -36,3 +36,4 @@ regex:
   only_word: !ruby/regexp '/(\w|\s)/'
   word_with_number: !ruby/regexp '/(\w|\d|\s)/'
   roll_number: !ruby/regexp '/[A-Z0-9]+/'
+  upper_case: !ruby/regexp '/[A-Z]/'
