@@ -9,8 +9,7 @@ model:
   user:
     max_name_length: 30
     min_name_length: 3
-    start_dob_year: 1930
-    year_interval: 70
+    year_interval: 40
     phone_number:
       minimum: 10
       maximum: 15

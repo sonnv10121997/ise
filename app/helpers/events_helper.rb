@@ -62,4 +62,8 @@ module EventsHelper
   def rescue_active_panel status
     return "active" if status == Event.statuses.values[1]
   end
+
+  def rescue_padding filter
+    return "pb-100" if Settings.model.event.sorted_by.keys.last == filter
+  end
 end

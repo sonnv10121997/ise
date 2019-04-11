@@ -1,16 +1,30 @@
-<h2>Resend confirmation instructions</h2>
+<div class="row no-margin justify-content-center mt-60">
+  <h3><%= t ".new_confirmation" %></h3>
+</div>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post} do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  <div class="row no-margin justify-content-center mt-15">
+    <%= f.label :email, class: "label" %>
+    <div class="col-md-3">
+      <%= f.email_field :email, class: "input input_border_bottom px-15", autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+  <div class="row no-margin justify-content-center mt-15">
+    <%= f.submit t(".submit"), class: "button" %>
+    <%= link_to new_user_session_path, class: "btn button-text-default mx-15" do %>
+      <%= t ".log_in" %>
+    <% end %>
+    <%= link_to new_registration_path(resource_name), class: "btn button-text-default" do %>
+      <%= t ".sign_up" %>
+    <% end %>
+  </div>
+
+  <div class="row no-margin justify-content-center mt-15">
+    <div class="col-md-3 d-flex justify-content-end no-padding">
+      <%= link_to t(".forgot_password"), new_password_path(resource_name) %>
+    </div>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

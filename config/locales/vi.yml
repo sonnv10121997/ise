@@ -20,6 +20,7 @@ vi:
       latest: Mới nhất
       most_popular: Phổ biến nhất
       enrolling: Đang mở đơn
+      view_more: Hiển thị thêm
     detail:
       description: Mô tả
       comment: Bình luận
@@ -100,6 +101,34 @@ vi:
         minimum_character: Mật khẩu phải có ít nhất %{count} ký tự
         update: Cập nhật
         back: Quay lại
+      new:
+        sign_up: Đăng kí
+        log_in: Đăng nhập
+        name: Họ và tên
+        code: Mã sinh viên
+        gender: Giới tính
+        male: Name
+        female: Nữ
+        dob: Ngày tháng năm sinh
+        phone: Số điện thoại
+        password: Mật khẩu
+        password_confirm: Nhập lại mật khẩu
+        minimum_password_length: (Tối thiểu %{number} kí tự)
+        new_confirmation: Không nhận được email xác nhận tài khoản?
+    confirmations:
+      new:
+        new_confirmation: Gửi lại email xác nhận tài khoản
+        submit: Gửi
+        log_in: Đăng nhập
+        sign_up: Đăng kí
+        forgot_password: Quên mật khẩu?
+    passwords:
+      new:
+        new_password: Đổi mật khẩu
+        submit: Gửi
+        log_in: Đăng nhập
+        sign_up: Đăng kí
+        new_confirmation: Không nhận được email xác nhận tài khoản?
     show:
       upload: Tải ảnh
       choose_file: Chọn ảnh
@@ -138,6 +167,15 @@ vi:
       most_popular: Phổ biến nhất
       enrolling: Đang mở đơn
       my_courses: Khoá học của tôi
+  kaminari:
+    first_page:
+      first: Trang đầu
+    prev_page:
+      previous: Trước
+    next_page:
+      next: Tiếp
+    last_page:
+      last: Trang cuối
   devise:
     confirmations:
       confirmed: Xác nhận tài khoản thành công! Bạn hiện đang đăng nhập.
