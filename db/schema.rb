@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   end
 
   create_table "conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   end
 
   create_table "event_majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "event_id"
-    t.bigint "major_id"
+    t.bigint "event_id", null: false
+    t.bigint "major_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_majors_on_event_id"
@@ -43,29 +43,29 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   end
 
   create_table "event_requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "event_id"
-    t.bigint "requirement_id"
-    t.date "deadline"
+    t.bigint "event_id", null: false
+    t.bigint "requirement_id", null: false
+    t.date "deadline", null: false
     t.string "description"
     t.index ["event_id"], name: "index_event_requirements_on_event_id"
     t.index ["requirement_id"], name: "index_event_requirements_on_requirement_id"
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.bigint "leader_id"
+    t.string "name", null: false
+    t.text "description", null: false
+    t.bigint "leader_id", null: false
     t.integer "status", default: 0
-    t.float "price"
-    t.integer "max_participants"
+    t.float "price", null: false
+    t.integer "max_participants", null: false
     t.integer "joined_participants", default: 0
-    t.date "start_date"
-    t.date "end_date"
-    t.string "semester"
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.string "semester", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "partner_id"
-    t.string "slug"
+    t.bigint "partner_id", null: false
+    t.string "slug", null: false
     t.index ["leader_id"], name: "index_events_on_leader_id"
     t.index ["partner_id"], name: "index_events_on_partner_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
@@ -83,65 +83,65 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   end
 
   create_table "grade_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.bigint "transcript_id"
+    t.string "name", null: false
+    t.bigint "transcript_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["transcript_id"], name: "index_grade_categories_on_transcript_id"
   end
 
   create_table "grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.float "weight"
-    t.float "value"
-    t.bigint "grade_category_id"
+    t.string "name", null: false
+    t.float "weight", null: false
+    t.float "value", null: false
+    t.bigint "grade_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["grade_category_id"], name: "index_grades_on_grade_category_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "imageable_type"
-    t.bigint "imageable_id"
-    t.string "file"
+    t.string "imageable_type", null: false
+    t.bigint "imageable_id", null: false
+    t.string "file", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "acronym"
+    t.string "name", null: false
+    t.string "acronym", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "content"
-    t.bigint "user_id"
+    t.text "content", null: false
+    t.bigint "user_id", null: false
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "conversation_id"
+    t.bigint "conversation_id", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "mmos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.bigint "partner_id"
-    t.date "start_date"
-    t.date "end_date"
+    t.string "name", null: false
+    t.bigint "partner_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["partner_id"], name: "index_mmos_on_partner_id"
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
-    t.bigint "event_id"
-    t.bigint "receiver_id"
-    t.bigint "notifier_id"
+    t.string "content", null: false
+    t.bigint "event_id", null: false
+    t.bigint "receiver_id", null: false
+    t.bigint "notifier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_notifications_on_event_id"
@@ -150,28 +150,28 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   end
 
   create_table "partners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "country"
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "country", null: false
     t.boolean "signed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "slug"
+    t.string "slug", null: false
     t.index ["slug"], name: "index_partners_on_slug", unique: true
   end
 
   create_table "requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "slug"
+    t.string "slug", null: false
     t.index ["slug"], name: "index_requirements_on_slug", unique: true
   end
 
   create_table "transcripts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.float "total"
-    t.bigint "user_id"
-    t.bigint "event_id"
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_transcripts_on_event_id"
@@ -179,8 +179,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   end
 
   create_table "user_enroll_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "event_id"
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -189,21 +189,21 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   end
 
   create_table "user_event_requirements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.boolean "verified", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "event_requirement_id"
+    t.bigint "event_requirement_id", null: false
     t.index ["event_requirement_id"], name: "index_user_event_requirements_on_event_requirement_id"
     t.index ["user_id"], name: "index_user_event_requirements_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.integer "gender"
-    t.date "dob"
-    t.string "code"
-    t.string "phone"
+    t.string "name", null: false
+    t.integer "gender", null: false
+    t.date "dob", null: false
+    t.string "code", null: false
+    t.string "phone", null: false
     t.string "type", default: "Student"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.bigint "major_id"
-    t.string "slug"
+    t.string "slug", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["major_id"], name: "index_users_on_major_id"

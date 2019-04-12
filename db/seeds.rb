@@ -35,7 +35,7 @@ File.open("app/uploaders/event_thumbnail.jpg") do |file|
     event.event_majors.new event_id: event_idx + 1, major_id: Faker::Number.within(1..4)
     6.times do |idx|
       event.requirement_details.new event_id: event_idx + 1, deadline: Date.today + 1.week,
-        requirement_id: idx + 1
+        requirement_id: idx + 1, description: Faker::Lorem.sentence(10)
     end
     event.save!
   end

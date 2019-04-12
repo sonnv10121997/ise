@@ -1,10 +1,10 @@
 class CreateGrade < ActiveRecord::Migration[5.2]
   def change
     create_table :grades do |t|
-      t.string :name
-      t.float :weight
-      t.float :value
-      t.references :grade_category, foreign_key: true
+      t.string :name, null: false
+      t.float :weight, null: false
+      t.float :value, null: false
+      t.references :grade_category, foreign_key: true, null: false
 
       t.timestamps
     end
