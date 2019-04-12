@@ -23,6 +23,9 @@ model:
     date_format: "%d/%m/%y"
     zero: 0
     minimum_participant: 1
+  user_enroll_event:
+    status:
+      unenroll: "unenroll"
   message:
     date_format: "%d/%m/%y"
     time_format: "%l:%M %p"

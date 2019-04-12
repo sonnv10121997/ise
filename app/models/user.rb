@@ -35,6 +35,7 @@ class User < ApplicationRecord
   validates_presence_of :gender, :dob
 
   def check_enroll_status event
-    user_enroll_events.find_by(event_id: event.id)&.status || "unenroll"
+    user_enroll_events.find_by(event_id: event.id)&.status || Settings.model
+      .user_enroll_event.status.unenroll
   end
 end
