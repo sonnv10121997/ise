@@ -73,12 +73,12 @@ vi:
       semester: Học kì
       requirements: Các yêu cầu
       discussions: Thảo luận
-      deadline: Hạn chót
     participant:
       enroll: Tham gia
     requirement:
       upload: Gửi ảnh
       choose_file: Chọn ảnh
+      deadline: Hạn chót
   users:
     sessions:
       new:

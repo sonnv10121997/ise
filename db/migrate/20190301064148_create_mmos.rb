@@ -1,10 +1,10 @@
 class CreateMmos < ActiveRecord::Migration[5.2]
   def change
     create_table :mmos do |t|
-      t.string :name
-      t.references :partner, foreign_key: true
-      t.date :start_date
-      t.date :end_date
+      t.string :name, null: false
+      t.references :partner, foreign_key: true, null: false
+      t.date :start_date, null: false
+      t.date :end_date, null: false
 
       t.timestamps
     end

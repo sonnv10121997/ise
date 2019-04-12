@@ -73,12 +73,12 @@ en:
       semester: Semester
       requirements: Requirements
       discussions: Discussions
-      deadline: Deadline
     participant:
       enroll: Enroll
     requirement:
       upload: Upload
       choose_file: Choose file
+      deadline: Deadline
   users:
     sessions:
       new:
