@@ -37,7 +37,8 @@ class Event < ApplicationRecord
   validates :name, presence: true, uniqueness: true,
     format: {with: Regexp.new(Settings.regex.only_word)}
   validates_presence_of :description, :price, :max_participants, :start_date,
-    :end_date, :semester, :thumbnail, :joined_participants, :majors, :requirement_details
+    :end_date, :semester, :thumbnail, :joined_participants, :requirement_details,
+    :event_majors
   validates :price, numericality: true
   validate :validate_price
   validate :number_of_participants

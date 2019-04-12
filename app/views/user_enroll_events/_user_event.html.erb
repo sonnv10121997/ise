@@ -4,7 +4,7 @@
 
 <%= link_to user_enroll_event_path(user_event), class: "refactor_link" do %>
   <div class="my-3 display_space_between">
-    <div class="small_thumbnail">
+    <div class="small_thumbnail display_center">
       <%= image_tag user_event.thumbnail.file_url if user_event.thumbnail %>
     </div>
     <div class="course_title no-padding h-55">
