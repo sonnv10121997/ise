@@ -1,11 +1,12 @@
 File.open("app/uploaders/avatar.jpg") do |file|
   User.types.keys.each_with_index do |type, index|
     name = index.zero? ? "Administrator" : type
+    code = Faker::Lorem.characters(2).upcase << Faker::Number.number(6)
     user = User.new
     user.build_avatar.file = file
     user.update_attributes name: name, email: "#{type.downcase}@fpt.edu.vn",
       type: type, password: "123456", gender: Faker::Number.within(0..1),
-      code: type.downcase, phone: Faker::Number.leading_zero_number(10), dob: Date.today,
+      code: code, phone: Faker::Number.leading_zero_number(10), dob: Date.today,
       confirmed_at: Date.today
     user.save!
   end
