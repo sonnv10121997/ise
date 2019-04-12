@@ -80,11 +80,11 @@ $input_gray: #f2f1f8;
 }
 
 .small_thumbnail {
-  height: 70.27px;
-  width: 125px;
+  height: 46.22px;
+  width: 82.2px;
 
   img {
-    height: 100%;
-    width: 100%;
+    max-height: 46.22px;
+    max-width: 82.2px;
   }
 }

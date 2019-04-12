@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   attr_reader :user
 
-  before_action ->{find_user params[:id]}
+  before_action ->{find_user params[:id]}, except: :index
   authorize_resource
+
+  def index
+    redirect_to root_path and return
+  end
 
   def show
     user.build_avatar unless user.avatar
