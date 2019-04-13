@@ -1,3 +1,5 @@
+<% raise CanCan::AccessDenied unless can? :read, current_user.find_enroll(@user_event) %>
+
 <div class="content_detail pt-17">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
@@ -48,7 +50,7 @@
             </div>
             <div id="requirement" class="col-md-3 no-padding pl-20">
               <%= render partial: "requirement",
-                collection: requirement_collection(@conversation) %>
+                collection: requirement_collection(@user_event, @conversation) %>
             </div>
           <% end %>
         </div>

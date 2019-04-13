@@ -10,6 +10,7 @@
       <%= user_image_for user, "user_image_small" %>
       <div class="user_title"><%= user.name %></div>
     </div>
+    <%= hidden_field_tag "event_id", user_event.slug %>
     <%= button_tag type: :submit, hidden: true, id: user.slug %>
   <% end %>
 
