@@ -165,7 +165,7 @@ en:
     page_submenu:
       latest: Latest
       most_popular: Most popular
-      enrolling: Enrolling
+      enrolling: Opening
       my_courses: My courses
   kaminari:
     first_page:
