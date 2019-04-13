@@ -16,11 +16,11 @@
 
   <% unless current_user.Student? %>
     <% enroll_status = user.check_enroll_status user_event %>
-    <%= hidden_field_tag "user_id", user.slug %>
     <% if enroll_status == UserEnrollEvent.statuses.keys[1] %>
       <%= form_tag user_enroll_event_path(event_id: user_event), method: :delete,
         remote: true, class: "p-10 d-flex align-items-center" do  %>
         <%= hidden_field_tag "user_enroll_event[status]", UserEnrollEvent.statuses.keys[0] %>
+        <%= hidden_field_tag "user_id", user.slug %>
         <%= button_tag t(".unenroll"), class: "btn button-text-default",
           type: :submit %>
       <% end %>
@@ -28,6 +28,7 @@
       <%= form_tag user_enroll_event_path(event_id: user_event), method: :patch,
         remote: true, class: "p-10 d-flex align-items-center" do  %>
         <%= hidden_field_tag "user_enroll_event[status]", UserEnrollEvent.statuses.keys[1] %>
+        <%= hidden_field_tag "user_id", user.slug %>
         <%= button_tag t(".enroll"), class: "button button-text",
           type: :submit %>
       <% end %>
