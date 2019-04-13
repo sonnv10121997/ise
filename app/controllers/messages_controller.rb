@@ -11,16 +11,14 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
     respond_to do |format|
-      format.js {render "conversations/create", conversation: conversation,
-        message: message}
+      format.js {render "messages/create", conversation: conversation}
     end
   end
 
   def destroy
     message.destroy
     respond_to do |format|
-      format.js {render "conversations/create", conversation: conversation,
-        message: message}
+      format.js {render "messages/create", conversation: conversation}
     end
   end
 
