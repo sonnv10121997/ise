@@ -3,7 +3,6 @@
   "private": true,
   "dependencies": {
     "js-cookie": "^2.2.0",
-    "malihu-custom-scrollbar-plugin": "^3.1.5",
     "noty": "^3.2.0-beta",
     "sweetalert2": "^8.6.0"
   }

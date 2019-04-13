@@ -4,12 +4,6 @@ $(document).on(`turbolinks:load`, function() {
     toggleStatus(`sidebarCollapse`, `.content`, `active`);
   });
 
-  $(".content").mCustomScrollbar({
-    theme: "minimal-dark",
-    scrollInertia: 350,
-    mouseWheel: { deltaFactor: 75 }
-  });
-
   $(window).resize(function() {
     if ($(window).width() < 1275) {
       Cookies.set(`sidebarCollapse`, `active`, { path: `/` });
