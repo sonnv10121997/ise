@@ -10,10 +10,15 @@ $(document).on(`turbolinks:load`, function() {
   });
 
   $(document).on(`click`, `#unenroll_button`, function() {
-    swal(I18n.t(`swal.warning.send_enrolling_request`),
-      I18n.t(`swal.warning.wait_to_be_approved`), `warning`, true,
-      I18n.t(`swal.confirm`), I18n.t(`swal.cancel`)
-    ).then((result) => {
+    Swal.fire({
+      title: I18n.t(`swal.warning.send_enrolling_request`),
+      text: I18n.t(`swal.warning.wait_to_be_approved`),
+      type: `warning`, showCancelButton: true,
+      confirmButtonText: I18n.t(`swal.confirm`),
+      cancelButtonText: I18n.t(`swal.cancel`),
+      confirmButtonColor: confirmButtonColor,
+      cancelButtonColor: cancelButtonColor
+    }).then((result) => {
       if (result.value) {
         var event_id = $(`#event_id`).attr(`value`);
 
@@ -22,10 +27,14 @@ $(document).on(`turbolinks:load`, function() {
           type: `POST`,
           data: { 'event_id': event_id },
           success: function() {
-            swal(I18n.t(`swal.success.send_enrolling_request`),
-              I18n.t(`swal.success.wait_to_be_approved`), `success`, false,
-              I18n.t(`swal.ok`)
-            ).then(function() {
+            Swal.fire({
+              title: I18n.t(`swal.success.send_enrolling_request`),
+              text: I18n.t(`swal.success.wait_to_be_approved`),
+              type: `success`, showCancelButton: false,
+              confirmButtonText: I18n.t(`swal.ok`),
+              confirmButtonColor: confirmButtonColor,
+              cancelButtonColor: cancelButtonColor
+            }).then(function() {
               location.href = `/user_enroll_events/${event_id}`;
             });
           }
@@ -35,9 +44,14 @@ $(document).on(`turbolinks:load`, function() {
   });
 
   $(document).on(`click`, `#enrolling_button`, function() {
-    swal(I18n.t(`swal.warning.stop_sending_enroll_request`), ``, `warning`, true,
-      I18n.t(`swal.confirm`), I18n.t(`swal.cancel`)
-    ).then((result) => {
+    Swal.fire({
+      title: I18n.t(`swal.warning.stop_sending_enroll_request`),
+      text: ``, type: `warning`, showCancelButton: true,
+      confirmButtonText: I18n.t(`swal.confirm`),
+      cancelButtonText: I18n.t(`swal.cancel`),
+      confirmButtonColor: confirmButtonColor,
+      cancelButtonColor: cancelButtonColor
+    }).then((result) => {
       if (result.value) {
         var event_id = $(`#event_id`).attr(`value`);
         var user_id = $(`#user_id`).attr(`value`);
@@ -47,9 +61,13 @@ $(document).on(`turbolinks:load`, function() {
           type: `DELETE`,
           data: { 'user_id': user_id },
           success: function() {
-            swal(I18n.t(`swal.success.stop_sending_enroll_request`), ``,
-              `success`, false, I18n.t(`swal.ok`)
-            ).then(function() {
+            Swal.fire({
+              title: I18n.t(`swal.success.stop_sending_enroll_request`),
+              text: ``, type: `success`, showCancelButton: false,
+              confirmButtonText: I18n.t(`swal.ok`),
+              confirmButtonColor: confirmButtonColor,
+              cancelButtonColor: cancelButtonColor
+            }).then(function() {
               location.href = `/events/${event_id}`;
             });
           }
