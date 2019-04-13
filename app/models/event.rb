@@ -30,8 +30,7 @@ class Event < ApplicationRecord
       select("events.*, COUNT(user_enroll_events.event_id) AS participants")
       .joins(:participant_details)
       .where(status: [Event.statuses.values[1], Event.statuses.values[2]])
-      .group("user_enroll_events.event_id")
-      .order "participants DESC"
+      .group(:id).order "participants DESC"
     end)
 
   validates :name, presence: true, uniqueness: true,
