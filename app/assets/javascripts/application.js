@@ -26,6 +26,9 @@
 //= require turbolinks
 //= require_tree .
 
+const confirmButtonColor = `#28a745`;
+const cancelButtonColor = `#dc3545`;
+
 function noty(text, type) {
   return new Noty({
     type: type,
@@ -34,17 +37,4 @@ function noty(text, type) {
     theme: `relax`,
     timeout: 3000
   }).show();
-};
-
-function swal(title, text, type, showCancelButton, confirmButtonText, cancelButtonText) {
-  return Swal.fire({
-    title: title,
-    text: text,
-    type: type,
-    showCancelButton: showCancelButton,
-    confirmButtonColor: `#28a745`,
-    cancelButtonColor: `#dc3545`,
-    confirmButtonText: confirmButtonText,
-    cancelButtonText: cancelButtonText
-  });
 };
