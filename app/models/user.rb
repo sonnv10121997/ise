@@ -34,8 +34,11 @@ class User < ApplicationRecord
     format: {with: Regexp.new(Settings.regex.roll_number)}
   validates_presence_of :gender, :dob
 
+  def find_enroll event
+    user_enroll_events.find_by event_id: event
+  end
+
   def check_enroll_status event
-    user_enroll_events.find_by(event_id: event.id)&.status || Settings.model
-      .user_enroll_event.status.unenroll
+    find_enroll(event)&.status || Settings.model.user_enroll_event.status.unenroll
   end
 end

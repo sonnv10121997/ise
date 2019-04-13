@@ -28,7 +28,7 @@ class Ability
     can :update, User
     cannot :update, User, type: User.types.keys.first
     can :check_requirement, UserEventRequirement
-    can :update, UserEnrollEvent
+    can :read, UserEnrollEvent, user_id: user_id
     can :read, manager_read_authorization.flatten!
     manage_message user_id
   end
@@ -37,16 +37,17 @@ class Ability
     can :manage, staff_manage_authorization
     can %i(update show_in_app), Event
     can :check_requirement, UserEventRequirement
-    can :update, UserEnrollEvent
+    can :read, UserEnrollEvent, user_id: user_id
     can :read, manager_read_authorization.flatten!
     can :update, User, id: user_id
     manage_message user_id
   end
 
   def student_rules user_id
-    can :read, :all
+    can :read, Event
     can :show, User, id: user_id
     can :upload_image, UserEventRequirement, user_id: user_id
+    can :read, UserEnrollEvent, user_id: user_id
     can :create, UserEnrollEvent
     manage_message user_id
   end

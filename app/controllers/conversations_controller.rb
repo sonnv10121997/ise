@@ -2,6 +2,7 @@ class ConversationsController < ApplicationController
   attr_reader :sender, :receiver
 
   before_action :find_sender, :find_receiver
+  before_action ->{find_user_event params[:event_id]}
   before_action ->{find_conversation sender, receiver}
   authorize_resource
 
