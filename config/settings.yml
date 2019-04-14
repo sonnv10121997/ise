@@ -36,7 +36,7 @@ date:
   formats:
     long: "%e, %B %Y"
 regex:
-  only_word: !ruby/regexp '/(\w|\s)/'
-  word_with_number: !ruby/regexp '/(\w|\d|\s)/'
+  only_word: !ruby/regexp '/[a-zA-Z0-9\s]/'
+  word_with_number: !ruby/regexp '/[a-zA-Z0-9]/'
   roll_number: !ruby/regexp '/[A-Z0-9]+/'
   upper_case: !ruby/regexp '/[A-Z]/'

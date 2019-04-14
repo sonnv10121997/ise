@@ -1,5 +1,7 @@
 class Mmo < ApplicationRecord
   belongs_to :partner
 
-  validates_presence_of :name, :start_date, :end_date
+  validates :name, presence: true,
+    format: {with: Regexp.new(Settings.regex.word_with_number)}
+  validates_presence_of :start_date, :end_date
 end

@@ -22,9 +22,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :avatar, allow_destroy: true,
     reject_if: proc {|attributes| attributes["file"].blank?}
 
-  validates :name, presence: true,
-    length: {maximum: Settings.model.user.max_name_length,
-      minimum: Settings.model.user.min_name_length},
+  validates :name, presence: true, length: {maximum: Settings.model.user.max_name_length,
+    minimum: Settings.model.user.min_name_length},
     format: {with: Regexp.new(Settings.regex.only_word)}
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}
   validates :phone, numericality: true, presence: true,
