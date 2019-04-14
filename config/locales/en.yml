@@ -43,7 +43,7 @@ en:
       number_of_participants: Number of participants
       enroll: Enroll
       enrolling: Enrolling
-      latest: Latest
+      latest: Latest courses
     enroll_request:
       assigned: Assigned
       enrolling: Enrolling
@@ -74,7 +74,8 @@ en:
       requirements: Requirements
       discussions: Discussions
     participant:
-      enroll: Enroll
+      approve: Approve
+      decline: Decline
     requirement:
       upload: Upload
       choose_file: Choose file

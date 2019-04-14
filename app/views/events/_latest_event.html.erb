@@ -1,0 +1,24 @@
+<%= link_to latest_event, class: "refactor_link" do %>
+  <div class="row no-margin mb-15">
+    <div class="col-md-5 no-padding display_center">
+      <%= image_tag(latest_event.thumbnail.file_url,
+        class: "medium_thumbnail no-margin") if latest_event.thumbnail %>
+    </div>
+    <div class="col-md-7 pr-0">
+      <div class="course_title no-padding h-55">
+        <%= rescue_title latest_event.name %></div>
+      <div class="course_price no-padding">
+        <%= number_to_vnd latest_event.price %></div>
+      <div class="course_date no-padding">
+        <div class="date">
+          <%= fa_icon "calendar" %>
+          <%= event_date latest_event %>
+        </div>
+        <div class="participants">
+          <%= fa_icon "user-o" %>
+          <%= event_participants latest_event %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

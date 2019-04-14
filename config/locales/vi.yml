@@ -43,7 +43,7 @@ vi:
       number_of_participants: Số lượng
       enroll: Đăng kí
       enrolling: Đang tham gia
-      latest: Mới nhất
+      latest: Khoá học mới nhất
     enroll_request:
       assigned: Đang phụ trách
       enrolling: Đang gửi yêu cầu
@@ -74,7 +74,8 @@ vi:
       requirements: Các yêu cầu
       discussions: Thảo luận
     participant:
-      enroll: Tham gia
+      approve: Chấp thuận
+      decline: Từ chối
     requirement:
       upload: Gửi ảnh
       choose_file: Chọn ảnh
