@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   include FriendlyId
   friendly_id :name, use: :slugged
 
@@ -17,6 +16,7 @@ class User < ApplicationRecord
   has_many :enrolls, source: :event, through: :user_enroll_events
   has_many :requirements, ->{order verified: :desc}, foreign_key: :user_id,
     class_name: UserEventRequirement.name, dependent: :destroy
+  has_many :event_requirements, source: :detail, through: :requirements
   has_one :avatar, as: :imageable, dependent: :destroy, class_name: Image.name
 
   accepts_nested_attributes_for :avatar, allow_destroy: true,

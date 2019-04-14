@@ -15,6 +15,6 @@ module RequirementsHelper
 
   def requirement_collection event, conversation
     return UserEventRequirement.by(current_user, event) if current_user.Student?
-    UserEventRequirement.by(conversation.recipient(current_user), event)
+    UserEventRequirement.by conversation.recipient(current_user), event
   end
 end

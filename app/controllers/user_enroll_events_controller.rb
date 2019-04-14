@@ -1,8 +1,8 @@
 class UserEnrollEventsController < ApplicationController
-  attr_reader :user_event, :user_enroll_event, :user
+  attr_reader :user_event, :user_enroll_event, :user, :conversation
 
   before_action ->{find_user_event params[:event_id]}, except: :index
-  before_action :rescue_conversation, only: :show
+  before_action :rescue_conversation, :update_user_event_requirement, only: :show
   before_action :find_user_enroll_event, only: %i(update destroy)
 
   def index
@@ -51,6 +51,17 @@ class UserEnrollEventsController < ApplicationController
     user_event.requirement_details.ids.each do |event_requirement_id|
       UserEventRequirement.find_by(user_id: user,
         event_requirement_id: event_requirement_id).destroy
+    end
+  end
+
+  def update_user_event_requirement
+    return unless conversation
+    user = current_user.Student? ? current_user : conversation.recipient(current_user)
+    event_req = user_event.requirement_detail_ids
+    user_req = user.event_requirements.where(event_id: user_event).ids
+    missing_req = event_req - user_req
+    missing_req.each do |event_requirement_id|
+      user.requirements.create event_requirement_id: event_requirement_id
     end
   end
 
