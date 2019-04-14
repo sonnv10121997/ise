@@ -21,7 +21,7 @@
         remote: true, class: "p-10 d-flex align-items-center" do  %>
         <%= hidden_field_tag "user_enroll_event[status]", UserEnrollEvent.statuses.keys[0] %>
         <%= hidden_field_tag "user_id", user.slug %>
-        <%= button_tag t(".unenroll"), class: "btn button-text-default",
+        <%= button_tag t(".decline"), class: "btn button-text-default",
           type: :submit %>
       <% end %>
     <% else %>
@@ -29,7 +29,7 @@
         remote: true, class: "p-10 d-flex align-items-center" do  %>
         <%= hidden_field_tag "user_enroll_event[status]", UserEnrollEvent.statuses.keys[1] %>
         <%= hidden_field_tag "user_id", user.slug %>
-        <%= button_tag t(".enroll"), class: "button button-text",
+        <%= button_tag t(".approve"), class: "button button-text",
           type: :submit %>
       <% end %>
     <% end %>

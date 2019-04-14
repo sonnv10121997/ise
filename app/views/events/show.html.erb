@@ -28,6 +28,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
         <div class="course_sidebar">
           <div class="course_sidebar_section">
@@ -57,6 +58,7 @@
               </div>
             </div>
           </div>
+
           <div class="course_sidebar_section">
             <h3><%= t ".leader" %></h3>
             <div class="course_features">
@@ -68,33 +70,12 @@
               </div>
             </div>
           </div>
+
           <div class="course_sidebar_section">
             <h3><%= t ".latest" %></h3>
             <div class="course_features">
-              <% 5.times do %>
-                <div class="row no-margin mb-15">
-                  <div class="col-md-5 no-padding d-flex align-items-center">
-                    <%= image_tag(@event.thumbnail.file_url,
-                      class: "course_detail_thumbnail no-margin") if @event.thumbnail %>
-                  </div>
-                  <div class="col-md-7 pr-0">
-                    <div class="course_title no-padding h-55">
-                      <%= rescue_title @event.name %></div>
-                    <div class="course_price no-padding">
-                      <%= number_to_vnd @event.price %></div>
-                    <div class="course_date no-padding">
-                      <div class="date">
-                        <%= fa_icon "calendar" %>
-                        <%= event_date @event %>
-                      </div>
-                      <div class="participants">
-                        <%= fa_icon "user-o" %>
-                        <%= event_participants @event %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+              <%= render partial: "latest_event", as: :latest_event,
+                collection: Event.latest.take(Settings.model.event.per_page) %>
             </div>
           </div>
         </div>

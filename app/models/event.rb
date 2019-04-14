@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   friendly_id :name, use: :slugged
 
   enum status: %i(unpublish publish enrolling ongoing finished)
+  PUBLISHES = [Event.statuses.values[1], Event.statuses.values[2]]
 
   belongs_to :partner
   belongs_to :leader, class_name: User.name
@@ -21,17 +22,21 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :requirement_details, allow_destroy: true
   accepts_nested_attributes_for :participant_details, allow_destroy: true
 
+  scope :publishes, ->{where status: PUBLISHES}
   scope :latest, (lambda do
-      where(status: [Event.statuses.values[1], Event.statuses.values[2]])
-      .order created_at: :desc
+      where(status: PUBLISHES).order created_at: :desc
     end)
-
   scope :most_popular, (lambda do
       select("events.*, COUNT(user_enroll_events.event_id) AS participants")
-      .joins(:participant_details)
-      .where(status: [Event.statuses.values[1], Event.statuses.values[2]])
-      .group(:id).order "participants DESC"
+      .joins(:participant_details).where(status: PUBLISHES).group(:id)
+      .order "participants DESC"
     end)
+  scope :participate_by, (lambda do |user|
+      joins(:participant_details)
+      .where("events.leader_id = ? OR user_enroll_events.user_id = ?",
+        user, user).distinct
+    end)
+  scope :lead_by, ->(leader) {where leader_id: leader}
 
   validates :name, presence: true, uniqueness: true,
     format: {with: Regexp.new(Settings.regex.only_word)}

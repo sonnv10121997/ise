@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_with_flash type, msg
     flash[type] = msg
-    redirect_back fallback_location: main_app.root_path
+    redirect_to main_app.root_path
   end
 
   def find_user slug

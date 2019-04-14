@@ -6,9 +6,7 @@ class UserEnrollEventsController < ApplicationController
   before_action :find_user_enroll_event, only: %i(update destroy)
 
   def index
-    @user_events = Event.joins(:participant_details)
-      .where("events.leader_id = ? OR user_enroll_events.user_id = ?",
-      current_user.id, current_user.id).distinct
+    @user_events = Event.participate_by current_user
   end
 
   def show; end
@@ -23,11 +21,13 @@ class UserEnrollEventsController < ApplicationController
 
   def update
     user_enroll_event.update_attributes user_enroll_event_params
+    update_joined_participants
   end
 
   def destroy
     user_enroll_event.destroy
-    UserEventRequirement.where(user_id: user.id).delete_all
+    destroy_user_event_requirement
+    update_joined_participants
     respond_to do |format|
       format.js {render "events/show", event: user_event}
     end
@@ -38,12 +38,19 @@ class UserEnrollEventsController < ApplicationController
   def find_user_enroll_event
     find_user params[:user_id]
     @user_enroll_event =
-      UserEnrollEvent.find_by event_id: user_event, user_id: user.id
+      UserEnrollEvent.find_by event_id: user_event, user_id: user
   end
 
   def create_user_event_requirement
     user_event.requirement_details.ids.each do |event_requirement_id|
       current_user.requirements.create event_requirement_id: event_requirement_id
+    end
+  end
+
+  def destroy_user_event_requirement
+    user_event.requirement_details.ids.each do |event_requirement_id|
+      UserEventRequirement.find_by(user_id: user,
+        event_requirement_id: event_requirement_id).destroy
     end
   end
 
@@ -57,5 +64,12 @@ class UserEnrollEventsController < ApplicationController
     return @conversation = Conversation.new unless participants.size > Settings.model.event.minimum_participant
     find_conversation current_user, user_event.participants.where
       .not(id: current_user)[0]
+  end
+
+  def update_joined_participants
+    joined_participants = user_enroll_event.event.participant_details
+      .where(status: UserEnrollEvent.statuses.values[1]).size
+    user_enroll_event.event
+      .update_attributes joined_participants: joined_participants
   end
 end
