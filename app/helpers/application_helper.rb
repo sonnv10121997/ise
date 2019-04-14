@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def user_image_for user, css_class
-    return fa_icon "user-circle" unless user.avatar
+    return fa_icon "user-circle" unless user.avatar&.file?
     image_tag user.avatar.file_url, class: css_class
   end
 
