@@ -42,7 +42,7 @@ class User < ApplicationRecord
     find_enroll(event)&.status || Settings.model.user_enroll_event.status.unenroll
   end
 
-  def enrolling?
+  def enrolling
     user_enroll_events.find_by status: UserEnrollEvent.statuses.values[0]
   end
 end
