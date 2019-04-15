@@ -1,17 +1,24 @@
 <div class="content_detail">
   <div class="container">
-    <% if @items %>
+    <% if @items.empty? %>
+      <div class="display_center">
+        <h3><%= t ".result_empty", search: @search_string %></h3>
+      </div>
+    <% else %>
       <% @items.each_with_index do |item, idx| %>
         <div class="display_center">
           <%= link_to item, class: "w-80 refactor_link" do %>
             <% unless idx.zero? %>
-              <hr class="separate_course my-30" />
+              <hr class="separate_course my-30"/>
             <% end %>
 
             <div class="row no-margin">
               <% if item.is_a? Event %>
                 <div class="w-215px no-padding">
-                  <div class="course_detail_thumbnail no-margin"></div>
+                  <div class="course_detail_thumbnail no-margin display_center">
+                    <%= image_tag(item.thumbnail.file_url,
+                      class: "large_thumbnail") if item.thumbnail %>
+                  </div>
                 </div>
                 <div class="col-md-8 pr-0 display_vertical_between">
                   <div class="course_title h-auto no-padding">

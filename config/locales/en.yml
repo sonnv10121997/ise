@@ -151,6 +151,7 @@ en:
   searches:
     index:
       partner: Partner
+      result_empty: No result matches "%{search}"
   layouts:
     header:
       search: Search
@@ -185,3 +186,4 @@ en:
   validate_participants: cannot be more than Max participants
   validate_price: Price cannot be less than %{number}
   validate_deadline: Deadline cannot be after Event's end date
+  validate_grade_value: Value cannot be negative

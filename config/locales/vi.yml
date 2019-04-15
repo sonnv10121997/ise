@@ -151,6 +151,7 @@ vi:
   searches:
     index:
       partner: Đối tác
+      result_empty: Không tìm thấy kết quả nào phù hợp với "%{search}"
   layouts:
     header:
       search: Tìm kiếm
@@ -449,4 +450,5 @@ vi:
   validate_joined_participants: Số người đã tham gia không được nhỏ hơn %{number}
   validate_participants: Số người đã tham gia không thể lớn hơn số người tối đa
   validate_price: Giá không thể nhỏ hơn %{number}
-  validate_deadline: Deadline không thể sau ngày kết thúc của sự kiện
+  validate_deadline: Hạn chót không thể sau ngày kết thúc của sự kiện
+  validate_grade_value: Giá trị điểm không thể âm
