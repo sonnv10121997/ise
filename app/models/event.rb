@@ -39,7 +39,7 @@ class Event < ApplicationRecord
   scope :lead_by, ->(leader) {where leader_id: leader}
 
   validates :name, presence: true, uniqueness: true,
-    format: {with: Regexp.new(Settings.regex.only_word)}
+    format: {with: Regexp.new(Settings.regex.word_with_number)}
   validates_presence_of :description, :price, :max_participants, :start_date,
     :end_date, :semester, :thumbnail, :joined_participants, :requirement_details,
     :event_majors
