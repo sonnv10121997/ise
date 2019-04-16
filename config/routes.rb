@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
+  mount ActionCable.server => "/cable"
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :users, module: :users, skip: :omniauth_callbacks
     resources :users, only: %i(show update index)
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
       end
     end
     resources :searches, only: :index
-    resources :conversations, only: :create do
+    resources :conversations, only: %i(create update) do
       resources :messages, only: %i(create destroy)
     end
     resources :partners, only: :show
