@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :conversations, only: :create do
       resources :messages, only: %i(create destroy)
     end
+    resources :partners, only: :show
     root "events#index"
   end
 end
