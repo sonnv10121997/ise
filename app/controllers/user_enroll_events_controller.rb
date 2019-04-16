@@ -55,7 +55,7 @@ class UserEnrollEventsController < ApplicationController
   end
 
   def update_user_event_requirement
-    return unless conversation
+    return unless conversation.persisted?
     user = current_user.Student? ? current_user : conversation.recipient(current_user)
     event_req = user_event.requirement_detail_ids
     user_req = user.event_requirements.where(event_id: user_event).ids
