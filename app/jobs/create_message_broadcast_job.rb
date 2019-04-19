@@ -1,4 +1,4 @@
-class NewMessageBroadcastJob < ApplicationJob
+class CreateMessageBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform message
@@ -10,6 +10,8 @@ class NewMessageBroadcastJob < ApplicationJob
   private
 
   def render_message message
-    MessagesController.render json: message
+    hash_message = JSON.parse MessagesController.render(json: message)
+    hash_message["method"] = "create"
+    hash_message
   end
 end

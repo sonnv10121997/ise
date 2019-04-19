@@ -2,7 +2,8 @@ class Message < ApplicationRecord
   belongs_to :conversation
   belongs_to :user
 
-  after_create :broadcast_new_message
+  after_create :broadcast_create_message
+  after_destroy :broadcast_destroy_message
 
   validates_presence_of :content, :conversation, :user
 
@@ -10,7 +11,11 @@ class Message < ApplicationRecord
 
   private
 
-  def broadcast_new_message
-    NewMessageBroadcastJob.perform_now self
+  def broadcast_create_message
+    CreateMessageBroadcastJob.perform_now self
+  end
+
+  def broadcast_destroy_message
+    DestroyMessageBroadcastJob.perform_now self
   end
 end
