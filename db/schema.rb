@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   create_table "grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.float "weight", null: false
-    t.float "value", null: false
+    t.float "value"
     t.bigint "grade_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
