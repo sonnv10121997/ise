@@ -10,16 +10,10 @@ class MessagesController < ApplicationController
     @message = conversation.messages.new message_params
     @message.user = current_user
     @message.save
-    respond_to do |format|
-      format.js {render "messages/create", conversation: conversation}
-    end
   end
 
   def destroy
     message.destroy
-    respond_to do |format|
-      format.js {render "messages/create", conversation: conversation}
-    end
   end
 
   private

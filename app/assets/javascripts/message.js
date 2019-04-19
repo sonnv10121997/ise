@@ -1,4 +1,10 @@
 $(document).on(`turbolinks:load`, function () {
+  var senderId = $(`#messages`).data(`sender-id`);
+
+  $(`.message_detail`).each(function() {
+    checkDeleteable(this);
+  });
+
   App.message = App.cable.subscriptions.create(`MessageChannel`, {
     connected: function () {
       var conversationId = $(`#messages`).data(`conversation-id`);
@@ -7,21 +13,19 @@ $(document).on(`turbolinks:load`, function () {
       this.perform(`listen_destroy_message`, {conversation_id: conversationId});
     },
     received: function (data) {
-      var message = data.message
-      var senderId = $(`#messages`).data(`sender-id`);
-
-      if (message.user_id !== senderId && message.method === `create`) {
-        this.updateMessage(message);
-      } else if (message.user_id !== senderId && message.method === `destroy`) {
-        $(`#message_${message.id}`).remove();
+      if (data.method === `create`) {
+        $(`#messages`).append(data.message);
+        checkDeleteable(`.message_detail:last`);
+        $(`#message_content`).val(``);
+      } else if (data.method === `destroy`) {
+        $(`#message_${data.message.id}`).remove();
       }
-    },
-    updateMessage: function(message) {
-      $.ajax({
-        url: `/conversations/update`,
-        type: `PATCH`,
-        data: { 'message': message }
-      });
     }
   });
+
+  function checkDeleteable(element) {
+    if ($(element).data(`message-user-id`) === senderId) {
+      $(element).find(`.destroy_message`).css(`display`, `inherit`);
+    }
+  }
 });
