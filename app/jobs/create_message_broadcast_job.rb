@@ -4,14 +4,13 @@ class CreateMessageBroadcastJob < ApplicationJob
   def perform message
     ActionCable.server.broadcast \
       "conversation:#{message.conversation_id}:messages:create",
-      message: render_message(message)
+      message: render_message(message), method: "create"
   end
 
   private
 
   def render_message message
-    hash_message = JSON.parse MessagesController.render(json: message)
-    hash_message["method"] = "create"
-    hash_message
+    MessagesController.render partial: "messages/message",
+      locals: {message: message}
   end
 end
