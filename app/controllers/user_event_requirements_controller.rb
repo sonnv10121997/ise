@@ -6,10 +6,12 @@ class UserEventRequirementsController < ApplicationController
 
   def upload_image
     user_event_requirement.update_attributes upload_image_params
+    broadcast_requirement "upload_image"
   end
 
   def check_requirement
     user_event_requirement.update_attributes check_requirement_params
+    broadcast_requirement "check_requirement"
   end
 
   private
@@ -27,5 +29,9 @@ class UserEventRequirementsController < ApplicationController
 
   def find_user_event_requirement
     @user_event_requirement = UserEventRequirement.find_by id: params[:id]
+  end
+
+  def broadcast_requirement method
+    UserRequirementBroadcastJob.perform_now user_event_requirement, method
   end
 end
