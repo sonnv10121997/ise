@@ -3,13 +3,13 @@ module RequirementsHelper
     req.deadline&.strftime Settings.model.event.date_format
   end
 
-  def req_verified? req
-    return fa_icon "check", class: "pass" if req.verified?
+  def req_verified? verified
+    return fa_icon "check", class: "pass" if verified
     fa_icon "times", class: "failed"
   end
 
-  def verify_req req
-    return fa_icon "times", class: "failed" if req.verified?
+  def verify_req verified
+    return fa_icon "times", class: "failed" if verified
     fa_icon "check", class: "pass"
   end
 

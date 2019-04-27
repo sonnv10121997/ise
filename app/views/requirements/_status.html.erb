@@ -1,0 +1,11 @@
+<div id="status">
+  <div class="display_space_between">
+    <div class="display_start">
+      <%= req_verified? requirement.verified? %>
+      <div class="pl-5px"><%= requirement.detail.name %></div>
+    </div>
+    <div><%= t ".deadline" %>: <%= rescue_req_deadline requirement %></div>
+  </div>
+
+  <div class="req_description"><%= requirement.detail.description %></div>
+</div>

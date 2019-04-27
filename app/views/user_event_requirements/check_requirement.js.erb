@@ -1,0 +1,6 @@
+$(`#requirement_${<%= @user_event_requirement.id %>}`).find(`#status`)
+  .replaceWith(`<%= j render "requirements/status",
+  requirement: @user_event_requirement %>`);
+$(`#requirement_${<%= @user_event_requirement.id %>}`).find(`#check_requirement`)
+  .replaceWith(`<%= j render "requirements/check_requirement",
+  requirement: @user_event_requirement %>`);

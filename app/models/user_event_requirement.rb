@@ -9,6 +9,7 @@ class UserEventRequirement < ApplicationRecord
     reject_if: proc {|attributes| attributes["file"].blank?}
 
   delegate :deadline, to: :detail
+  delegate :event_id, to: :detail
 
   scope :by, (lambda do |user_id, event_id|
       joins(:detail).where("user_id = ? AND event_requirements.event_id = ?",

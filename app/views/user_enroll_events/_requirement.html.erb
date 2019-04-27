@@ -1,26 +1,11 @@
-<div class="border_bottom py-20">
-  <% if can? :check_requirement, requirement %>
-    <%= form_for requirement, url: user_event_requirement_path(requirement),
-      method: :put do |f| %>
-      <%= hidden_field_tag "user_event_requirement[verified]",
-        !requirement.verified? %>
-      <%= f.button verify_req requirement %>
-    <% end %>
-  <% end %>
-
-  <div class="display_space_between">
-    <div class="display_start">
-      <%= req_verified? requirement %>
-      <div class="pl-5px"><%= requirement.detail.name %></div>
-    </div>
-    <div><%= t ".deadline" %>: <%= rescue_req_deadline requirement %></div>
-  </div>
-
-  <div class="req_description"><%= requirement.detail.description %></div>
+<div class="border_bottom py-20" id="requirement_<%= requirement.id %>">
+  <%= render "requirements/check_requirement", requirement: requirement %>
+  <%= render "requirements/status", requirement: requirement %>
   <% requirement.images.new if requirement.images.empty? %>
-  <% requirement.images.each do |image| %>
-    <%= image_tag(image.file_url, class: "req_img") if image.file? %>
-  <% end %>
+
+  <div id="images">
+    <%= render partial: "requirements/image", collection: requirement.images %>
+  </div>
 
   <% if can? :upload_image, requirement %>
     <%= form_for requirement, url: user_event_requirement_path(requirement),
