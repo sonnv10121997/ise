@@ -8,7 +8,7 @@ class UserRequirementBroadcastJob < ApplicationJob
         user_id: requirement.user_id, id: requirement.id}, method: method
     elsif method == "upload_image"
       ActionCable.server.broadcast "events:#{requirement.event_id}",
-        requirement: {image: render_image(requirement.images.last),
+        requirement: {image: render_image(requirement),
         user_id: requirement.user_id, id: requirement.id},  method: method
     end
   end
@@ -20,8 +20,8 @@ class UserRequirementBroadcastJob < ApplicationJob
       locals: {requirement: requirement}
   end
 
-  def render_image image
+  def render_image requirement
     UserEventRequirementsController.render partial: "requirements/image",
-      locals: {image: image}
+      collection: requirement.images.reject(&:new_record?)
   end
 end

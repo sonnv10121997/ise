@@ -79,7 +79,12 @@ en:
     requirement:
       upload: Upload
       choose_file: Choose file
+  requirements:
+    status:
       deadline: Deadline
+    image:
+      change: Change
+      delete: Delete
   users:
     sessions:
       new:

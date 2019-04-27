@@ -17,4 +17,12 @@ module RequirementsHelper
     return UserEventRequirement.by(current_user, event) if current_user.Student?
     UserEventRequirement.by conversation.recipient(current_user), event
   end
+
+  def rescue_images index, size
+    return "d-none" if index != size - 1
+  end
+
+  def rescue_image_label requirement, form_builder
+    requirement.images[form_builder.index]&.id || form_builder.hash
+  end
 end

@@ -79,7 +79,12 @@ vi:
     requirement:
       upload: Gửi ảnh
       choose_file: Chọn ảnh
+  requirements:
+    status:
       deadline: Hạn chót
+    image:
+      change: Đổi ảnh
+      delete: Xoá ảnh
   users:
     sessions:
       new:

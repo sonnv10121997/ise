@@ -15,8 +15,12 @@ $(document).on(`turbolinks:load`, function () {
           .replaceWith(requirement.status);
       } else if (data.method == `upload_image` && !reqUserIsCurrentUser) {
         $(`#requirement_${requirement.id}`).find(`#images`)
-          .append(requirement.image);
+          .html(requirement.image);
       }
     }
+  });
+
+  $(`.extend_requirement`).on(`click`, function() {
+    $(this).siblings(`#images, #requirement_options`).toggle();
   });
 });

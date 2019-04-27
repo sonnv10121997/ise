@@ -1,0 +1,10 @@
+<div class="three_dots_container mb-129">
+  <div class="three_dots_option" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false"></div>
+  <div class="dropdown-menu">
+    <%= label_tag requirement.images[image_counter].id,
+      t(".change"), class: "dropdown-item" %>
+    <%= label_tag "#{requirement.images[image_counter].id}_destroy",
+      t(".delete"), class: "dropdown-item" %>
+  </div>
+</div>
