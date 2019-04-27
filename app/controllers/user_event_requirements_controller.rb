@@ -7,6 +7,7 @@ class UserEventRequirementsController < ApplicationController
   def upload_image
     user_event_requirement.update_attributes upload_image_params
     broadcast_requirement "upload_image"
+    redirect_back fallback_location: root_path
   end
 
   def check_requirement

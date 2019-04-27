@@ -2,6 +2,7 @@ $failed: #dc3545;
 $pass: #28a745;
 $content_gray: #fafafa;
 $input_gray: #f2f1f8;
+$sidebar_hover_gray: #e4e4e4;
 
 @mixin display($type, $item, $content, $direction) {
   align-items: $item;
@@ -39,14 +40,16 @@ $input_gray: #f2f1f8;
   @include display(flex, center, center, row);
 }
 
+.display_center_vertical {
+  @include display(inline-flex, center, center, column);
+}
+
 .display_vertical_between {
   @include display(flex, inherit, space-between, column);
 }
 
-
 .req_description {
   padding-top: 10px;
-  padding-bottom: 20px;
 }
 
 #user_event_tabs {
@@ -64,7 +67,13 @@ $input_gray: #f2f1f8;
 }
 
 .req_img {
-  width: 100%;
+  display: inline-block;
+  height: 130px;
+
+  img {
+    max-width: 230px;
+    max-height: 130px;
+  }
 }
 
 .participant {
@@ -91,4 +100,33 @@ $input_gray: #f2f1f8;
 
 .destroy_message {
   display: none;
+}
+
+.three_dots_container {
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.three_dots_option:after {
+  content: '\2807';
+  font-size: x-large;
+}
+
+.dropdown-item {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $sidebar_hover_gray;
+  }
+}
+
+.extend_requirement {
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#requirement_options {
+  display: inline-flex;
+  flex-direction: column;
 }

@@ -1,19 +1,36 @@
+<% requirement.images.new %>
+
 <div class="border_bottom py-20" id="requirement_<%= requirement.id %>">
   <%= render "requirements/check_requirement", requirement: requirement %>
   <%= render "requirements/status", requirement: requirement %>
-  <% requirement.images.new if requirement.images.empty? %>
 
-  <div id="images">
-    <%= render partial: "requirements/image", collection: requirement.images %>
+  <div class="extend_requirement display_center">
+    <%= fa_icon "chevron-down" %>
   </div>
+
+  <div id="images" class="display_center_vertical">
+    <%= render partial: "requirements/image",
+      collection: requirement.images.reject(&:new_record?) %>
+  </div>
+
+  <% if cannot? :check_requirement, requirement %>
+    <div id="requirement_options">
+      <%= render partial: "requirements/options", locals: {requirement: requirement},
+        collection: requirement.images.reject(&:new_record?), as: :image %>
+    </div>
+  <% end %>
 
   <% if can? :upload_image, requirement %>
     <%= form_for requirement, url: user_event_requirement_path(requirement),
-      method: :patch, html: {class: "d-flex"} do |f| %>
+      method: :patch do |f| %>
       <%= f.fields_for :images do |image| %>
-        <%= image.label :file, t(".upload"), for: f.hash,
-          class: "button button-text" %>
-        <%= image.file_field :file, hidden: true, id: f.hash,
+        <%= image.check_box :_destroy, onchange: "this.form.submit();",
+          id: "#{rescue_image_label requirement, image}_destroy", hidden: true %>
+        <%= image.label :file, t(".upload"), class: "button button-text
+          #{rescue_images image.index, requirement.images.size}",
+          for: rescue_image_label(requirement, image) %>
+        <%= image.file_field :file, hidden: true,
+          id: rescue_image_label(requirement, image),
           onchange: "this.form.submit();" %>
       <% end %>
     <% end %>

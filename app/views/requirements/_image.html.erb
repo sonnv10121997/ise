@@ -1,1 +1,7 @@
-<%= image_tag(image.file_url, class: "req_img") if image.file? %>
+<% unless image_counter.zero? %>
+  <hr class="separate_course">
+<% end %>
+
+<div class="req_img">
+  <%= image_tag image.file_url if image.file? %>
+</div>
