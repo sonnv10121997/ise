@@ -1,8 +1,8 @@
 <% requirement.images.new %>
 
 <div class="border_bottom py-20" id="requirement_<%= requirement.id %>">
-  <%= render "requirements/check_requirement", requirement: requirement %>
   <%= render "requirements/status", requirement: requirement %>
+  <%= render "requirements/check_requirement", requirement: requirement %>
 
   <div class="extend_requirement display_center">
     <%= fa_icon "chevron-down" %>

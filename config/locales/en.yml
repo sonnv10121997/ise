@@ -85,6 +85,12 @@ en:
     image:
       change: Change
       delete: Delete
+    check_requirement:
+      decline: Decline
+      accept: Accept
+    options:
+      unapprove: Từ chối
+      approve: Xác nhận
   users:
     sessions:
       new:

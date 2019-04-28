@@ -4,7 +4,18 @@
       method: :put, remote: true do |f| %>
       <%= hidden_field_tag "user_event_requirement[verified]",
         !requirement.verified? %>
-      <%= f.button verify_req requirement.verified? %>
+      <%= f.button verify_req(requirement.verified?), hidden: true,
+        id: "requirement_#{requirement.id}_verify" %>
     <% end %>
+
+    <div class="three_dots_container">
+      <div class="three_dots_option" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false"></div>
+      <div class="dropdown-menu">
+        <%= label_tag "requirement_#{requirement.id}_verify",
+          t(".#{rescue_requirement_status requirement}"),
+          class: "dropdown-item no-margin" %>
+      </div>
+    </div>
   <% end %>
 </div>
