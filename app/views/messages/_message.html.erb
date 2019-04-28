@@ -1,13 +1,30 @@
-<div id="message_<%= message.id %>" class="message_detail"
+<div id="message_<%= message.id %>" class="message_detail pt-20"
   data-message-user-id="<%= message.user.slug %>">
-  <h5 class="media-heading"><%= message.user.name %>
-    <small class="text-muted"><%= format_message_time message %></small>
+
+  <h5 class="display_space_between">
+    <div class="display_vertical_center">
+      <%= user_image_for message.user, "user_image_x_small child" %>
+      <span class="child"><%= message.user.name %></span>
+      <small class="text-muted child"><%= format_message_time message %></small>
+    </div>
+
     <small class="destroy_message">
       <%= form_for message, url: conversation_message_path(conversation_id:
         message.conversation, id: message), method: :delete, remote: true do |f| %>
-        <%= f.submit t(".delete"), class: "btn btn-primary pull-right" %>
+        <%= hidden_field_tag "event_id", event.slug %>
+        <%= f.submit t(".delete"), id: "message_#{message.id}_destroy",
+          hidden: true %>
       <% end %>
+      <div class="three_dots_container">
+        <div class="three_dots_option" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"></div>
+        <div class="dropdown-menu">
+          <%= label_tag "message_#{message.id}_destroy", t(".delete"),
+            class: "dropdown-item no-margin" %>
+        </div>
+      </div>
     </small>
   </h5>
-  <p><%= message.content %></p>
+
+  <p class="no-margin"><%= message.content %></p>
 </div>

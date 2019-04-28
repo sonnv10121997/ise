@@ -1,10 +1,11 @@
 <div id="messages" data-sender-id="<%= current_user.slug %>"
   data-conversation-id="<%= message.conversation_id %>">
-  <%= render conversation.messages.reject(&:new_record?) %>
+  <%= render conversation.messages.reject(&:new_record?), event: event %>
 </div>
 
 <%= form_for [conversation, message], method: :post, remote: true do |f| %>
   <div class="form-group">
+    <%= hidden_field_tag "event_id", event.slug %>
     <%= f.text_area :content, autofocus: true, placeholder: t(".your_message"),
       class: "form-control" %>
   </div>

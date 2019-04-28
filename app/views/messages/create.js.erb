@@ -1,0 +1,3 @@
+$(`#messages`).append(`<%= j render "messages/message", message: @message, event: @event %>`);
+checkDeleteable(`.message_detail:last`);
+$(`#message_content`).val(``);
