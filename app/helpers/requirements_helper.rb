@@ -25,4 +25,9 @@ module RequirementsHelper
   def rescue_image_label requirement, form_builder
     requirement.images[form_builder.index]&.id || form_builder.hash
   end
+
+  def rescue_requirement_status requirement
+    return "unapprove" if requirement.verified?
+    "approve"
+  end
 end

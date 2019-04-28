@@ -105,6 +105,7 @@ $sidebar_hover_gray: #e4e4e4;
 .three_dots_container {
   cursor: pointer;
   display: inline-flex;
+  order: -1;
 }
 
 .three_dots_option:after {
@@ -129,4 +130,15 @@ $sidebar_hover_gray: #e4e4e4;
 #requirement_options {
   display: inline-flex;
   flex-direction: column;
+}
+
+#check_requirement {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+#status {
+  display: inline-flex;
+  flex-direction: column;
+  width: 91%;
 }

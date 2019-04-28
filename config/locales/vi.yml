@@ -85,6 +85,12 @@ vi:
     image:
       change: Đổi ảnh
       delete: Xoá ảnh
+    check_requirement:
+      unapprove: Từ chối
+      approve: Xác nhận
+    options:
+      change: Đổi ảnh
+      delete: Xoá ảnh
   users:
     sessions:
       new:
