@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
-  attr_reader :conversation, :message
+  attr_reader :conversation, :message, :event
 
+  before_action ->{find_event params[:event_id]}
   before_action :find_conversation
   before_action :find_message
   authorize_resource
@@ -10,10 +11,12 @@ class MessagesController < ApplicationController
     @message = conversation.messages.new message_params
     @message.user = current_user
     @message.save
+    CreateMessageBroadcastJob.perform_now event, message
   end
 
   def destroy
     message.destroy
+    DestroyMessageBroadcastJob.perform_now event, message
   end
 
   private

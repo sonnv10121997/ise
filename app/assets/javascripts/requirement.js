@@ -7,15 +7,17 @@ $(document).on(`turbolinks:load`, function () {
     event_id: eventId}, {
     connected: function () { },
     received: function (data) {
-      var requirement = data.requirement;
-      var reqUserIsCurrentUser = (currentUserId == requirement.user_id);
+      if (data.requirement !== undefined) {
+        var requirement = data.requirement;
+        var reqUserIsCurrentUser = (currentUserId == requirement.user_id);
 
-      if (data.method == `check_requirement` && reqUserIsCurrentUser) {
-        $(`#requirement_${requirement.id}`).find(`#status`)
-          .replaceWith(requirement.status);
-      } else if (data.method == `upload_image` && !reqUserIsCurrentUser) {
-        $(`#requirement_${requirement.id}`).find(`#images`)
-          .html(requirement.image);
+        if (data.method == `check_requirement` && reqUserIsCurrentUser) {
+          $(`#requirement_${requirement.id}`).find(`#status`)
+            .replaceWith(requirement.status);
+        } else if (data.method == `upload_image` && !reqUserIsCurrentUser) {
+          $(`#requirement_${requirement.id}`).find(`#images`)
+            .html(requirement.image);
+        }
       }
     }
   });

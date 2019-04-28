@@ -48,7 +48,7 @@
           <% if @conversation.persisted? %>
             <div id="messages_form" class="col-md-6 border_right no-padding px-20">
               <%= render "messages/index", conversation: @conversation,
-                message: @conversation.messages.new %>
+                message: @conversation.messages.new, event: @user_event %>
             </div>
             <div id="requirement" class="col-md-3 no-padding pl-20">
               <%= render partial: "requirement",

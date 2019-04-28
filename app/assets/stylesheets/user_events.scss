@@ -5,10 +5,10 @@ $input_gray: #f2f1f8;
 $sidebar_hover_gray: #e4e4e4;
 
 @mixin display($type, $item, $content, $direction) {
-  align-items: $item;
   display: $type;
-  flex-direction: $direction;
+  align-items: $item;
   justify-content: $content;
+  flex-direction: $direction;
 }
 
 @mixin check_requirement($color, $size) {
@@ -46,6 +46,18 @@ $sidebar_hover_gray: #e4e4e4;
 
 .display_vertical_between {
   @include display(flex, inherit, space-between, column);
+}
+
+.display_vertical_center {
+  @include display(flex, center, center, row);
+
+  .child {
+    margin-right: 13px;
+  }
+}
+
+.display_flex_end {
+  @include display(flex, center, flex-end, row);
 }
 
 .req_description {
