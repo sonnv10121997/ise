@@ -1,4 +1,4 @@
-<%= label_tag user.slug, class: "no-margin display_space_between",
+<%= label_tag user.slug, class: "no-margin display_space_between participant",
   id: "participant_#{user.id}" do %>
   <%= form_tag conversations_path(sender_id: current_user, receiver_id: user),
     remote: true, class: "p-10" do  %>

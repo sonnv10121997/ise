@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   include FriendlyId
   friendly_id :name, use: :slugged
 
-  enum status: %i(unpublish publish enrolling ongoing finished)
+  enum status: %i(unpublish publish opening ongoing finished)
   PUBLISHES = [Event.statuses.values[1], Event.statuses.values[2]]
 
   belongs_to :partner

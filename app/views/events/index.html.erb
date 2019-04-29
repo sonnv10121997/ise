@@ -1,27 +1,35 @@
 <div class="container">
   <% Settings.model.event.sorted_by.keys.each do |filter| %>
     <% next unless @filter.nil? || @filter == filter.to_s %>
-    <% next if @events.try(filter).empty? %>
-    <div class="row no-margin justify-content-start mb-15
-      border_bottom_events pb-15">
-      <div>
-        <h3 class="mt-15 mb-25"><%= t ".#{filter}" %></h3>
-        <div id="<%= filter %>_courses">
-          <%= render partial: "event", collection: @events.try(filter) %>
+    <% if @events.try(filter).empty? %>
+      <% next unless @filter %>
+      <div class="content_detail">
+        <div class="containter">
+          <h3 class="display_center"><%= t ".no_opening" %></h3>
         </div>
+      </div>
+    <% else %>
+      <div class="row no-margin justify-content-start mb-15
+        border_bottom_events pb-15">
+        <div>
+          <h3 class="mt-15 mb-25"><%= t ".#{filter}" %></h3>
+          <div id="<%= filter %>_courses">
+            <%= render partial: "event", collection: @events.try(filter) %>
+          </div>
 
-        <% if @events.try(filter).total_count > Settings.model.event.per_page && @filter.nil? %>
-          <%= link_to t(".view_more"), root_path(filter: filter),
-            class: "view_more" %>
+          <% if @events.try(filter).total_count > Settings.model.event.per_page && @filter.nil? %>
+            <%= link_to t(".view_more"), root_path(filter: filter),
+              class: "view_more" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row no-margin justify-content-center
+        <%= rescue_padding filter %>">
+        <% if @filter == filter.to_s %>
+          <%= paginate @events %>
         <% end %>
       </div>
-    </div>
-
-    <div class="row no-margin justify-content-center
-      <%= rescue_padding filter %>">
-      <% if @filter == filter.to_s %>
-        <%= paginate @events %>
-      <% end %>
-    </div>
+    <% end %>
   <% end %>
 </div>

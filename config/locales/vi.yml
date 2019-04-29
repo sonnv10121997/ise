@@ -24,8 +24,9 @@ vi:
       en: Tiếng Anh
       latest: Mới nhất
       most_popular: Phổ biến nhất
-      enrolling: Đang mở đơn
+      opening: Đang mở đơn
       view_more: Hiển thị thêm
+      no_opening: Không có khoá học nào đang mở đơn!
     detail:
       description: Mô tả
       comment: Bình luận
@@ -49,23 +50,30 @@ vi:
       enroll: Đăng kí
       enrolling: Đang tham gia
       latest: Khoá học mới nhất
+      status: Trạng thái
+      unpublish: Chưa công khai
+      publish: Công khai
+      opening: Đang mở đơn
+      ongoing: Đang diễn ra
+      finished: Đã kết thúc
     enroll_request:
       assigned: Đang phụ trách
       enrolling: Đang gửi yêu cầu
       unenroll: Đăng kí
+      enrolled: Đang tham gia
   user_enroll_events:
     index:
       user_events_empty: Bạn chưa tham gia khoá học nào!
     event_statuses:
       unpublish: Chưa công khai
       publish: Công khai
-      enrolling: Đang mở đơn
+      opening: Đang mở đơn
       ongoing: Đang diễn ra
       finished: Đã kết thúc
     user_event:
       unpublish: Chưa công khai
       publish: Công khai
-      enrolling: Đang mở đơn
+      opening: Đang mở đơn
       ongoing: Đang diễn ra
       finished: Đã kết thúc
     show:
@@ -183,7 +191,7 @@ vi:
     page_submenu:
       latest: Mới nhất
       most_popular: Phổ biến nhất
-      enrolling: Đang mở đơn
+      opening: Đang mở đơn
       my_courses: Khoá học của tôi
   kaminari:
     first_page:
