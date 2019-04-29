@@ -20,12 +20,12 @@ $(document).on(`turbolinks:load`, function() {
       cancelButtonColor: cancelButtonColor
     }).then((result) => {
       if (result.value) {
-        var event_id = $(`#event_id`).attr(`value`);
+        var event_slug = $(`#event_slug`).attr(`value`);
 
         $.ajax({
           url: `/user_enroll_events`,
           type: `POST`,
-          data: { 'event_id': event_id },
+          data: { 'event_id': event_slug },
           success: function() {
             Swal.fire({
               title: I18n.t(`swal.success.send_enrolling_request`),
@@ -35,7 +35,7 @@ $(document).on(`turbolinks:load`, function() {
               confirmButtonColor: confirmButtonColor,
               cancelButtonColor: cancelButtonColor
             }).then(function() {
-              location.href = `/user_enroll_events/${event_id}`;
+              location.href = `/user_enroll_events/${event_slug}`;
             });
           }
         });
@@ -53,11 +53,11 @@ $(document).on(`turbolinks:load`, function() {
       cancelButtonColor: cancelButtonColor
     }).then((result) => {
       if (result.value) {
-        var event_id = $(`#event_id`).attr(`value`);
+        var event_slug = $(`#event_slug`).attr(`value`);
         var user_id = $(`#user_id`).attr(`value`);
 
         $.ajax({
-          url: `/user_enroll_events/${event_id}`,
+          url: `/user_enroll_events/${event_slug}`,
           type: `DELETE`,
           data: { 'user_id': user_id },
           success: function() {
@@ -68,7 +68,7 @@ $(document).on(`turbolinks:load`, function() {
               confirmButtonColor: confirmButtonColor,
               cancelButtonColor: cancelButtonColor
             }).then(function() {
-              location.href = `/events/${event_id}`;
+              location.href = `/events/${event_slug}`;
             });
           }
         });

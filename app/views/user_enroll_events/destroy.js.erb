@@ -1,0 +1,3 @@
+$(`#participant_<%= @user.id %>, #participant_<%= @user.id %> ~ hr`).remove();
+$(`#event_participants`).html(`<%= render "event_participants",
+  event: @user_event %>`);

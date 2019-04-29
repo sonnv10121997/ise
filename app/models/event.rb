@@ -8,8 +8,9 @@ class Event < ApplicationRecord
   belongs_to :partner
   belongs_to :leader, class_name: User.name
 
-  has_many :participant_details, class_name: UserEnrollEvent.name,
-    foreign_key: :event_id, inverse_of: :event, dependent: :destroy
+  has_many :participant_details, ->{order status: :desc},
+    class_name: UserEnrollEvent.name, foreign_key: :event_id,
+    inverse_of: :event, dependent: :destroy
   has_many :requirement_details, class_name: EventRequirement.name,
     foreign_key: :event_id, inverse_of: :event, dependent: :destroy
   has_many :event_majors, dependent: :destroy

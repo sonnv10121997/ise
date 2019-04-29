@@ -1,4 +1,7 @@
 $(`#messages_form`).html(`<%= j render "messages/index", conversation: @conversation,
-  message: @conversation.messages.new %>`);
+  message: @conversation.messages.new, event: @user_event %>`);
+$(`.message_detail`).each(function() {
+  checkDeleteable(this);
+});
 $(`#requirement`).html(`<%= j render partial: "user_enroll_events/requirement",
   collection: requirement_collection(@user_event, @conversation) %>`);

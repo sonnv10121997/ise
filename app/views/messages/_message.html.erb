@@ -1,9 +1,11 @@
 <div id="message_<%= message.id %>" class="message_detail pt-20"
   data-message-user-id="<%= message.user.slug %>">
 
-  <h5 class="display_space_between">
+  <h6 class="display_space_between">
     <div class="display_vertical_center">
-      <%= user_image_for message.user, "user_image_x_small child" %>
+      <div class="child">
+        <%= user_image_for message.user, "user_image_xx_small" %>
+      </div>
       <span class="child"><%= message.user.name %></span>
       <small class="text-muted child"><%= format_message_time message %></small>
     </div>
@@ -24,7 +26,7 @@
         </div>
       </div>
     </small>
-  </h5>
+  </h6>
 
   <p class="no-margin"><%= message.content %></p>
 </div>

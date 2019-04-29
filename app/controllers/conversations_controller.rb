@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
   attr_reader :sender, :receiver
 
   before_action :find_sender, :find_receiver, except: :update
-  before_action ->{find_user_event params[:event_id]}, except: :update
+  before_action ->{find_user_event params[:event_slug]}, except: :update
   before_action ->{find_conversation sender, receiver}, except: :update
   skip_authorize_resource only: :update
   authorize_resource

@@ -3,12 +3,11 @@
     <%= link_to user_enroll_event_path event do %>
       <div class="btn btn-success button-text"><%= t ".assigned" %></div>
     <% end %>
-  <% elsif !current_user.enrolling || current_user.find_enroll(event,
-    UserEnrollEvent.statuses.values[0]) %>
+  <% elsif !current_user.enrolling || !is_enrolled?(current_user, event) %>
     <% enroll_status = current_user.check_enroll_status event %>
     <% css_status = rescue_enroll_status enroll_status %>
 
-    <%= hidden_field_tag :event_id, event.slug %>
+    <%= hidden_field_tag :event_slug, event.slug %>
     <%= hidden_field_tag :user_id, current_user.slug %>
     <%= button_tag t(".#{enroll_status}"), class: "#{css_status}",
       id: "#{enroll_status}_button" %>
