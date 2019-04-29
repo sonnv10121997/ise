@@ -154,3 +154,11 @@ $sidebar_hover_gray: #e4e4e4;
   flex-direction: column;
   width: 91%;
 }
+
+hr.no-margin:last-child {
+  display: none;
+}
+
+.order-0 {
+  order: 0 !important;
+}

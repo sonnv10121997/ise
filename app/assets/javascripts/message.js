@@ -31,8 +31,9 @@ function checkDeleteable(element) {
 
   if ($(element).data(`message-user-id`) === senderId) {
     $(element).find(`.destroy_message`).css(`display`, `inherit`);
-    $(element).find(`img.user_image_x_small, span.child`).css(`display`, `none`);
-    $(element).find(`h5.display_space_between, p`)
+    $(element).find(`img.user_image_xx_small, .fa-user-circle, span.child`)
+      .css(`display`, `none`);
+    $(element).find(`h6.display_space_between, p`)
       .removeClass(`display_space_between`).addClass(`display_flex_end`);
   }
 }

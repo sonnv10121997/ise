@@ -28,15 +28,12 @@ class UserEnrollEventsController < ApplicationController
     user_enroll_event.destroy
     destroy_user_event_requirement
     update_joined_participants
-    respond_to do |format|
-      format.js {render "events/show", event: user_event}
-    end
   end
 
   private
 
   def find_user_enroll_event
-    find_user params[:user_id]
+    find_user params[:user_slug]
     @user_enroll_event =
       UserEnrollEvent.find_by event_id: user_event, user_id: user
   end
@@ -78,9 +75,8 @@ class UserEnrollEventsController < ApplicationController
   end
 
   def update_joined_participants
-    joined_participants = user_enroll_event.event.participant_details
+    joined_participants = user_event.participant_details
       .where(status: UserEnrollEvent.statuses.values[1]).size
-    user_enroll_event.event
-      .update_attributes joined_participants: joined_participants
+    user_event.update_attributes joined_participants: joined_participants
   end
 end

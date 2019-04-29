@@ -32,7 +32,9 @@
       <div><%= t ".price" %>: <%= number_to_vnd @user_event.price %></div>
       <div><%= fa_icon "calendar-o" %> <%= t ".semester" %>:
         <%= @user_event.semester %></div>
-      <div><%= fa_icon "user-o" %> <%= event_participants @user_event %></div>
+      <div id="event_participants">
+        <%= render "event_participants", event: @user_event %>
+      </div>
     </div>
 
     <hr class="separate_course">
