@@ -3,7 +3,7 @@
     <%= link_to user_enroll_event_path event do %>
       <div class="btn btn-success button-text"><%= t ".assigned" %></div>
     <% end %>
-  <% elsif !current_user.enrolling || !is_enrolled?(current_user, event) %>
+  <% elsif enrollable? event, current_user %>
     <% enroll_status = current_user.check_enroll_status event %>
     <% css_status = rescue_enroll_status enroll_status %>
 

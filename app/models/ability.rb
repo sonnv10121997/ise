@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     if user.Admin?
       dashboard_rules
-      can %i(read update create), User
+      can :manage, User
     elsif user.Manager?
       dashboard_rules
       manager_rules user.id
@@ -25,8 +25,7 @@ class Ability
 
   def manager_rules user_id
     can :manage, staff_read_authorization.flatten!
-    can :update, User
-    cannot :update, User, type: User.types.keys.first
+    can :update, User, id: user_id
     can :check_requirement, UserEventRequirement
     can :read, UserEnrollEvent, user_id: user_id
     can :read, manager_read_authorization.flatten!

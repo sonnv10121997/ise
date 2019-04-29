@@ -24,8 +24,9 @@ en:
       en: English
       latest: Latest
       most_popular: Most popular
-      enrolling: Enrolling phase
+      opening: Opening
       view_more: View more
+      no_opening: There are no opening courses right now!
     detail:
       description: description
       comment: comments
@@ -49,23 +50,30 @@ en:
       enroll: Enroll
       enrolling: Enrolling
       latest: Latest courses
+      status: Status
+      unpublish: Unpublish
+      publish: Publish
+      opening: Opening
+      ongoing: Ongoing
+      finished: Finished
     enroll_request:
       assigned: Assigned
       enrolling: Enrolling
       unenroll: Enroll
+      enrolled: Enrolled
   user_enroll_events:
     index:
       user_events_empty: You haven't participated in any courses yet!
     event_statuses:
       unpublish: Unpublish
       publish: Publish
-      enrolling: Enrolling
+      opening: Opening
       ongoing: Ongoing
       finished: Finished
     user_event:
       unpublish: Unpublish
       publish: Publish
-      enrolling: Enrolling
+      opening: Opening
       ongoing: Ongoing
       finished: Finished
     show:
@@ -183,7 +191,7 @@ en:
     page_submenu:
       latest: Latest
       most_popular: Most popular
-      enrolling: Opening
+      opening: Opening
       my_courses: My courses
   kaminari:
     first_page:

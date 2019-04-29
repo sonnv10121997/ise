@@ -52,6 +52,12 @@
                   <div><%= fa_icon "user-o" %> <%= t ".number_of_participants" %></div>
                   <%= event_participants @event %>
                 </div>
+                <div class="course_feature">
+                  <div><%= fa_icon "clock-o" %> <%= t ".status" %></div>
+                  <span class="badge badge-<%= rescue_status @event.status %>">
+                    <%= t ".#{@event.status}" %>
+                  </span>
+                </div>
                 <div class="mt-20">
                   <%= render "enroll_request", event: @event %>
                 </div>

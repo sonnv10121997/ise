@@ -66,4 +66,10 @@ module EventsHelper
   def rescue_padding filter
     return "pb-100" if Settings.model.event.sorted_by.keys.last == filter
   end
+
+  def enrollable? event, user
+    (event.status == Event.statuses.keys[2]) &&
+      (!user.enrolling || !is_enrolled?(user, event))
+  end
+
 end
