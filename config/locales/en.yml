@@ -15,7 +15,9 @@ en:
       remove_participant: Remove participant successfully!
       stop_sending_enroll_request: Stop sending enroll request successfully!
       send_enrolling_request: Send enrolling request successfully!
-      wait_to_be_approved: You now need to wait to be approved. Check "Participating" tab to inbox the staff!
+      wait_to_be_approved: You now need to wait to be approved. Check "My courses" tab to inbox the staff!
+    error:
+      removed_from_course: You have been removed from the course!
   events:
     index:
       welcome: Log in successful!

@@ -20,7 +20,7 @@
         <%= t ".major" %>: <%= event_major_name @user_event %>
       </h5>
 
-      <%= render "events/enroll_request", current_user: current_user, event: @user_event %>
+      <%= render "events/enroll_request", user: current_user, event: @user_event %>
     </div>
     <hr class="separate_course">
 
@@ -43,7 +43,8 @@
       <div class="tab_panel active no-padding pr-20">
         <div class="row no-margin fs-09em">
           <div class="col-md-3 border_right no-padding">
-            <%= render partial: "participant", as: :user, locals: {user_event: @user_event},
+            <%= render partial: "participant", as: :user, locals: {
+              user_event: @user_event, sender: current_user},
               collection: @user_event.participants.where.not(id: current_user) %>
           </div>
 

@@ -15,7 +15,9 @@ vi:
       remove_participant: Xoá khỏi khoá học thành công!
       stop_sending_enroll_request: Huỷ gửi yêu cầu tham gia khoá học thành công!
       send_enrolling_request: Gửi yêu cầu tham gia khoá học thành công!
-      wait_to_be_approved: Giờ bạn phải chờ để được cán bộ phòng IC chấp thuận. Bạn có thể vào mục "Đang tham gia" để nhắn tin với cán bộ phụ trách!
+      wait_to_be_approved: Giờ bạn phải chờ để được cán bộ phòng IC chấp thuận. Bạn có thể vào mục "Khoá học của tôi" để nhắn tin với cán bộ phụ trách.
+    error:
+      removed_from_course: Bạn vừa bị xoá khỏi khoá học!
   events:
     index:
       welcome: Đăng nhập thành công!

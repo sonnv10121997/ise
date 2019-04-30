@@ -14,20 +14,20 @@ class UserEnrollEventsController < ApplicationController
   def create
     current_user.user_enroll_events.create event_id: user_event.id
     create_user_event_requirement
-    respond_to do |format|
-      format.js {render "events/show", event: user_event}
-    end
   end
 
   def update
     user_enroll_event.update_attributes user_enroll_event_params
     update_joined_participants
+    ParticipantBroadcastJob.perform_now user_event, user, "", "update"
   end
 
   def destroy
     user_enroll_event.destroy
     destroy_user_event_requirement
     update_joined_participants
+    ParticipantBroadcastJob.perform_now \
+      user_event, user, event_path(user_event.slug), "delete"
   end
 
   private
