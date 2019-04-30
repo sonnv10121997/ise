@@ -2,6 +2,8 @@
 
 <%= hidden_field_tag :event_id, @user_event.id %>
 <%= hidden_field_tag :current_user_id, current_user.id %>
+<%= hidden_field_tag :leader_id, @user_event.leader_id %>
+
 <div class="content_detail pt-17">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
@@ -42,7 +44,7 @@
     <div class="tab_panels">
       <div class="tab_panel active no-padding pr-20">
         <div class="row no-margin fs-09em">
-          <div class="col-md-3 border_right no-padding">
+          <div id="participants" class="col-md-3 border_right no-padding">
             <%= render partial: "participant", as: :user, locals: {
               user_event: @user_event, sender: current_user},
               collection: @user_event.participants.where.not(id: current_user) %>

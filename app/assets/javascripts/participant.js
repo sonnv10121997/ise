@@ -6,6 +6,11 @@ $(document).on(`turbolinks:load`, function () {
     channel: `ParticipantChannel`, event_id: eventId}, {
     connected: function () { },
     received: function (data) {
+      if (data.method == `create` && data.participant !== undefined) {
+        $(`#participants`).append(data.participant.html);
+        checkParticipantEnrollable(`.participant_detail:last`);
+      }
+
       if (data.user_id !== undefined) {
         var participantIsCurrentUser = (currentUserId == data.user_id);
       }
@@ -20,16 +25,22 @@ $(document).on(`turbolinks:load`, function () {
         }
       }
 
-      if (data.method == `delete` && participantIsCurrentUser) {
-        Swal.fire({
-          title: I18n.t(`swal.error.removed_from_course`),
-          type: `error`, showCancelButton: false,
-          confirmButtonText: I18n.t(`swal.ok`),
-          confirmButtonColor: confirmButtonColor,
-          cancelButtonColor: cancelButtonColor
-        }).then(function() {
-          location.href = data.url;
-        });
+      if (data.method == `delete`) {
+        if (participantIsCurrentUser) {
+          Swal.fire({
+            title: I18n.t(`swal.error.removed_from_course`),
+            type: `error`, showCancelButton: false,
+            confirmButtonText: I18n.t(`swal.ok`),
+            confirmButtonColor: confirmButtonColor,
+            cancelButtonColor: cancelButtonColor
+          }).then(function() {
+            location.href = data.url;
+          });
+        } else if (!participantIsCurrentUser && data.event_participants !== undefined) {
+          $(`#participant_${data.user_id}, #participant_${data.user_id} ~ hr `)
+            .remove();
+          $(`#event_participants`).html(data.event_participants.html);
+        }
       }
     }
   });
@@ -47,14 +58,14 @@ $(document).on(`turbolinks:load`, function () {
       if (result.value) {
         var event_slug = $(`#event_slug`).attr(`value`);
         var status = $(this).siblings(`#user_enroll_event_status`).attr(`value`);
-        var user_slug = $(this).siblings(`#user_slug`).attr(`value`);
+        var user_id = $(this).siblings(`#user_id`).attr(`value`);
 
         $.ajax({
           url: `/user_enroll_events/${event_slug}`,
           type: `PATCH`,
           data: {
             'user_enroll_event[status]': status,
-            'user_slug': user_slug
+            'user_id': user_id
           },
           success: function() {
             Swal.fire({
@@ -83,14 +94,14 @@ $(document).on(`turbolinks:load`, function () {
       if (result.value) {
         var event_slug = $(`#event_slug`).attr(`value`);
         var status = $(this).siblings(`#user_enroll_event_status`).attr(`value`);
-        var user_slug = $(this).siblings(`#user_slug`).attr(`value`);
+        var user_id = $(this).siblings(`#user_id`).attr(`value`);
 
         $.ajax({
           url: `/user_enroll_events/${event_slug}`,
           type: `DELETE`,
           data: {
             'user_enroll_event[status]': status,
-            'user_slug': user_slug
+            'user_id': user_id
           },
           success: function() {
             Swal.fire({
@@ -107,4 +118,16 @@ $(document).on(`turbolinks:load`, function () {
       }
     });
   });
+
+  $(`.participant_detail`).each(function() {
+    checkParticipantEnrollable(this);
+  });
 });
+
+function checkParticipantEnrollable(element) {
+  var leaderId = $(`#leader_id`).val();
+
+  if ($(`#current_user_id`).val() != leaderId) {
+    $(element).hide();
+  }
+}

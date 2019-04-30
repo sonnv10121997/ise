@@ -11,39 +11,28 @@
     <%= button_tag "", type: :submit, hidden: true, id: user.slug %>
   <% end %>
 
-  <% if can? :update, user_event %>
-    <%= hidden_field_tag "user_slug", user.slug %>
-
-    <% if is_enrolled? user, user_event %>
-      <%= hidden_field_tag "user_enroll_event[status]",
-        UserEnrollEvent.statuses.keys[0] %>
-      <%= button_tag t(".remove"), class: "remove_participants",
-        id: "remove_participant_#{user.id}", hidden: true %>
-
-      <div class="three_dots_container order-0">
-        <div class="three_dots_option" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false"></div>
-        <div class="dropdown-menu">
-          <%= label_tag "remove_participant_#{user.id}", t(".remove"),
-            class: "dropdown-item no-margin" %>
-        </div>
-      </div>
-    <% else %>
-      <%= hidden_field_tag "user_enroll_event[status]",
-        UserEnrollEvent.statuses.keys[1] %>
-      <%= button_tag t(".add"), class: "add_participants",
-        id: "add_participant_#{user.id}", hidden: true %>
-
-      <div class="three_dots_container order-0">
-        <div class="three_dots_option" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false"></div>
-        <div class="dropdown-menu">
-          <%= label_tag "add_participant_#{user.id}", t(".add"),
-            class: "dropdown-item no-margin" %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="three_dots_container order-0 participant_detail">
+    <div class="three_dots_option" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false"></div>
+    <div class="dropdown-menu">
+      <%= hidden_field_tag "user_id", user.slug %>
+      <% if is_enrolled? user, user_event %>
+        <%= hidden_field_tag "user_enroll_event[status]",
+          UserEnrollEvent.statuses.keys[0] %>
+        <%= button_tag t(".remove"), class: "remove_participants",
+          id: "remove_participant_#{user.id}", hidden: true %>
+        <%= label_tag "remove_participant_#{user.id}", t(".remove"),
+          class: "dropdown-item no-margin" %>
+      <% else %>
+        <%= hidden_field_tag "user_enroll_event[status]",
+          UserEnrollEvent.statuses.keys[1] %>
+        <%= button_tag t(".add"), class: "add_participants",
+          id: "add_participant_#{user.id}", hidden: true %>
+        <%= label_tag "add_participant_#{user.id}", t(".add"),
+          class: "dropdown-item no-margin" %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 
 <hr class="no-margin" />
