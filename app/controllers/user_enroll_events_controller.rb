@@ -1,6 +1,7 @@
 class UserEnrollEventsController < ApplicationController
   attr_reader :user_event, :user_enroll_event, :user, :conversation
 
+  before_action ->{find_user params[:user_id]}, only: :create
   before_action ->{find_user_event params[:event_id]}, except: :index
   before_action :rescue_conversation, :update_user_event_requirement, only: :show
   before_action :find_user_enroll_event, only: %i(update destroy)
@@ -14,12 +15,15 @@ class UserEnrollEventsController < ApplicationController
   def create
     current_user.user_enroll_events.create event_id: user_event.id
     create_user_event_requirement
+    find_conversation user, user_event.leader
+    ParticipantBroadcastJob.perform_now \
+      user_event, user, "create", conversation.recipient(user)
   end
 
   def update
     user_enroll_event.update_attributes user_enroll_event_params
     update_joined_participants
-    ParticipantBroadcastJob.perform_now user_event, user, "", "update"
+    ParticipantBroadcastJob.perform_now user_event, user, "update"
   end
 
   def destroy
@@ -27,13 +31,13 @@ class UserEnrollEventsController < ApplicationController
     destroy_user_event_requirement
     update_joined_participants
     ParticipantBroadcastJob.perform_now \
-      user_event, user, event_path(user_event.slug), "delete"
+      user_event, user, "delete", {}, event_path(user_event.slug)
   end
 
   private
 
   def find_user_enroll_event
-    find_user params[:user_slug]
+    find_user params[:user_id]
     @user_enroll_event =
       UserEnrollEvent.find_by event_id: user_event, user_id: user
   end

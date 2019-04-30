@@ -21,11 +21,15 @@ $(document).on(`turbolinks:load`, function() {
     }).then((result) => {
       if (result.value) {
         var event_slug = $(`#event_slug`).attr(`value`);
+        var user_id = $(`#user_id`).attr(`value`);
 
         $.ajax({
           url: `/user_enroll_events`,
           type: `POST`,
-          data: { 'event_id': event_slug },
+          data: {
+            'event_id': event_slug,
+            'user_id': user_id
+          },
           success: function() {
             Swal.fire({
               title: I18n.t(`swal.success.send_enrolling_request`),
