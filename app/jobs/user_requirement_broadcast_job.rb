@@ -3,11 +3,13 @@ class UserRequirementBroadcastJob < ApplicationJob
 
   def perform requirement, method
     if method == "check_requirement"
-      ActionCable.server.broadcast "events:#{requirement.event_id}",
+      ActionCable.server.broadcast \
+        "events:#{requirement.event_id}:user:#{requirement.user_id}",
         requirement: {status: render_status(requirement),
         user_id: requirement.user_id, id: requirement.id}, method: method
     elsif method == "upload_image"
-      ActionCable.server.broadcast "events:#{requirement.event_id}",
+      ActionCable.server.broadcast \
+        "events:#{requirement.event_id}:user:#{requirement.user_id}",
         requirement: {image: render_image(requirement),
         user_id: requirement.user_id, id: requirement.id},  method: method
     end
