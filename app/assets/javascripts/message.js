@@ -1,5 +1,5 @@
 $(document).on(`turbolinks:load`, function () {
-  var eventId = $(`#event_id`).val();
+  var conversationId = $(`#messages`).data(`conversation-id`);
   var currentUserId = $(`#current_user_id`).val();
 
   $(`.message_detail`).each(function() {
@@ -7,8 +7,7 @@ $(document).on(`turbolinks:load`, function () {
   });
 
   App.message = App.cable.subscriptions.create({
-    channel: `MessageChannel`,
-    event_id: eventId}, {
+    channel: `MessageChannel`, conversation_id: conversationId}, {
     connected: function () { },
     received: function (data) {
       if (data.message !== undefined) {

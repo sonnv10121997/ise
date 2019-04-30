@@ -44,7 +44,7 @@ class Ability
 
   def student_rules user_id
     can :read, Event
-    can :show, User, id: user_id
+    can %i(show update), User, id: user_id
     can :upload_image, UserEventRequirement, user_id: user_id
     can :read, UserEnrollEvent, user_id: user_id
     can :create, UserEnrollEvent
