@@ -1,5 +1,5 @@
 $(`#participant_<%= @user.id %>`).replaceWith(`<%= j render "participant",
-  user: @user, user_event: @user_event %>`);
-$(`#participant_<%= @user.id %>`).siblings(`hr:last`).remove();
-$(`#event_participants`).html(`<%= render "event_participants",
+  user: @user, user_event: @user_event, sender: current_user %>`);
+$(`#participant_<%= @user.id %> ~ hr:last`).remove();
+$(`#event_participants`).html(`<%= j render "event_participants",
   event: @user_event %>`);

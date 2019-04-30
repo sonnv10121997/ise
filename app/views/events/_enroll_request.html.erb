@@ -1,14 +1,14 @@
 <div id="enroll_request">
-  <% if event.leader  == current_user %>
+  <% if event.leader  == user %>
     <%= link_to user_enroll_event_path event do %>
       <div class="btn btn-success button-text"><%= t ".assigned" %></div>
     <% end %>
-  <% elsif enrollable? event, current_user %>
-    <% enroll_status = current_user.check_enroll_status event %>
+  <% elsif enrollable? event, user %>
+    <% enroll_status = user.check_enroll_status event %>
     <% css_status = rescue_enroll_status enroll_status %>
 
     <%= hidden_field_tag :event_slug, event.slug %>
-    <%= hidden_field_tag :user_id, current_user.slug %>
+    <%= hidden_field_tag :user_id, user.slug %>
     <%= button_tag t(".#{enroll_status}"), class: "#{css_status}",
       id: "#{enroll_status}_button" %>
   <% end %>
