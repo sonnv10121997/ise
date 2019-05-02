@@ -1,3 +1,5 @@
+<%= hidden_field_tag "participant_id", user.id %>
+
 <%= label_tag user.slug, class: "no-margin display_space_between participant",
   id: "participant_#{user.id}" do %>
   <%= form_tag conversations_path(sender_id: sender, receiver_id: user),
