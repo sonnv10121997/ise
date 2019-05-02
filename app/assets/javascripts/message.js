@@ -10,7 +10,7 @@ $(document).on(`turbolinks:load`, function () {
     channel: `MessageChannel`, conversation_id: conversationId}, {
     connected: function () { },
     received: function (data) {
-      if (data.message !== undefined) {
+      if (data.message) {
         var message = data.message;
         var messUserIsCurrentUser = (currentUserId == message.user_id);
 

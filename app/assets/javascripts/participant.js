@@ -6,16 +6,16 @@ $(document).on(`turbolinks:load`, function () {
     channel: `ParticipantChannel`, event_id: eventId}, {
     connected: function () { },
     received: function (data) {
-      if (data.method == `create` && data.participant !== undefined) {
+      if (data.method == `create` && data.participant) {
         $(`#participants`).append(data.participant.html);
         checkParticipantEnrollable(`.participant_detail:last`);
       }
 
-      if (data.user_id !== undefined) {
+      if (data.user_id) {
         var participantIsCurrentUser = (currentUserId == data.user_id);
       }
 
-      if (data.enroll_request !== undefined && data.event_participants !== undefined) {
+      if (data.enroll_request && data.event_participants) {
         var enroll_request = data.enroll_request;
         var event_participants = data.event_participants;
 
@@ -36,7 +36,7 @@ $(document).on(`turbolinks:load`, function () {
           }).then(function() {
             location.href = data.url;
           });
-        } else if (!participantIsCurrentUser && data.event_participants !== undefined) {
+        } else if (!participantIsCurrentUser && data.event_participants) {
           $(`#participant_${data.user_id}, #participant_${data.user_id} ~ hr `)
             .remove();
           $(`#event_participants`).html(data.event_participants.html);

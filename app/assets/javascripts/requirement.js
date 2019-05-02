@@ -4,10 +4,10 @@ $(document).on(`turbolinks:load`, function () {
 
   App.message = App.cable.subscriptions.create({
     channel: `RequirementChannel`,
-    event_id: eventId, participant_id: participantId}, {
+    event_id: eventId}, {
     connected: function () { },
     received: function (data) {
-      if (data.requirement !== undefined) {
+      if (data.requirement) {
         var requirement = data.requirement;
         var isParticipant = (participantId == requirement.user_id);
 
