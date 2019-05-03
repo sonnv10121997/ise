@@ -3,5 +3,6 @@ $(`#messages_form`).html(`<%= j render "messages/index", conversation: @conversa
 $(`.message_detail`).each(function() {
   checkDeleteable(this);
 });
+$(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));
 $(`#requirement`).html(`<%= j render partial: "user_enroll_events/requirement",
   collection: requirement_collection(@user_event, @conversation) %>`);

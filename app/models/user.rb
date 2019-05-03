@@ -45,4 +45,8 @@ class User < ApplicationRecord
   def enrolling
     user_enroll_events.find_by status: UserEnrollEvent.statuses.values[0]
   end
+
+  def enrolled
+    user_enroll_events.find_by status: UserEnrollEvent.statuses.values[1]
+  end
 end

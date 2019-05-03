@@ -139,6 +139,16 @@ label.participant {
   padding-bottom: 10px;
 }
 
+.extend_course_info {
+  cursor: pointer;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  ::before {
+    font-size: x-small;
+  }
+}
+
 #requirement_options {
   display: inline-flex;
   flex-direction: column;
@@ -161,4 +171,28 @@ hr.no-margin:last-child {
 
 .order-0 {
   order: 0 !important;
+}
+
+#participants, #messages, #requirement {
+  overflow-y: auto;
+}
+
+#messages {
+  height: 81vh;
+}
+
+#requirement {
+  height: 86vh;
+}
+
+#new_message {
+  border-top: 1px solid #ddd;
+}
+
+#message_content {
+  border: none;
+
+  &:focus {
+    box-shadow: none;
+  }
 }

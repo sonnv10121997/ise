@@ -168,6 +168,10 @@ a, a:hover, a:visited, a:active, a:link {
   padding-top: 68.33px;
 }
 
+.pt-25 {
+  padding-top: 25px;
+}
+
 .pt-20 {
   padding-top: 20px;
 }
@@ -195,6 +199,11 @@ a, a:hover, a:visited, a:active, a:link {
   padding-bottom: 10px;
 }
 
+.py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .px-30 {
   padding-left: 30px;
   padding-right: 30px;
@@ -208,6 +217,10 @@ a, a:hover, a:visited, a:active, a:link {
 .px-15 {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.pb-10 {
+  padding-bottom: 10px;
 }
 
 .pb-15 {
@@ -240,6 +253,10 @@ a, a:hover, a:visited, a:active, a:link {
 
 .mt-15 {
   margin-top: 15px;
+}
+
+.mt-10 {
+  margin-top: 10px;
 }
 
 .mb-129:not(:last-child) {

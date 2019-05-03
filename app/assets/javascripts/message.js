@@ -17,12 +17,15 @@ $(document).on(`turbolinks:load`, function () {
         if (data.method === `create` && !messUserIsCurrentUser) {
           $(`#messages`).append(message.html);
           checkDeleteable(`.message_detail:last`);
+          $(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));
         } else if (data.method === `destroy` && !messUserIsCurrentUser) {
           $(`#message_${message.id}`).remove();
         }
       }
     }
   });
+
+  $(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));
 });
 
 function checkDeleteable(element) {
@@ -31,8 +34,8 @@ function checkDeleteable(element) {
   if ($(element).data(`message-user-id`) === senderId) {
     $(element).find(`.destroy_message`).css(`display`, `inherit`);
     $(element).find(`img.user_image_xx_small, .fa-user-circle, span.child`)
-      .css(`display`, `none`);
+    .css(`display`, `none`);
     $(element).find(`h6.display_space_between, p`)
-      .removeClass(`display_space_between`).addClass(`display_flex_end`);
+    .removeClass(`display_space_between`).addClass(`display_flex_end`);
   }
 }
