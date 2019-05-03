@@ -4,45 +4,55 @@
 <%= hidden_field_tag :current_user_id, current_user.id %>
 <%= hidden_field_tag :leader_id, @user_event.leader_id %>
 
-<div class="content_detail pt-17">
+<div class="content_detail py-0">
   <div class="container">
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="course_feature no-margin">
-        <%= user_image_for @user_event.leader, "user_image_small" %>
-        <div class="user_title">
-          <h5 class="no-margin"><%= @user_event.leader.name %></h5>
+    <div id="course_info">
+      <div class="display_center pt-25">
+        <h5><%= @user_event.name %></h5>
+      </div>
+
+      <hr class="separate_course">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="course_feature no-margin">
+          <%= user_image_for @user_event.leader, "user_image_small" %>
+          <div class="user_title">
+            <h6 class="no-margin"><%= @user_event.leader.name %></h6>
+          </div>
+        </div>
+        <h6 class="no-margin">
+          <%= t ".partner" %>: <%= @user_event.partner.name %>
+        </h6>
+        <h6 class="no-margin">
+          <%= t ".major" %>: <%= event_major_name @user_event %>
+        </h6>
+        <%= render "events/enroll_request", user: current_user, event: @user_event %>
+      </div>
+
+      <hr class="separate_course">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div><%= fa_icon "calendar" %> <%= t ".date" %>:
+          <%= event_date @user_event %></div>
+        <div><%= fa_icon "map-o" %> <%= t ".country" %>:
+          <%= @user_event.partner.country %></div>
+        <div><%= t ".price" %>: <%= number_to_vnd @user_event.price %></div>
+        <div><%= fa_icon "calendar-o" %> <%= t ".semester" %>:
+          <%= @user_event.semester %></div>
+        <div id="event_participants">
+          <%= render "event_participants", event: @user_event %>
         </div>
       </div>
 
-      <h5 class="no-margin">
-        <%= t ".partner" %>: <%= @user_event.partner.name %>
-      </h5>
-
-      <h5 class="no-margin">
-        <%= t ".major" %>: <%= event_major_name @user_event %>
-      </h5>
-
-      <%= render "events/enroll_request", user: current_user, event: @user_event %>
-    </div>
-    <hr class="separate_course">
-
-    <div class="d-flex justify-content-between align-items-center">
-      <div><%= fa_icon "calendar" %> <%= t ".date" %>:
-        <%= event_date @user_event %></div>
-      <div><%= fa_icon "map-o" %> <%= t ".country" %>:
-        <%= @user_event.partner.country %></div>
-      <div><%= t ".price" %>: <%= number_to_vnd @user_event.price %></div>
-      <div><%= fa_icon "calendar-o" %> <%= t ".semester" %>:
-        <%= @user_event.semester %></div>
-      <div id="event_participants">
-        <%= render "event_participants", event: @user_event %>
-      </div>
+      <hr class="separate_course mb-0">
     </div>
 
-    <hr class="separate_course">
+    <div class="extend_course_info display_center">
+      <%= fa_icon "chevron-up" %>
+    </div>
 
     <div class="tab_panels">
-      <div class="tab_panel active no-padding pr-20">
+      <div class="tab_panel active no-padding">
         <div class="row no-margin fs-09em">
           <div id="participants" class="col-md-3 border_right no-padding">
             <%= render partial: "participant", as: :user, locals: {
@@ -50,7 +60,7 @@
               collection: @user_event.participants.where.not(id: current_user) %>
           </div>
 
-          <div id="messages_form" class="col-md-6 border_right no-padding px-20">
+          <div id="messages_form" class="col-md-6 border_right no-padding">
             <% if @conversation.persisted? %>
               <%= render "messages/index", conversation: @conversation,
                 message: @conversation.messages.new, event: @user_event %>

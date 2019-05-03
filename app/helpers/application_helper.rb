@@ -14,6 +14,13 @@ module ApplicationHelper
   end
 
   def rescue_body_class
-    devise_controller? ? "" : "content #{cookies[:sidebarCollapse]}"
+    return unless check_registration_edit_update_action
+    "content #{cookies[:sidebarCollapse]}"
+  end
+
+  def check_registration_edit_update_action
+    !devise_controller? ||
+      edit_user_registration_path == request.original_fullpath ||
+      user_registration_path == request.original_fullpath
   end
 end

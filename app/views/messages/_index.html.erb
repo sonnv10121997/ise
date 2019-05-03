@@ -4,11 +4,11 @@
 </div>
 
 <%= form_for [conversation, message], method: :post, remote: true do |f| %>
-  <div class="form-group">
+  <div>
     <%= hidden_field_tag "event_id", event.slug %>
-    <%= f.text_area :content, autofocus: true, placeholder: t(".your_message"),
-      class: "form-control" %>
+    <%= f.text_field :content, autofocus: true, placeholder: t(".your_message"),
+      autocomplete: :off, class: "form-control" %>
   </div>
 
-  <%= f.submit t(".send"), class: "btn btn-primary pull-right" %>
+  <%= f.submit t(".send"), hidden:true, class: "btn btn-primary pull-right" %>
 <% end %>

@@ -1,5 +1,5 @@
 <div id="enroll_request">
-  <% if event.leader  == user %>
+  <% if event.leader == user %>
     <%= link_to user_enroll_event_path event do %>
       <div class="btn btn-success button-text"><%= t ".assigned" %></div>
     <% end %>

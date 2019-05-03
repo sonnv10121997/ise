@@ -122,7 +122,7 @@ vi:
         change_password: Đổi mật khẩu
         password: Mật khẩu
         password_confirmation: Nhập lại mập khẩu
-        current_password: Mật khảu hiện tại
+        current_password: Mật khẩu hiện tại
         current_password_message: Bạn cần nhập mật khẩu để xác nhận thay đổi
         change_message: Để trống nếu bạn không muốn đổi mật khẩu
         minimum_character: Mật khẩu phải có ít nhất %{count} ký tự
@@ -158,7 +158,7 @@ vi:
         new_confirmation: Không nhận được email xác nhận tài khoản?
     show:
       upload: Tải ảnh
-      choose_file: Chọn ảnh
+      change_avatar: Đổi ảnh
       profile: Trang cá nhân
       name: Tên
       gender: Giới tính
@@ -167,6 +167,8 @@ vi:
       phone: Số điện thoại
       email: Email
       reset_password: Đổi mật khẩu
+      female: Nữ
+      male: Nam
   messages:
     index:
       your_message: Nhập tin nhắn

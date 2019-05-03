@@ -1,46 +1,51 @@
-<div class="content">
-  <h2><%= t ".change_password" %> <%= resource_name.to_s.humanize %></h2>
+<div class="content_detail">
+  <div class="container">
+    <h2><%= t ".change_password" %></h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for resource, as: resource_name,
+      url: registration_path(resource_name), html: {method: :put} do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :email %><br/>
-      <%= f.email_field :email, disabled: true %>
-    </div>
-    <br/>
+      <div class="field">
+        <%= f.label :email %><br/>
+        <%= f.email_field :email, disabled: true, class: "input w-30", required: true %>
+      </div>
+      <br/>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div><%= t ".email_confirmation" %>: <%= resource.unconfirmed_email %></div>
-    <% end %>
-    <br/>
-
-    <div class="field">
-      <%= f.label :password, t(".password") %>
-      <i>(<%= t ".change_message" %>)</i><br/>
-      <%= f.password_field :password, autocomplete: "new-password", autofocus: true %>
-      <% if @minimum_password_length %>
-        <br/>
-        <em><%= t(".minimum_character", count: @minimum_password_length) %></em>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div><%= t ".email_confirmation" %>: <%= resource.unconfirmed_email %></div>
       <% end %>
-    </div>
-    <br/>
 
-    <div class="field">
-      <%= f.label :password_confirmation, t(".password_confirmation") %><br/>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-    <br/>
+      <div class="field">
+        <%= f.label :password, t(".password") %>
+        <% if @minimum_password_length %>
+          <em>(<%= t(".minimum_character", count: @minimum_password_length) %>)</em>
+        <% end %> <br>
+        <%= f.password_field :password, autocomplete: "new-password", required: true,
+          autofocus: true, class: "input input_border_bottom w-30" %>
+      </div>
+      <br/>
 
-    <div class="field">
-      <%= f.label :current_password, t(".current_password") %>
-      <i>(<%= t ".current_password_message" %>)</i><br/>
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-    <br/>
+      <div class="field">
+        <%= f.label :password_confirmation, t(".password_confirmation") %><br/>
+        <%= f.password_field :password_confirmation, class: "input input_border_bottom w-30",
+          autocomplete: "new-password", required: true %>
+      </div>
+      <br/>
 
-    <div class="actions">
-      <%= f.submit t(".update") %> <%= link_to t(".back"), :back %>
-    </div>
-  <% end %>
+      <div class="field">
+        <%= f.label :current_password, t(".current_password") %>
+        <i>(<%= t ".current_password_message" %>)</i><br/>
+        <%= f.password_field :current_password, class: "input input_border_bottom w-30",
+          autocomplete: "current-password", required: true %>
+      </div>
+      <br/>
+
+      <div class="actions">
+        <%= f.submit t(".update"), class: "button button-text" %>
+        <%= link_to t(".back"), user_path(current_user),
+          class: "btn button-text-default" %>
+      </div>
+    <% end %>
+  </div>
 </div>

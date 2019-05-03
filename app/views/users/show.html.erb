@@ -1,21 +1,48 @@
-<%= user_image_for @user, "user_image" %>
+<div class="content_detail pb-0">
+  <div class="container">
+    <h2><%= t ".profile" %></h2>
 
-<%= form_for user_path(@user), method: :patch do |f| %>
-  <%= f.fields_for :avatar do |a| %>
-    <%= a.label :file, t(".choose_file"),
-      class: "btn button-text-default no-margin" %>
-    <%= a.file_field :file, hidden: true, name: "user[avatar_attributes][file]",
-    accept: "image/png, image/gif, image/jpeg"%>
-  <% end %>
+    <div class="display_start align-items-start">
+      <div class="display_start w-40">
+        <div>
+          <div class="display_start py-15">
+            <%= user_image_for @user, "user_image" %>
+            <h4 class="px-15 no-margin"><%= @user.name %></h4>
+          </div>
 
-  <%= f.submit t(".upload"), class: "button button-text" %>
-<% end %>
+          <%= form_for user_path(@user), method: :patch, class: "py-15" do |f| %>
+            <%= f.fields_for :avatar do |a| %>
+              <%= a.label :file, t(".change_avatar"),
+                class: "button button-text no-margin" %>
+              <%= a.file_field :file, hidden: true, name: "user[avatar_attributes][file]",
+                accept: "image/png, image/gif, image/jpeg", onchange: "this.form.submit();" %>
+            <% end %>
+            <%= f.submit t(".upload"), hidden: true %>
+          <% end %>
 
-<h2><%= t ".profile" %></h2>
-<div><%= t ".name" %>: <%= @user.name %></div>
-<div><%= t ".gender" %>: <%= @user.gender %></div>
-<div><%= t ".dob" %>: <%= @user.dob.strftime(Settings.date.formats.long) %></div>
-<div><%= t ".roll_number" %>: <%= @user.code %></div>
-<div><%= t ".phone" %>: <%= @user.phone %></div>
-<div><%= t ".email" %>: <%= @user.email %></div>
-<div><%= link_to t(".reset_password"), edit_user_registration_path %></div>
+          <div class="py-15">
+            <%= link_to t(".reset_password"), edit_user_registration_path %>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-40">
+        <%= label_tag t(".gender") %>
+        <%= text_field_tag "", t(".#{@user.gender}"), disabled: true, class: "input" %>
+
+        <%= label_tag t(".dob"), nil, class: "mt-10" %>
+        <%= text_field_tag "", @user.dob.strftime(Settings.date.formats.long),
+          disabled: true, class: "input" %>
+
+        <%= label_tag t(".roll_number"), nil, class: "mt-10" %>
+        <%= text_field_tag "", @user.code, disabled: true, class: "input" %>
+
+        <%= label_tag t(".phone"), nil, class: "mt-10" %>
+        <%= text_field_tag "", @user.phone, disabled: true, class: "input" %>
+
+        <%= label_tag t(".email"), nil, class: "mt-10" %>
+        <%= text_field_tag "", @user.email, disabled: true, class: "input" %>
+      </div>
+    </div>
+  </div>
+</div>
