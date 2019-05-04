@@ -8,7 +8,8 @@
   <div class="container">
     <div id="course_info">
       <div class="display_center pt-25">
-        <h5><%= @user_event.name %></h5>
+        <h5><%= link_to @user_event.name, @user_event,
+          class: "refactor_link" %></h5>
       </div>
 
       <hr class="separate_course">

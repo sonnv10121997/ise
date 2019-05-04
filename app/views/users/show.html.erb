@@ -26,9 +26,10 @@
         </div>
       </div>
 
-      <div class="w-40">
+      <div class="w-30">
         <%= label_tag t(".gender") %>
-        <%= text_field_tag "", t(".#{@user.gender}"), disabled: true, class: "input" %>
+        <%= text_field_tag "", t(".#{@user.gender}"), disabled: true,
+          class: "input" %>
 
         <%= label_tag t(".dob"), nil, class: "mt-10" %>
         <%= text_field_tag "", @user.dob.strftime(Settings.date.formats.long),

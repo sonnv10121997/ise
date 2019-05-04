@@ -48,7 +48,6 @@ $(document).on(`turbolinks:load`, function () {
   $(document).on(`click`, `.add_participants`, function() {
     Swal.fire({
       title: I18n.t(`swal.warning.add_participant`),
-      text: I18n.t(`swal.warning.cannot_be_undo`),
       type: `warning`, showCancelButton: true,
       confirmButtonText: I18n.t(`swal.confirm`),
       cancelButtonText: I18n.t(`swal.cancel`),
@@ -81,6 +80,41 @@ $(document).on(`turbolinks:load`, function () {
     });
   });
 
+  $(document).on(`click`, `.unenroll_participants`, function() {
+    Swal.fire({
+      title: I18n.t(`swal.warning.unenroll_participant`),
+      type: `warning`, showCancelButton: true,
+      confirmButtonText: I18n.t(`swal.confirm`),
+      cancelButtonText: I18n.t(`swal.cancel`),
+      confirmButtonColor: confirmButtonColor,
+      cancelButtonColor: cancelButtonColor
+    }).then((result) => {
+      if (result.value) {
+        var event_slug = $(`#event_slug`).attr(`value`);
+        var status = $(this).siblings(`#user_enroll_event_status`).attr(`value`);
+        var user_id = $(this).siblings(`#user_id`).attr(`value`);
+
+        $.ajax({
+          url: `/user_enroll_events/${event_slug}`,
+          type: `PATCH`,
+          data: {
+            'user_enroll_event[status]': status,
+            'user_id': user_id
+          },
+          success: function() {
+            Swal.fire({
+              title: I18n.t(`swal.success.unenroll_participant`),
+              type: `success`, showCancelButton: false,
+              confirmButtonText: I18n.t(`swal.ok`),
+              confirmButtonColor: confirmButtonColor,
+              cancelButtonColor: cancelButtonColor
+            });
+          }
+        });
+      }
+    });
+  });
+
   $(document).on(`click`, `.remove_participants`, function() {
     Swal.fire({
       title: I18n.t(`swal.warning.remove_participant`),
@@ -100,7 +134,6 @@ $(document).on(`turbolinks:load`, function () {
           url: `/user_enroll_events/${event_slug}`,
           type: `DELETE`,
           data: {
-            'user_enroll_event[status]': status,
             'user_id': user_id
           },
           success: function() {

@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def index
     @filter = params[:filter]
-    @events = (filter ? Event.try(filter) : Event.publishes).page(params[:page])
+    @events = (filter ? Event.try(filter) : Event.publish).page(params[:page])
       .per Settings.model.event.per_page
   end
 
@@ -17,8 +17,9 @@ class EventsController < ApplicationController
 
   def add_leader_to_events
     Event.all.each do |event|
-      next if event.participants.any? {|p| p == event.leader}
-      event.participants << event.leader
+      event.participants << event.leader unless event.participants.any? {|p| p == event.leader}
+      UserEnrollEvent.find_by(event_id: event, user_id: event.leader)
+        .update_attributes status: UserEnrollEvent.statuses.values.last
     end
   end
 
