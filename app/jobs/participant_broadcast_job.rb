@@ -11,6 +11,7 @@ class ParticipantBroadcastJob < ApplicationJob
       ActionCable.server.broadcast "events:#{event.id}:participants",
         enroll_request: {html: render_enroll_request(event, user)},
         event_participants: {html: render_event_participants(event)},
+        participant: {html: render_participant(event, user, sender)},
         user_id: user.id, method: method
     when "delete"
       ActionCable.server.broadcast "events:#{event.id}:participants",

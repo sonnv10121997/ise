@@ -1,7 +1,6 @@
-<%= hidden_field_tag "participant_id", user.id %>
-
 <%= label_tag user.slug, class: "no-margin display_space_between participant",
   id: "participant_#{user.id}" do %>
+  <%= hidden_field_tag "participant_id", user.id %>
   <%= form_tag conversations_path(sender_id: sender, receiver_id: user),
     remote: true, class: "p-10" do  %>
     <div class="course_feature no-margin justify-content-start">

@@ -2,9 +2,9 @@ class CreateMessageBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform event, message
-    ActionCable.server.broadcast "conversations:#{message.conversation_id}",
+    ActionCable.server.broadcast "events:#{event.id}:conversations",
       method: "create", message: {html: render_message(event, message),
-      user_id: message.user_id}
+      user_id: message.user_id}, conversation_id: message.conversation_id
   end
 
   private
