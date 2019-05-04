@@ -28,6 +28,8 @@ model:
   message:
     date_format: "%d/%m/%y"
     time_format: "%l:%M %p"
+  transcript:
+    pass_mark: 5
 assets:
   images:
     fpt_logo: fpt_logo.png

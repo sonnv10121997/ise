@@ -1,0 +1,33 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= t ".grade_category" %></th>
+      <th scope="col"><%= t ".grade" %></th>
+      <th scope="col"><%= t ".weight" %></th>
+      <th scope="col"><%= t ".value" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% transcript.grade_categories.each do |grade_category| %>
+      <% grade_category.grades.each_with_index do |grade, idx| %>
+        <tr>
+          <% if idx.zero? %>
+            <th scope="row" rowspan="<%= grade_category.grades.size %>">
+              <%= grade_category.name %>
+            </th>
+          <% end %>
+          <td><%= grade.name %></td>
+          <td><%= grade.weight %></td>
+          <td><%= grade.value %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    <tr>
+      <th><%= t ".total" %></th>
+      <td><%= t ".total" %></td>
+      <td><%= button_tag "#{rescue_transcript_status transcript.total}",
+        class: "#{rescue_transcript_css transcript.total}" %></td>
+      <td><%= transcript.total %></td>
+    </tr>
+  </tbody>
+</table>
