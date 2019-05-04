@@ -15,7 +15,6 @@ model:
       maximum: 15
   event:
     sorted_by:
-      opening: opening
       latest: latest
       most_popular: most_popular
     per_page: 5

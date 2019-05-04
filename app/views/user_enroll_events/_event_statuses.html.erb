@@ -1,4 +1,5 @@
 <% Event.statuses.each do |key, value| %>
   <% next if current_user.Student? && value.zero? %>
-  <%= button_tag t(".#{key}"), class: "#{rescue_publish_status value}" %>
+  <%= button_tag t(".#{publish_status?(key) ? "enrolling" : key}"),
+    class: "#{rescue_publish_status value}" %>
 <% end %>

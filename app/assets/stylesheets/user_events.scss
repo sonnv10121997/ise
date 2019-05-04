@@ -128,8 +128,12 @@ label.participant {
 .dropdown-item {
   cursor: pointer;
 
-  &:hover {
+  &:hover, &:active {
     background-color: $sidebar_hover_gray;
+  }
+
+  &:active {
+    color: inherit;
   }
 }
 
@@ -195,4 +199,8 @@ hr.no-margin:last-child {
   &:focus {
     box-shadow: none;
   }
+}
+
+#course_info {
+  transition: margin-top 0.3s;
 }

@@ -7,11 +7,13 @@ en:
       stop_sending_enroll_request: Are you sure to stop sending enroll request to this course?
       send_enrolling_request: Are you sure to send enrolling request to this course?
       wait_to_be_approved: You need to wait to be approved by staff!
-      remove_participant: Are you sure to remove this participant from the course?
       add_participant: Are you sure to add this participant to the course?
+      unenroll_participant: Are you sure to unenroll this participant from the course?
+      remove_participant: Are you sure to remove this participant from the course?
       cannot_be_undo: You cannot undo this action!
     success:
       add_participant: Add participant successfully!
+      unenroll_participant: Unenroll participant successfully!
       remove_participant: Remove participant successfully!
       stop_sending_enroll_request: Stop sending enroll request successfully!
       send_enrolling_request: Send enrolling request successfully!
@@ -72,6 +74,7 @@ en:
       opening: Opening
       ongoing: Ongoing
       finished: Finished
+      enrolling: Enrolling
     user_event:
       unpublish: Unpublish
       publish: Publish
@@ -91,6 +94,7 @@ en:
     participant:
       add: Add
       remove: Remove
+      unenroll: Unenroll
     requirement:
       upload: Upload
       choose_file: Choose file
@@ -101,11 +105,11 @@ en:
       change: Change
       delete: Delete
     check_requirement:
-      decline: Decline
-      accept: Accept
+      unapprove: Unapprove
+      approve: Approve
     options:
-      unapprove: Từ chối
-      approve: Xác nhận
+      change: Change
+      delete: Delete
   users:
     sessions:
       new:

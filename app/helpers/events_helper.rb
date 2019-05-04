@@ -68,8 +68,12 @@ module EventsHelper
   end
 
   def enrollable? event, user
-    return false unless event.status == Event.statuses.keys[2] && user.Student?
+    return false unless event.status == Event.statuses.keys[1] && user.Student?
     return true if is_enrolling?(user, event) || is_enrolled?(user, event)
     !user.enrolling && !user.enrolled
+  end
+
+  def publish_status? key
+    current_user.Student? && key == Event.statuses.keys[1]
   end
 end

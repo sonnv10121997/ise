@@ -21,6 +21,10 @@
       <% if is_enrolled? user, user_event %>
         <%= hidden_field_tag "user_enroll_event[status]",
           UserEnrollEvent.statuses.keys[0] %>
+        <%= button_tag t(".unenroll"), class: "unenroll_participants",
+          id: "unenroll_participant_#{user.id}", hidden: true %>
+        <%= label_tag "unenroll_participant_#{user.id}", t(".unenroll"),
+          class: "dropdown-item no-margin" %>
         <%= button_tag t(".remove"), class: "remove_participants",
           id: "remove_participant_#{user.id}", hidden: true %>
         <%= label_tag "remove_participant_#{user.id}", t(".remove"),
