@@ -1,20 +1,22 @@
 $(document).on(`turbolinks:load`, function () {
-  var conversationId = $(`#messages`).data(`conversation-id`);
   var currentUserId = $(`#current_user_id`).val();
+  var eventId = $(`#event_id`).val();
 
   $(`.message_detail`).each(function() {
     checkDeleteable(this);
   });
 
   App.message = App.cable.subscriptions.create({
-    channel: `MessageChannel`, conversation_id: conversationId}, {
+    channel: `MessageChannel`, event_id: eventId}, {
     connected: function () { },
     received: function (data) {
-      if (data.message) {
+      if (data.message && data.conversation_id) {
         var message = data.message;
         var messUserIsCurrentUser = (currentUserId == message.user_id);
+        var conversationId = $(`#messages`).data(`conversation-id`);
 
-        if (data.method === `create` && !messUserIsCurrentUser) {
+        if (data.method === `create` && !messUserIsCurrentUser &&
+          conversationId == data.conversation_id) {
           $(`#messages`).append(message.html);
           checkDeleteable(`.message_detail:last`);
           $(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));

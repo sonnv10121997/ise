@@ -87,8 +87,10 @@
       </div>
 
       <div class="tab_panel no-padding no-border mb-100">
-        <%= render partial: "transcripts/show", locals:
-          {transcript: rescue_transcript(@user_event, @conversation)} %>
+        <% if rescue_transcript(@user_event, @conversation) %>
+          <%= render partial: "transcripts/show", locals:
+            {transcript: rescue_transcript(@user_event, @conversation)} %>
+        <% end %>
       </div>
     </div>
   </div>

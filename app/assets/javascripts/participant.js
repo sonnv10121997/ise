@@ -19,9 +19,15 @@ $(document).on(`turbolinks:load`, function () {
         var enroll_request = data.enroll_request;
         var event_participants = data.event_participants;
 
-        if (data.method == `update` && participantIsCurrentUser) {
-          $(`#enroll_request`).replaceWith(enroll_request.html);
-          $(`#event_participants`).html(event_participants.html);
+        if (data.method == `update`) {
+          if (participantIsCurrentUser) {
+            $(`#enroll_request`).replaceWith(enroll_request.html);
+            $(`#event_participants`).html(event_participants.html);
+          } else {
+            $(`#participant_${data.user_id}`).replaceWith(data.participant.html);
+            $(`#participant_${data.user_id} ~ hr:first`).remove();
+            checkParticipantEnrollable(`#participant_${data.user_id} .participant_detail`);
+          }
         }
       }
 
