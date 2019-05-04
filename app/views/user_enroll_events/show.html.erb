@@ -52,6 +52,12 @@
       <%= fa_icon "chevron-up" %>
     </div>
 
+    <div class="event_detail_panel">
+      <%= button_tag t(".discussion"), class: "button button-text tab" %>
+      <%= button_tag t(".description"), class: "btn button-text-default tab" %>
+      <%= button_tag t(".transcript"), class: "btn button-text-default tab" %>
+    </div>
+
     <div class="tab_panels">
       <div class="tab_panel active no-padding">
         <div class="row no-margin fs-09em">
@@ -74,6 +80,15 @@
             <% end %>
           </div>
         </div>
+      </div>
+
+      <div class="tab_panel mb-100">
+        <%= @user_event.description.html_safe %>
+      </div>
+
+      <div class="tab_panel no-padding no-border mb-100">
+        <%= render partial: "transcripts/show", locals:
+          {transcript: rescue_transcript(@user_event, @conversation)} %>
       </div>
     </div>
   </div>

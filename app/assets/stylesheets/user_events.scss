@@ -145,8 +145,8 @@ label.participant {
 
 .extend_course_info {
   cursor: pointer;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 
   ::before {
     font-size: x-small;
@@ -182,11 +182,11 @@ hr.no-margin:last-child {
 }
 
 #messages {
-  height: 81vh;
+  height: 72vh;
 }
 
 #requirement {
-  height: 86vh;
+  height: 78vh;
 }
 
 #new_message {
@@ -203,4 +203,8 @@ hr.no-margin:last-child {
 
 #course_info {
   transition: margin-top 0.3s;
+}
+
+.event_detail_panel {
+  margin-bottom: 16px;
 }

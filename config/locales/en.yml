@@ -90,7 +90,9 @@ en:
       price: Price
       semester: Semester
       requirements: Requirements
-      discussions: Discussions
+      discussion: Discussion
+      description: Description
+      transcript: Transcript
     participant:
       add: Add
       remove: Remove
@@ -110,6 +112,13 @@ en:
     options:
       change: Change
       delete: Delete
+  transcripts:
+    show:
+      grade_category: Grade Category
+      grade: Grade
+      weight: Weight
+      value: Value
+      total: Total
   users:
     sessions:
       new:

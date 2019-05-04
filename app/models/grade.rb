@@ -7,7 +7,7 @@ class Grade < ApplicationRecord
   private
 
   def check_values
-    return unless value.negative?
+    return unless value&.negative?
     errors.add :value, "#{I18n.t ".validate_grade_value"}"
   end
 end

@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :requirements, ->{order verified: :desc}, foreign_key: :user_id,
     class_name: UserEventRequirement.name, dependent: :destroy
   has_many :event_requirements, source: :detail, through: :requirements
+  has_many :transcripts
   has_one :avatar, as: :imageable, dependent: :destroy, class_name: Image.name
 
   accepts_nested_attributes_for :avatar, allow_destroy: true,
@@ -48,5 +49,9 @@ class User < ApplicationRecord
 
   def enrolled
     user_enroll_events.find_by status: UserEnrollEvent.statuses.values[1]
+  end
+
+  def transcript_by_event event
+    transcripts.find_by event_id: event
   end
 end

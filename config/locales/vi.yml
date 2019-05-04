@@ -90,7 +90,9 @@ vi:
       price: Học phí
       semester: Học kì
       requirements: Các yêu cầu
-      discussions: Thảo luận
+      discussion: Thảo luận
+      description: Chi tiết chương trình
+      transcript: Bảng điểm
     participant:
       add: Thêm
       remove: Xoá
@@ -110,6 +112,13 @@ vi:
     options:
       change: Đổi ảnh
       delete: Xoá ảnh
+  transcripts:
+    show:
+      grade_category: Nhóm Điểm
+      grade: Đầu điểm
+      weight: Trọng số
+      value: Điểm
+      total: Tổng
   users:
     sessions:
       new:
