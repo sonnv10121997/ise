@@ -15,6 +15,10 @@ $(document).on(`turbolinks:load`, function() {
       Cookies.set(`sidebarCollapse`, ``, { path: `/` });
     }
   });
+
+  $(`.notification`).on(`click`, function(event) {
+    event.preventDefault();
+  });
 });
 
 function toggleStatus(cookie, element, cssClass) {

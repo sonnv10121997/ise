@@ -119,6 +119,17 @@ vi:
       weight: Trọng số
       value: Điểm
       total: Tổng
+  notifications:
+    new_enroll: <b>%{user}</b> đã đăng kí tham gia khoá học <b>%{event}.</b>
+    new_unenroll: <b>%{user}</b> đã huỷ đăng kí tham gia khoá học <b>%{event}.</b>
+    unapprove_enroll: <b>%{user}</b> không cho phép bạn tham gia khóa học.
+    approve_enroll: <b>%{user}</b> đã cho phép bạn tham gia khóa học.
+    remove_enroll: <b>%{user}</b> đã xoá bạn khỏi khoá học.
+    update_requirement: <b>%{user}</b> đã cập nhật yêu cầu <b>%{requirement}</b> của khóa học <b>%{event}.</b>
+    approve_requirement: <b>%{user}</b> đã chấp thuận yêu cầu <b>%{requirement}</b> của bạn.
+    unapprove_requirement: <b>%{user}</b> đã từ chối yêu cầu <b>%{requirement}</b> của bạn.
+    new_message: "<b>%{user}</b> vừa nhắn tin cho bạn: <br/>%{message}."
+    delete_message: <b>%{user}</b> vừa xoá một tin nhắn.
   users:
     sessions:
       new:

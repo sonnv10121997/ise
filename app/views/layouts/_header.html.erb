@@ -22,14 +22,24 @@
       </div>
 
       <ul class="nav navbar-nav navbar-right main-nav">
-        <li><%= fa_icon "bell" %></li>
         <li class="dropdown">
           <%= link_to "#", class: "dropdown-toggle no-after",
-            data: {toggle: "dropdown"} do %>
+            data: {toggle: "dropdown"}, id: "notifications" do %>
+            <%= fa_icon "bell" %>
+          <% end %>
+
+          <ul id="notifications_list" class="dropdown-menu no-padding">
+            <%= render "notifications/index",
+              notifications: current_user.notifications %>
+          </ul>
+        </li>
+
+        <li class="dropdown"><%= link_to "#", class: "dropdown-toggle no-after",
+          data: {toggle: "dropdown"} do %>
             <%= user_image_for current_user, "user_image_header" %>
           <% end %>
 
-          <ul class="dropdown-menu no-padding">
+          <ul id="options_list" class="dropdown-menu no-padding">
             <li><span class="user_name"><%= current_user.name %></span></li>
             <% if can?(:access, :rails_admin) && can?(:dashboard, :all) %>
               <li>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_064139) do
+ActiveRecord::Schema.define(version: 2019_05_04_153710) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -138,15 +138,19 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content", null: false
-    t.bigint "event_id", null: false
+    t.integer "type", null: false
+    t.bigint "event_id"
     t.bigint "receiver_id", null: false
     t.bigint "notifier_id", null: false
+    t.bigint "requirement_id"
+    t.bigint "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_notifications_on_event_id"
+    t.index ["message_id"], name: "index_notifications_on_message_id"
     t.index ["notifier_id"], name: "index_notifications_on_notifier_id"
     t.index ["receiver_id"], name: "index_notifications_on_receiver_id"
+    t.index ["requirement_id"], name: "index_notifications_on_requirement_id"
   end
 
   create_table "partners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -239,6 +243,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_064139) do
   add_foreign_key "messages", "users"
   add_foreign_key "mmos", "partners"
   add_foreign_key "notifications", "events"
+  add_foreign_key "notifications", "messages"
+  add_foreign_key "notifications", "requirements"
   add_foreign_key "notifications", "users", column: "notifier_id"
   add_foreign_key "notifications", "users", column: "receiver_id"
   add_foreign_key "transcripts", "events"

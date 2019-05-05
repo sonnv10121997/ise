@@ -119,6 +119,17 @@ en:
       weight: Weight
       value: Value
       total: Total
+  notifications:
+    new_enroll: <b>%{user}</b> wanted to enroll to <b>%{event}.</b>
+    new_unenroll: <b>%{user}</b> unenrolled from <b>%{event}.</b>
+    unapprove_enroll: <b>%{user}</b> unapproved your enroll request.
+    approve_enroll: <b>%{user}</b> approved your enroll request.
+    remove_enroll: <b>%{user}</b> removed you from the course.
+    update_requirement: <b>%{user}</b> updated <b>%{requirement}</b> requirement of <b>%{event}.</b>
+    approve_requirement: <b>%{user}</b> approved your <b>%{requirement}</b> requirement.
+    unapprove_requirement: <b>%{user}</b> unapproved your <b>%{requirement}</b> requirement.
+    new_message: "You've got a message from <b>%{user}</b>: <br/>%{message}."
+    delete_message: <b>%{user}</b> deleted a message.
   users:
     sessions:
       new:

@@ -1,7 +1,7 @@
 module TranscriptsHelper
   def rescue_transcript event, conversation
     return current_user.transcript_by_event event if current_user.Student?
-    conversation.recipient(current_user).transcript_by_event event
+    conversation.recipient(current_user)&.transcript_by_event event
   end
 
   def rescue_transcript_css total
