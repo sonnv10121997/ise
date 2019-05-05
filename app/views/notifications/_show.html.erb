@@ -1,0 +1,3 @@
+<li><%= link_to t(".#{notification.type}", user: notification.user_name,
+  event: notification.event_name, requirement: notification.requirement_name,
+  message: notification.message_content).html_safe, "#", class: "notification" %></li>

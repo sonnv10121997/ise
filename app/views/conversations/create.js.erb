@@ -6,3 +6,9 @@ $(`.message_detail`).each(function() {
 $(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));
 $(`#requirement`).html(`<%= j render partial: "user_enroll_events/requirement",
   collection: requirement_collection(@user_event, @conversation) %>`);
+<% if rescue_transcript @user_event, @conversation %>
+  $(`#transcript`).html(`<%= j render "transcripts/show",
+    transcript: rescue_transcript(@user_event, @conversation) %>`);
+<% else %>
+  $(`#transcript`).html(``);
+<% end %>

@@ -86,10 +86,10 @@
         <%= @user_event.description.html_safe %>
       </div>
 
-      <div class="tab_panel no-padding no-border mb-100">
-        <% if rescue_transcript(@user_event, @conversation) %>
-          <%= render partial: "transcripts/show", locals:
-            {transcript: rescue_transcript(@user_event, @conversation)} %>
+      <div id="transcript" class="tab_panel no-padding no-border mb-100">
+        <% if rescue_transcript @user_event, @conversation %>
+          <%= render "transcripts/show",
+            transcript: rescue_transcript(@user_event, @conversation) %>
         <% end %>
       </div>
     </div>
