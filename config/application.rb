@@ -17,5 +17,7 @@ module Ise
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.available_locales = %i(en vi)
+    config.time_zone = "Hanoi"
+    config.active_record.default_timezone = :utc
   end
 end
