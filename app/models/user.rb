@@ -17,7 +17,8 @@ class User < ApplicationRecord
   has_many :requirements, ->{order verified: :desc}, foreign_key: :user_id,
     class_name: UserEventRequirement.name, dependent: :destroy
   has_many :event_requirements, source: :detail, through: :requirements
-  has_many :notifications, class_name: Notification.name, foreign_key: :receiver_id
+  has_many :notifications, ->{order created_at: :desc},
+    class_name: Notification.name, foreign_key: :receiver_id
   has_many :transcripts
   has_one :avatar, as: :imageable, dependent: :destroy, class_name: Image.name
 

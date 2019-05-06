@@ -2,21 +2,23 @@ class ParticipantBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform event, user, method, sender = nil, url = nil
+    channel = "events:#{event.id}:participants"
+
     case method
     when "create"
-      ActionCable.server.broadcast "events:#{event.id}:participants",
-        participant: {html: render_participant(event, user, sender)},
-        method: method
+      ActionCable.server.broadcast channel, method: method,
+        participant: {html: render_participant(event, user, sender)}
     when "update"
-      ActionCable.server.broadcast "events:#{event.id}:participants",
+      ActionCable.server.broadcast channel, user_id: user.id, method: method,
         enroll_request: {html: render_enroll_request(event, user)},
         event_participants: {html: render_event_participants(event)},
-        participant: {html: render_participant(event, user, sender)},
-        user_id: user.id, method: method
-    when "delete"
-      ActionCable.server.broadcast "events:#{event.id}:participants",
-        event_participants: {html: render_event_participants(event)},
-        url: url, method: method, user_id: user.id
+        participant: {html: render_participant(event, user, sender)}
+    when "delete_from_leader"
+      ActionCable.server.broadcast channel, method: method, user_id: user.id,
+        url: url
+    when "delete_from_student"
+      ActionCable.server.broadcast channel, method: method, user_id: user.id,
+        event_participants: {html: render_event_participants(event)}, url: url
     end
   end
 

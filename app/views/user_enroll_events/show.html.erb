@@ -1,7 +1,6 @@
 <% raise CanCan::AccessDenied unless can? :read, current_user.find_enroll(@user_event) %>
 
 <%= hidden_field_tag :event_id, @user_event.id %>
-<%= hidden_field_tag :current_user_id, current_user.id %>
 <%= hidden_field_tag :leader_id, @user_event.leader_id %>
 
 <div class="content_detail py-0">

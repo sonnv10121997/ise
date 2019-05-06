@@ -6,6 +6,9 @@ application:
       unit: VNĐ
       precision: 0
 model:
+  notification:
+    datetime_format: "%H:%M %d - %b - %y"
+    list: 30
   user:
     max_name_length: 30
     min_name_length: 3

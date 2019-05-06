@@ -1,1 +1,12 @@
-<%= render partial: "notifications/show", collection: notifications %>
+<% if notifications.empty? %>
+  <li><%= link_to t(".no_notification"), "#", class: "notification" %></li>
+<% else %>
+  <div id="notifications_detail">
+    <%= render partial: "notifications/show", collection: notifications,
+      as: :notification %>
+  </div>
+  <li class="display_space_between">
+    <%= link_to t(".view_all"), "#", class: "default_link", remote: true %>
+    <%= link_to t(".mark_all_as_read"), "#", class: "default_link", remote: true %>
+  </li>
+<% end %>

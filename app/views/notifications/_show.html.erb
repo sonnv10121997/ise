@@ -1,3 +1,7 @@
-<li><%= link_to t(".#{notification.type}", user: notification.user_name,
-  event: notification.event_name, requirement: notification.requirement_name,
-  message: notification.message_content).html_safe, "#", class: "notification" %></li>
+<li><%= link_to t("notifications.noti_#{notification.notification_type}",
+  user: notification.notifier_name, event: notification.event_name,
+  requirement: notification.requirement_name, message: notification.message_content,
+  time: notification.created_at.strftime(Settings.model.notification.datetime_format))
+  .html_safe, "#", class: "notification
+  #{rescue_noti_status notification.read?}" %></li>
+<hr class="no-margin" />

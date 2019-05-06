@@ -4,6 +4,8 @@ $sidebar_gray: #f7f7f7;
 $header_container_gray: #ececec;
 $button_orange: #ff8a00;
 $page_link_border_gray: #dee2e6;
+$input_gray: #f2f1f8;
+$default_link: #007bff;
 
 @mixin font_manage($size, $weight, $padding-top) {
   font-size: $size;
@@ -93,12 +95,29 @@ $page_link_border_gray: #dee2e6;
 }
 
 #notifications_list {
+  max-height: 450px;
   left: -75px !important;
   top: 5px !important;
   width: 400px;
 }
 
+#notifications_detail {
+  overflow-y: auto;
+}
+
+.not_read {
+  background-color: $input_gray;
+}
+
 #options_list {
   left: -10px !important;
   top: 10px !important;
+}
+
+.default_link {
+  color: $default_link !important;
+
+  &:hover {
+    background-color: inherit !important;
+  }
 }

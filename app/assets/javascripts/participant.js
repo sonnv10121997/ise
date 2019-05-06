@@ -1,6 +1,7 @@
 $(document).on(`turbolinks:load`, function () {
   var eventId = $(`#event_id`).val();
   var currentUserId = $(`#current_user_id`).val();
+  var leaderId = $(`#leader_id`).val();
 
   App.message = App.cable.subscriptions.create({
     channel: `ParticipantChannel`, event_id: eventId}, {
@@ -31,22 +32,22 @@ $(document).on(`turbolinks:load`, function () {
         }
       }
 
-      if (data.method == `delete`) {
-        if (participantIsCurrentUser) {
-          Swal.fire({
-            title: I18n.t(`swal.error.removed_from_course`),
-            type: `error`, showCancelButton: false,
-            confirmButtonText: I18n.t(`swal.ok`),
-            confirmButtonColor: confirmButtonColor,
-            cancelButtonColor: cancelButtonColor
-          }).then(function() {
-            location.href = data.url;
-          });
-        } else if (!participantIsCurrentUser && data.event_participants) {
-          $(`#participant_${data.user_id}, #participant_${data.user_id} ~ hr `)
-            .remove();
-          $(`#event_participants`).html(data.event_participants.html);
-        }
+      if (data.method == `delete_from_leader` && currentUserId != leaderId) {
+        Swal.fire({
+          title: I18n.t(`swal.error.removed_from_course`),
+          type: `error`, showCancelButton: false,
+          confirmButtonText: I18n.t(`swal.ok`),
+          confirmButtonColor: confirmButtonColor,
+          cancelButtonColor: cancelButtonColor
+        }).then(function() {
+          location.href = data.url;
+        });
+      }
+
+      if (data.method == `delete_from_student` && currentUserId == leaderId && data.event_participants) {
+        $(`#participant_${data.user_id}, #participant_${data.user_id} ~ hr `)
+          .remove();
+        $(`#event_participants`).html(data.event_participants.html);
       }
     }
   });
