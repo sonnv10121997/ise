@@ -44,4 +44,16 @@ class ApplicationController < ActionController::Base
       Conversation.between(sender, receiver).first ||
       Conversation.create(sender_id: sender.id, receiver_id: receiver.id)
   end
+
+  def create_notification event = nil, requirement = nil, message = nil, notifier, receiver, noti_type, noty_type
+    notification = Notification.create notification_type: noti_type,
+      event_id: event&.id, notifier_id: notifier.id, receiver_id: receiver.id,
+      requirement_id: requirement&.id, message_id: message&.id
+    text = t("notifications.noti_#{notification.notification_type}",
+      user: notification.notifier_name, event: notification.event_name,
+      requirement: notification.requirement_name, message: notification
+      .message_content, time: notification.created_at.strftime(Settings.model
+      .notification.datetime_format)).html_safe
+    NotificationBroadcastJob.perform_now notification, text, noty_type
+  end
 end

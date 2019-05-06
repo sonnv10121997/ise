@@ -18,7 +18,7 @@ class UserEnrollEventsController < ApplicationController
     find_conversation user, user_event.leader
     ParticipantBroadcastJob.perform_now \
       user_event, user, "create", conversation.recipient(user)
-    create_notification user_event, current_user, user_event.leader,
+    create_notification user_event, nil, nil, current_user, user_event.leader,
       Notification.types.values[0], "warning"
   end
 
@@ -26,6 +26,13 @@ class UserEnrollEventsController < ApplicationController
     user_enroll_event.update_attributes user_enroll_event_params
     update_joined_participants
     ParticipantBroadcastJob.perform_now user_event, user, "update"
+    if user_enroll_event_params[:status] == UserEnrollEvent.statuses.keys[0]
+      create_notification user_event, nil, nil, current_user, user,
+        Notification.types.values[2], "error"
+    else
+      create_notification user_event, nil, nil, current_user, user,
+        Notification.types.values[3], "success"
+    end
   end
 
   def destroy
@@ -35,10 +42,12 @@ class UserEnrollEventsController < ApplicationController
     if current_user == user_event.leader
       ParticipantBroadcastJob.perform_now user_event, user, "delete_from_leader",
         {}, event_path(user_event.slug)
+      create_notification user_event, nil, nil, current_user, user,
+        Notification.types.values[4], "error"
     else
       ParticipantBroadcastJob.perform_now user_event, user, "delete_from_student",
         {}, event_path(user_event.slug)
-      create_notification user_event, current_user, user_event.leader,
+      create_notification user_event, nil, nil, current_user, user_event.leader,
         Notification.types.values[1], "error"
     end
   end
@@ -91,16 +100,5 @@ class UserEnrollEventsController < ApplicationController
     joined_participants = user_event.participant_details
       .where(status: UserEnrollEvent.statuses.values[1]).size
     user_event.update_attributes joined_participants: joined_participants
-  end
-
-  def create_notification event, notifier, receiver, noti_type, noty_type
-    notification = Notification.create notification_type: noti_type,
-      event_id: event.id, notifier_id: notifier.id, receiver_id: receiver.id
-    text = t("notifications.noti_#{notification.notification_type}",
-      user: notification.notifier_name, event: notification.event_name,
-      requirement: notification.requirement_name, message: notification
-      .message_content, time: notification.created_at.strftime(Settings.model
-      .notification.datetime_format)).html_safe
-    NotificationBroadcastJob.perform_now notification, text, noty_type
   end
 end

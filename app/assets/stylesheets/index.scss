@@ -95,13 +95,13 @@ $default_link: #007bff;
 }
 
 #notifications_list {
-  max-height: 450px;
   left: -75px !important;
   top: 5px !important;
   width: 400px;
 }
 
 #notifications_detail {
+  max-height: 450px;
   overflow-y: auto;
 }
 

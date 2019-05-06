@@ -128,8 +128,8 @@ vi:
     noti_5: <b>%{user}</b> đã cập nhật yêu cầu <b>%{requirement}</b> của khóa học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
     noti_6: <b>%{user}</b> đã chấp thuận yêu cầu <b>%{requirement}</b> của bạn lúc <i><b>%{time}</i></b>.
     noti_7: <b>%{user}</b> đã từ chối yêu cầu <b>%{requirement}</b> của bạn lúc <i><b>%{time}</i></b>.
-    noti_8: "<b>%{user}</b> nhắn tin cho bạn: <br/>%{message} lúc <i><b>%{time}</i></b>."
-    noti_9: <b>%{user}</b> xoá một tin nhắn lúc <i><b>%{time}</i></b>.
+    noti_8: "<b>%{user}</b> đã nhắn tin cho bạn: <br/>\"<i><b>%{message}</i></b>\"<br/>lúc <i><b>%{time}</i></b>."
+    noti_9: <b>%{user}</b> đã xoá một tin nhắn lúc <i><b>%{time}</i></b>.
     index:
       no_notification: Bạn chưa có thông báo nào!
       mark_all_as_read: Đánh dấu tất cả là đã đọc
