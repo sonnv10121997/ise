@@ -37,3 +37,15 @@ function noty(text, type) {
     timeout: 3000
   }).show();
 };
+
+function recount_noti() {
+  var unread_noti = $(`.not_read`).length;
+
+  if (unread_noti == 0) {
+    unread_noti = ``;
+  } else if (unread_noti > 99) {
+    unread_noti = `99+`;
+  }
+
+  return unread_noti;
+}

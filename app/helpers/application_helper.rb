@@ -2,9 +2,7 @@ module ApplicationHelper
   def check_noty_type type
     noty_types = %w(alert success warning error info)
 
-    noty_types.each do |noty_type|
-      return type if type == noty_type
-    end
+    return type if noty_types.any? {|n| n == type}
     noty_types[0]
   end
 

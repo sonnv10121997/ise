@@ -120,16 +120,20 @@ vi:
       value: Điểm
       total: Tổng
   notifications:
-    new_enroll: <b>%{user}</b> đã đăng kí tham gia khoá học <b>%{event}.</b>
-    new_unenroll: <b>%{user}</b> đã huỷ đăng kí tham gia khoá học <b>%{event}.</b>
-    unapprove_enroll: <b>%{user}</b> không cho phép bạn tham gia khóa học.
-    approve_enroll: <b>%{user}</b> đã cho phép bạn tham gia khóa học.
-    remove_enroll: <b>%{user}</b> đã xoá bạn khỏi khoá học.
-    update_requirement: <b>%{user}</b> đã cập nhật yêu cầu <b>%{requirement}</b> của khóa học <b>%{event}.</b>
-    approve_requirement: <b>%{user}</b> đã chấp thuận yêu cầu <b>%{requirement}</b> của bạn.
-    unapprove_requirement: <b>%{user}</b> đã từ chối yêu cầu <b>%{requirement}</b> của bạn.
-    new_message: "<b>%{user}</b> vừa nhắn tin cho bạn: <br/>%{message}."
-    delete_message: <b>%{user}</b> vừa xoá một tin nhắn.
+    noti_0: <b>%{user}</b> đã đăng kí tham gia khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
+    noti_1: <b>%{user}</b> đã huỷ đăng kí tham gia khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
+    noti_2: <b>%{user}</b> không cho phép bạn tham gia khóa học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
+    noti_3: <b>%{user}</b> đã cho phép bạn tham gia khóa học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
+    noti_4: <b>%{user}</b> đã xoá bạn khỏi khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
+    noti_5: <b>%{user}</b> đã cập nhật yêu cầu <b>%{requirement}</b> của khóa học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
+    noti_6: <b>%{user}</b> đã chấp thuận yêu cầu <b>%{requirement}</b> của bạn lúc <i><b>%{time}</i></b>.
+    noti_7: <b>%{user}</b> đã từ chối yêu cầu <b>%{requirement}</b> của bạn lúc <i><b>%{time}</i></b>.
+    noti_8: "<b>%{user}</b> nhắn tin cho bạn: <br/>%{message} lúc <i><b>%{time}</i></b>."
+    noti_9: <b>%{user}</b> xoá một tin nhắn lúc <i><b>%{time}</i></b>.
+    index:
+      no_notification: Bạn chưa có thông báo nào!
+      mark_all_as_read: Đánh dấu tất cả là đã đọc
+      view_all: Xem tất cả
   users:
     sessions:
       new:

@@ -120,16 +120,20 @@ en:
       value: Value
       total: Total
   notifications:
-    new_enroll: <b>%{user}</b> wanted to enroll to <b>%{event}.</b>
-    new_unenroll: <b>%{user}</b> unenrolled from <b>%{event}.</b>
-    unapprove_enroll: <b>%{user}</b> unapproved your enroll request.
-    approve_enroll: <b>%{user}</b> approved your enroll request.
-    remove_enroll: <b>%{user}</b> removed you from the course.
-    update_requirement: <b>%{user}</b> updated <b>%{requirement}</b> requirement of <b>%{event}.</b>
-    approve_requirement: <b>%{user}</b> approved your <b>%{requirement}</b> requirement.
-    unapprove_requirement: <b>%{user}</b> unapproved your <b>%{requirement}</b> requirement.
-    new_message: "You've got a message from <b>%{user}</b>: <br/>%{message}."
-    delete_message: <b>%{user}</b> deleted a message.
+    noti_0: <b>%{user}</b> wanted to enroll to <b>%{event}</b> at <i><b>%{time}</b></i>.
+    noti_1: <b>%{user}</b> unenrolled from <b>%{event}</b> at <i><b>%{time}</b></i>.
+    noti_2: <b>%{user}</b> unapproved your enroll request <b>%{event}</b> at <i><b>%{time}</b></i>.
+    noti_3: <b>%{user}</b> approved your enroll request <b>%{event}</b> at <i><b>%{time}</b></i>.
+    noti_4: <b>%{user}</b> removed you from the course <b>%{event}</b> at <i><b>%{time}</b></i>.
+    noti_5: <b>%{user}</b> updated <b>%{requirement}</b> requirement of <b>%{event}</b> at <i><b>%{time}</b></i>.
+    noti_6: <b>%{user}</b> approved your <b>%{requirement}</b> requirement at <i><b>%{time}</b></i>.
+    noti_7: <b>%{user}</b> unapproved your <b>%{requirement}</b> requirement at <i><b>%{time}</b></i>.
+    noti_8: "You've got a message from <b>%{user}</b>: <br/>%{message} at <i><b>%{time}</b></i>."
+    noti_9: <b>%{user}</b> deleted a message at <i><b>%{time}</b></i>.
+    index:
+      no_notification: You don't have any notification yet!
+      mark_all_as_read: Mark all as read
+      view_all: View all
   users:
     sessions:
       new:
