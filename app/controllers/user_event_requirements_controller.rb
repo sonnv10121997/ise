@@ -7,11 +7,23 @@ class UserEventRequirementsController < ApplicationController
   def upload_image
     user_event_requirement.update_attributes upload_image_params
     broadcast_requirement "upload_image"
+    create_notification user_event_requirement.event,
+      user_event_requirement.requirement, nil, current_user,
+      user_event_requirement.event.leader, Notification.types.values[5], "warning"
     redirect_back fallback_location: root_path
   end
 
   def check_requirement
     user_event_requirement.update_attributes check_requirement_params
+    if check_requirement_params[:verified] == "true"
+      create_notification nil, user_event_requirement.requirement, nil,
+        current_user, user_event_requirement.user, Notification.types.values[6],
+        "success"
+    elsif check_requirement_params[:verified] == "false"
+      create_notification nil, user_event_requirement.requirement, nil,
+        current_user, user_event_requirement.user, Notification.types.values[7],
+        "error"
+    end
     broadcast_requirement "check_requirement"
   end
 
