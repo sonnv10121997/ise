@@ -1,0 +1,9 @@
+<div class="p-20 <%= rescue_noti_status notification.read? %>">
+  <%= t("notifications.noti_#{notification.notification_type}",
+    user: notification.notifier_name, event: notification.event_name,
+    requirement: notification.requirement_name, message: notification
+    .message_content, time: notification.created_at.strftime(Settings.model
+    .notification.datetime_format)).html_safe %>
+</div>
+
+<hr class="no-margin" />
