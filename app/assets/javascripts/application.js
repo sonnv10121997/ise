@@ -39,13 +39,13 @@ function noty(text, type) {
 };
 
 function recount_noti() {
-  var unread_noti = $(`.not_read`).length;
+  var unread_noti = $(`#notifications_detail .not_read`).length;
 
   if (unread_noti == 0) {
     unread_noti = ``;
-  } else if (unread_noti > 99) {
-    unread_noti = `99+`;
+  } else if (unread_noti > 25) {
+    unread_noti = `25+`;
   }
 
-  return unread_noti;
+  $(`#notifications_count`).html(unread_noti);
 }

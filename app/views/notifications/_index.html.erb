@@ -5,8 +5,10 @@
     <%= render partial: "notifications/show", collection: notifications,
       as: :notification %>
   </div>
+  <hr class="no-margin">
   <li class="display_space_between">
-    <%= link_to t(".view_all"), "#", class: "default_link", remote: true %>
-    <%= link_to t(".mark_all_as_read"), "#", class: "default_link", remote: true %>
+    <%= link_to t(".view_all"), notifications_path, class: "default_link" %>
+    <%= link_to t(".mark_all_as_read"), notifications_path, id: "mark_all_as_read",
+      class: "default_link", remote: true, method: :patch %>
   </li>
 <% end %>

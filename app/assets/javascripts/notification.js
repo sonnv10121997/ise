@@ -9,12 +9,20 @@ $(document).ready(function () {
         var notification = data.notification;
 
         $(`#notifications_detail`).prepend(notification.html);
-        noty(notification.text, notification.noty_type);
+        recount_noti();
+        if (!($(`#messages`).length && (notification.type == 8 || notification.type == 9))) {
+          noty(notification.text, notification.noty_type);
+        }
       }
     }
   });
 });
 
 $(document).on(`turbolinks:load`, function () {
-  $(`#notifications_count`).html(recount_noti());
+  recount_noti();
+
+  $(`#mark_all_as_read`).on(`click`, function() {
+    $(`.not_read`).removeClass(`not_read`);
+    recount_noti();
+  });
 });

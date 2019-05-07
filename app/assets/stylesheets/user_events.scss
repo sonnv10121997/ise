@@ -3,6 +3,7 @@ $pass: #28a745;
 $content_gray: #fafafa;
 $input_gray: #f2f1f8;
 $sidebar_hover_gray: #e4e4e4;
+$message_border_top: #ddd;
 
 @mixin display($type, $item, $content, $direction) {
   display: $type;
@@ -190,7 +191,7 @@ hr.no-margin:last-child {
 }
 
 #new_message {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid $message_border_top;
 }
 
 #message_content {
