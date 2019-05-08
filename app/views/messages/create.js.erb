@@ -1,4 +1,5 @@
 $(`#messages`).append(`<%= j render "messages/message", message: @message, event: @event %>`);
 checkDeleteable(`.message_detail:last`);
+$(`#participant_<%= @recipient.id %>`).find(`#unread_messages`).html(``);
 $(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));
 $(`#message_content`).val(``);

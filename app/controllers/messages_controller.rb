@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  attr_reader :conversation, :message, :event
+  attr_reader :conversation, :message, :event, :recipient
 
   before_action ->{find_event params[:event_id]}
   before_action :find_conversation
@@ -11,14 +11,15 @@ class MessagesController < ApplicationController
     @message = conversation.messages.new message_params
     @message.user = current_user
     @message.save
-    CreateMessageBroadcastJob.perform_now event, message
+    @recipient = conversation.recipient current_user
+    CreateMessageBroadcastJob.perform_now event, message, current_user
     create_notification event, nil, message, current_user,
-      conversation.recipient(current_user), Notification.types.values[8], "info"
+      recipient, Notification.types.values[8], "info"
   end
 
   def destroy
     message.destroy
-    DestroyMessageBroadcastJob.perform_now event, message
+    DestroyMessageBroadcastJob.perform_now event, message, current_user
     create_notification event, nil, nil, current_user,
       conversation.recipient(current_user), Notification.types.values[9], "info"
   end

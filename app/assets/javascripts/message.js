@@ -15,6 +15,11 @@ $(document).on(`turbolinks:load`, function () {
           var message = data.message;
           var messUserIsCurrentUser = (currentUserId == message.user_id);
           var conversationId = $(`#messages`).data(`conversation-id`);
+          var unreadMessages = message.unread == 0 ? `` : message.unread;
+
+          if (message.receiver_id == currentUserId) {
+            $(`#participant_${message.user_id} #unread_messages`).html(unreadMessages);
+          }
 
           if (data.method === `create` && !messUserIsCurrentUser &&
             conversationId == data.conversation_id) {

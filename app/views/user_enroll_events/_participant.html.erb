@@ -1,3 +1,5 @@
+<% conversation = rescue_conversation sender, user %>
+
 <%= label_tag user.slug, class: "no-margin display_space_between participant
   #{rescue_participant_css(user_counter) rescue NoMethodError}",
   id: "participant_#{user.id}" do %>
@@ -7,7 +9,9 @@
     <div class="course_feature no-margin justify-content-start">
       <div class="mr-15"><%= req_verified? is_enrolled?(user, user_event) %></div>
       <%= user_image_for user, "user_image_x_small" %>
-      <div class="user_title"><%= user.name %></div>
+      <div class="mx-15"><%= user.name %></div>
+      <span class="badge badge-secondary" id="unread_messages"><%=
+        rescue_unread_message conversation, sender %></span>
     </div>
     <%= hidden_field_tag "event_slug", user_event.slug %>
     <%= button_tag "", type: :submit, hidden: true, id: user.slug %>

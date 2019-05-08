@@ -6,5 +6,5 @@ class Message < ApplicationRecord
 
   validates_presence_of :content, :conversation, :user
 
-  scope :not_read_by, ->(user) {where.not user: user, read: true}
+  scope :not_read_by, ->(user) {where "user_id != ? AND `read` = ?", user, false}
 end

@@ -1,7 +1,7 @@
 class UserEnrollEventsController < ApplicationController
   attr_reader :user_event, :user_enroll_event, :user, :conversation
 
-  before_action ->{find_user params[:user_id]}, only: :create
+  before_action ->{find_user params[:user_id]}, only: %i(create update)
   before_action ->{find_user_event params[:event_id]}, except: :index
   before_action :rescue_conversation, :update_user_event_requirement, only: :show
   before_action :find_user_enroll_event, only: %i(update destroy)
@@ -16,8 +16,8 @@ class UserEnrollEventsController < ApplicationController
     current_user.user_enroll_events.create event_id: user_event.id
     create_user_event_requirement
     find_conversation user, user_event.leader
-    ParticipantBroadcastJob.perform_now \
-      user_event, user, "create", conversation.recipient(user)
+    ParticipantBroadcastJob.perform_now user_event, user, "create",
+      conversation.recipient(user)
     create_notification user_event, nil, nil, current_user, user_event.leader,
       Notification.types.values[0], "warning"
   end
@@ -25,7 +25,9 @@ class UserEnrollEventsController < ApplicationController
   def update
     user_enroll_event.update_attributes user_enroll_event_params
     update_joined_participants
-    ParticipantBroadcastJob.perform_now user_event, user, "update"
+    find_conversation user, user_event.leader
+    ParticipantBroadcastJob.perform_now user_event, user, "update",
+      conversation.recipient(user)
     if user_enroll_event_params[:status] == UserEnrollEvent.statuses.keys[0]
       create_notification user_event, nil, nil, current_user, user,
         Notification.types.values[2], "error"
