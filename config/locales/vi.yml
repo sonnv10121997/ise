@@ -96,6 +96,7 @@ vi:
       description: Chi tiết chương trình
       transcript: Bảng điểm
       no_transcript: Bạn chưa có bảng điểm của khoá học này!
+      no_transcript_for_student: Sinh viên này chưa có bảng điểm!
     participant:
       add: Thêm
       remove: Xoá

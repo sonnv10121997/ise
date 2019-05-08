@@ -90,7 +90,13 @@
           <%= render "transcripts/show",
             transcript: rescue_transcript(@user_event, @conversation) %>
         <% else %>
-          <h3><%= t ".no_transcript" %></h3>
+          <h3>
+            <% if current_user == @user_event.leader %>
+              <%= t ".no_transcript_for_student" %>
+            <% else %>
+              <%= t ".no_transcript" %>
+            <% end %>
+          </h3>
         <% end %>
       </div>
     </div>
