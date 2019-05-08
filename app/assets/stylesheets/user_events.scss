@@ -81,11 +81,11 @@ $message_border_top: #ddd;
 
 .req_img {
   display: inline-block;
-  height: 130px;
+  height: 125px;
 
   img {
-    max-width: 230px;
-    max-height: 130px;
+    max-width: 221px;
+    max-height: 125px;
   }
 }
 
@@ -93,6 +93,10 @@ label.participant {
   cursor: pointer;
 
   &:hover {
+    background-color: $sidebar_hover_gray !important;
+  }
+
+  &.active {
     background: $input_gray;
   }
 }
@@ -208,4 +212,8 @@ hr.no-margin:last-child {
 
 .event_detail_panel {
   margin-bottom: 16px;
+}
+
+#images .req_img img {
+  cursor: pointer;
 }

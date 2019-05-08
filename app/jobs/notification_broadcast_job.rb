@@ -4,7 +4,8 @@ class NotificationBroadcastJob < ApplicationJob
   def perform notification, text, noty_type = "alert"
     ActionCable.server.broadcast "notifications:#{notification.receiver_id}",
       notification: {html: render_notification(notification), text: text,
-      noty_type: noty_type, type: notification.notification_type}
+      noty_type: noty_type, type: notification.notification_type,
+      notifier_id: notification.notifier_id}
   end
 
   private

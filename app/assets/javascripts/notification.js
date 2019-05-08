@@ -1,21 +1,25 @@
 $(document).ready(function () {
   var currentUserId = $(`#current_user_id`).val();
 
-  App.message = App.cable.subscriptions.create({
-    channel: `NotificationChannel`, current_user_id: currentUserId}, {
-    connected: function () { },
-    received: function (data) {
-      if (data.notification) {
-        var notification = data.notification;
+  if (currentUserId) {
+    App.message = App.cable.subscriptions.create({
+      channel: `NotificationChannel`, current_user_id: currentUserId}, {
+      connected: function () { },
+      received: function (data) {
+        if (data.notification) {
+          var notification = data.notification;
 
-        $(`#notifications_detail`).prepend(notification.html);
-        recount_noti();
-        if (!($(`#messages`).length && (notification.type == 8 || notification.type == 9))) {
-          noty(notification.text, notification.noty_type);
+          $(`#notifications_detail`).prepend(notification.html);
+          recount_noti();
+          if (!((notification.type == 8 || notification.type == 9) &&
+            notification.notifier_id == $(`.active > #participant_id`).val() &&
+            $(`#messages`).length)) {
+            noty(notification.text, notification.noty_type);
+          }
         }
       }
-    }
-  });
+    });
+  }
 });
 
 $(document).on(`turbolinks:load`, function () {

@@ -21,4 +21,9 @@ module ApplicationHelper
       edit_user_registration_path == request.original_fullpath ||
       user_registration_path == request.original_fullpath
   end
+
+  def rescue_locale_css locale
+    return "button button-text" if locale == I18n.locale
+    "btn button-text-default"
+  end
 end

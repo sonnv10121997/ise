@@ -6,4 +6,8 @@ module ParticipantsHelper
   def is_enrolling? user, event
     user.check_enroll_status(event) == UserEnrollEvent.statuses.keys[0]
   end
+
+  def rescue_participant_css index
+    return "active" if index&.zero?
+  end
 end

@@ -3,54 +3,56 @@ $(document).on(`turbolinks:load`, function () {
   var currentUserId = $(`#current_user_id`).val();
   var leaderId = $(`#leader_id`).val();
 
-  App.message = App.cable.subscriptions.create({
-    channel: `ParticipantChannel`, event_id: eventId}, {
-    connected: function () { },
-    received: function (data) {
-      if (data.method == `create` && data.participant) {
-        $(`#participants`).append(data.participant.html);
-        checkParticipantEnrollable(`.participant_detail:last`);
-      }
+  if (eventId) {
+    App.message = App.cable.subscriptions.create({
+      channel: `ParticipantChannel`, event_id: eventId}, {
+      connected: function () { },
+      received: function (data) {
+        if (data.method == `create` && data.participant) {
+          $(`#participants`).append(data.participant.html);
+          checkParticipantEnrollable(`.participant_detail:last`);
+        }
 
-      if (data.user_id) {
-        var participantIsCurrentUser = (currentUserId == data.user_id);
-      }
+        if (data.user_id) {
+          var currentUserIsPariticipant = (currentUserId == data.user_id);
+        }
 
-      if (data.enroll_request && data.event_participants) {
-        var enroll_request = data.enroll_request;
-        var event_participants = data.event_participants;
+        if (data.enroll_request && data.event_participants) {
+          var enroll_request = data.enroll_request;
+          var event_participants = data.event_participants;
 
-        if (data.method == `update`) {
-          if (participantIsCurrentUser) {
-            $(`#enroll_request`).replaceWith(enroll_request.html);
-            $(`#event_participants`).html(event_participants.html);
-          } else {
-            $(`#participant_${data.user_id}`).replaceWith(data.participant.html);
-            $(`#participant_${data.user_id} ~ hr:first`).remove();
-            checkParticipantEnrollable(`#participant_${data.user_id} .participant_detail`);
+          if (data.method == `update`) {
+            if (currentUserIsPariticipant) {
+              $(`#enroll_request`).replaceWith(enroll_request.html);
+              $(`#event_participants`).html(event_participants.html);
+            } else {
+              $(`#participant_${data.user_id}`).replaceWith(data.participant.html);
+              $(`#participant_${data.user_id} ~ hr:first`).remove();
+              checkParticipantEnrollable(`#participant_${data.user_id} .participant_detail`);
+            }
           }
         }
-      }
 
-      if (data.method == `delete_from_leader` && currentUserId != leaderId) {
-        Swal.fire({
-          title: I18n.t(`swal.error.removed_from_course`),
-          type: `error`, showCancelButton: false,
-          confirmButtonText: I18n.t(`swal.ok`),
-          confirmButtonColor: confirmButtonColor,
-          cancelButtonColor: cancelButtonColor
-        }).then(function() {
-          location.href = data.url;
-        });
-      }
+        if (data.method == `delete_from_leader` && currentUserIsPariticipant) {
+          Swal.fire({
+            title: I18n.t(`swal.error.removed_from_course`),
+            type: `error`, showCancelButton: false,
+            confirmButtonText: I18n.t(`swal.ok`),
+            confirmButtonColor: confirmButtonColor,
+            cancelButtonColor: cancelButtonColor
+          }).then(function() {
+            location.href = data.url;
+          });
+        }
 
-      if (data.method == `delete_from_student` && currentUserId == leaderId && data.event_participants) {
-        $(`#participant_${data.user_id}, #participant_${data.user_id} ~ hr `)
-          .remove();
-        $(`#event_participants`).html(data.event_participants.html);
+        if (data.method == `delete_from_student` && currentUserId == leaderId && data.event_participants) {
+          $(`#participant_${data.user_id}, #participant_${data.user_id} ~ hr `)
+            .remove();
+          $(`#event_participants`).html(data.event_participants.html);
+        }
       }
-    }
-  });
+    });
+  }
 
   $(document).on(`click`, `.add_participants`, function() {
     Swal.fire({
@@ -161,6 +163,11 @@ $(document).on(`turbolinks:load`, function () {
 
   $(`.participant_detail`).each(function() {
     checkParticipantEnrollable(this);
+  });
+
+  $(document).on(`click`, `.participant`, function() {
+    $(`.participant`).removeClass(`active`);
+    $(this).addClass(`active`);
   });
 });
 

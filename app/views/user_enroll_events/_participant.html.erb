@@ -1,4 +1,5 @@
-<%= label_tag user.slug, class: "no-margin display_space_between participant",
+<%= label_tag user.slug, class: "no-margin display_space_between participant
+  #{rescue_participant_css(user_counter) rescue NoMethodError}",
   id: "participant_#{user.id}" do %>
   <%= hidden_field_tag "participant_id", user.id %>
   <%= form_tag conversations_path(sender_id: sender, receiver_id: user),

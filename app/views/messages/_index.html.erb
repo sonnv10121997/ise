@@ -1,4 +1,5 @@
 <div id="messages" data-sender-id="<%= current_user.slug %>"
+  data-sender="<%= current_user.id %>"
   data-conversation-id="<%= message.conversation_id %>">
   <%= render conversation.messages.reject(&:new_record?), event: event %>
 </div>
