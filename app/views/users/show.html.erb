@@ -3,8 +3,8 @@
     <h2><%= t ".profile" %></h2>
 
     <div class="display_start align-items-start">
-      <div class="display_start w-40">
-        <div>
+      <div class="display_vertical_between w-40">
+        <div class="pb-50">
           <div class="display_start py-15">
             <%= user_image_for @user, "user_image" %>
             <h4 class="px-15 no-margin"><%= @user.name %></h4>
@@ -23,6 +23,12 @@
           <div class="py-15">
             <%= link_to t(".reset_password"), edit_user_registration_path %>
           </div>
+        </div>
+
+        <div>
+          <h4><%= t ".language" %></h4>
+          <%= link_to t(".vi"), {locale: :vi}, class: "#{rescue_locale_css :vi}" %>
+          <%= link_to t(".en"), {locale: :en}, class: "#{rescue_locale_css :en}" %>
         </div>
       </div>
 

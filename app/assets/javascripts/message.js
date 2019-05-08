@@ -6,26 +6,28 @@ $(document).on(`turbolinks:load`, function () {
     checkDeleteable(this);
   });
 
-  App.message = App.cable.subscriptions.create({
-    channel: `MessageChannel`, event_id: eventId}, {
-    connected: function () { },
-    received: function (data) {
-      if (data.message && data.conversation_id) {
-        var message = data.message;
-        var messUserIsCurrentUser = (currentUserId == message.user_id);
-        var conversationId = $(`#messages`).data(`conversation-id`);
+  if (eventId) {
+    App.message = App.cable.subscriptions.create({
+      channel: `MessageChannel`, event_id: eventId}, {
+      connected: function () { },
+      received: function (data) {
+        if (data.message && data.conversation_id) {
+          var message = data.message;
+          var messUserIsCurrentUser = (currentUserId == message.user_id);
+          var conversationId = $(`#messages`).data(`conversation-id`);
 
-        if (data.method === `create` && !messUserIsCurrentUser &&
-          conversationId == data.conversation_id) {
-          $(`#messages`).append(message.html);
-          checkDeleteable(`.message_detail:last`);
-          $(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));
-        } else if (data.method === `destroy` && !messUserIsCurrentUser) {
-          $(`#message_${message.id}`).remove();
+          if (data.method === `create` && !messUserIsCurrentUser &&
+            conversationId == data.conversation_id) {
+            $(`#messages`).append(message.html);
+            checkDeleteable(`.message_detail:last`);
+            $(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));
+          } else if (data.method === `destroy` && !messUserIsCurrentUser) {
+            $(`#message_${message.id}`).remove();
+          }
         }
       }
-    }
-  });
+    });
+  }
 
   $(`#messages`).scrollTop($(`#messages`).prop(`scrollHeight`));
 });

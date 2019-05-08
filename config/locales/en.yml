@@ -93,6 +93,7 @@ en:
       discussion: Discussion
       description: Description
       transcript: Transcript
+      no_transcript: You don't have transcript for this course yet!
     participant:
       add: Add
       remove: Remove
@@ -134,6 +135,11 @@ en:
       no_notification: You don't have any notification yet!
       mark_all_as_read: Mark all as read
       view_all: View all
+  partners:
+    show:
+      name: Name
+      address: Address
+      country: Country
   users:
     sessions:
       new:
@@ -197,6 +203,9 @@ en:
       reset_password: Reset password
       female: Female
       male: Male
+      vi: Vietnamese
+      en: English
+      language: Language
   messages:
     index:
       your_message: Your message

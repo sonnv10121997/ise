@@ -89,6 +89,8 @@
         <% if rescue_transcript @user_event, @conversation %>
           <%= render "transcripts/show",
             transcript: rescue_transcript(@user_event, @conversation) %>
+        <% else %>
+          <h3><%= t ".no_transcript" %></h3>
         <% end %>
       </div>
     </div>

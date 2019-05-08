@@ -93,6 +93,7 @@ vi:
       discussion: Thảo luận
       description: Chi tiết chương trình
       transcript: Bảng điểm
+      no_transcript: Bạn chưa có bảng điểm của khoá học này!
     participant:
       add: Thêm
       remove: Xoá
@@ -134,6 +135,11 @@ vi:
       no_notification: Bạn chưa có thông báo nào!
       mark_all_as_read: Đánh dấu tất cả là đã đọc
       view_all: Xem tất cả
+  partners:
+    show:
+      name: Tên đối tác
+      address: Địa chỉ
+      country: Quốc gia
   users:
     sessions:
       new:
@@ -197,6 +203,9 @@ vi:
       reset_password: Đổi mật khẩu
       female: Nữ
       male: Nam
+      vi: Tiếng Việt
+      en: Tiếng Anh
+      language: Ngôn ngữ
   messages:
     index:
       your_message: Nhập tin nhắn
