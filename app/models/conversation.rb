@@ -13,4 +13,8 @@ class Conversation < ApplicationRecord
   def recipient current_user
     sender == current_user ? receiver : sender
   end
+
+  def unread_messages current_user
+    messages.where "user_id != ? AND `read` = ?", current_user, false
+  end
 end
