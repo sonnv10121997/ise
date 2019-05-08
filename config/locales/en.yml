@@ -96,6 +96,7 @@ en:
       description: Description
       transcript: Transcript
       no_transcript: You don't have transcript for this course yet!
+      no_transcript_for_student: This student don't have transcript yet!
     participant:
       add: Add
       remove: Remove

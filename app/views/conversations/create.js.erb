@@ -10,5 +10,9 @@ $(`#requirement`).html(`<%= j render partial: "user_enroll_events/requirement",
   $(`#transcript`).html(`<%= j render "transcripts/show",
     transcript: rescue_transcript(@user_event, @conversation) %>`);
 <% else %>
-  $(`#transcript`).html(`<h3><%= t "user_enroll_events.show.no_transcript" %></h3>`);
+  if ($(`#current_user_id`).val() == $(`#leader_id`).val()) {
+    $(`#transcript`).html(`<h3><%= t "user_enroll_events.show.no_transcript_for_student" %></h3>`);
+  } else {
+    $(`#transcript`).html(`<h3><%= t "user_enroll_events.show.no_transcript" %></h3>`);
+  }
 <% end %>
