@@ -6,17 +6,19 @@ en:
     warning:
       stop_sending_enroll_request: Are you sure to stop sending enroll request to this course?
       send_enrolling_request: Are you sure to send enrolling request to this course?
-      wait_to_be_approved: You need to wait to be approved by staff!
+      send_unenroll_request: Are you sure to send unenroll request to this course?
       add_participant: Are you sure to add this participant to the course?
       unenroll_participant: Are you sure to unenroll this participant from the course?
       remove_participant: Are you sure to remove this participant from the course?
+      wait_to_be_approved: You need to wait to be approved by staff!
       cannot_be_undo: You cannot undo this action!
     success:
+      stop_sending_enroll_request: Stop sending enroll request successfully!
+      send_enrolling_request: Send enrolling request successfully!
+      send_unenroll_request: Send unenroll request successfully!
       add_participant: Add participant successfully!
       unenroll_participant: Unenroll participant successfully!
       remove_participant: Remove participant successfully!
-      stop_sending_enroll_request: Stop sending enroll request successfully!
-      send_enrolling_request: Send enrolling request successfully!
       wait_to_be_approved: You now need to wait to be approved. Check "My courses" tab to inbox the staff!
     error:
       removed_from_course: You have been removed from the course!
@@ -121,7 +123,7 @@ en:
       value: Value
       total: Total
   notifications:
-    noti_0: <b>%{user}</b> send enroll request to <b>%{event}</b> at <i><b>%{time}</b></i>.
+    noti_0: <b>%{user}</b> sent enroll request to <b>%{event}</b> at <i><b>%{time}</b></i>.
     noti_1: <b>%{user}</b> unenrolled from <b>%{event}</b> at <i><b>%{time}</b></i>.
     noti_2: <b>%{user}</b> unapproved your enroll request to <b>%{event}</b> at <i><b>%{time}</b></i>.
     noti_3: <b>%{user}</b> approved your enroll request to <b>%{event}</b> at <i><b>%{time}</b></i>.
@@ -131,6 +133,7 @@ en:
     noti_7: <b>%{user}</b> unapproved your <b>%{requirement}</b> requirement at <i><b>%{time}</b></i>.
     noti_8: "You've got a message from <b>%{user}</b> in <b>%{event}</b>: <br/>\"<i><b>%{message}</i></b>\"<br/>at <i><b>%{time}</b></i>."
     noti_9: <b>%{user}</b> from <b>%{event}</b> deleted a message at <i><b>%{time}</b></i>.
+    noti_10: <b>%{user}</b> sent unenroll request to <b>%{event}</b> at <i><b>%{time}</b></i>.
     index:
       no_notification: You don't have any notification yet!
       mark_all_as_read: Mark all as read

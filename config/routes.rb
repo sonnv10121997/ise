@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       resources :messages, only: %i(create destroy)
     end
     resources :partners, only: :show
-    resources :notifications, only: :index
+    resources :notifications, only: %i(index create)
     resource :notifications, only: :update
     root "events#index"
   end

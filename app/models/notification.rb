@@ -1,7 +1,7 @@
 class Notification < ApplicationRecord
   NOTIFICATION_TYPES = %i(new_enroll new_unenroll unapprove_enroll approve_enroll
     remove_enroll update_requirement approve_requirement unapprove_requirement
-    new_message delete_message)
+    new_message delete_message unenroll_request)
 
   enum type: NOTIFICATION_TYPES
 

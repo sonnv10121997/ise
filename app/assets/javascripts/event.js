@@ -50,7 +50,7 @@ $(document).on(`turbolinks:load`, function() {
   $(document).on(`click`, `#enrolling_button`, function() {
     Swal.fire({
       title: I18n.t(`swal.warning.stop_sending_enroll_request`),
-      text: ``, type: `warning`, showCancelButton: true,
+      type: `warning`, showCancelButton: true,
       confirmButtonText: I18n.t(`swal.confirm`),
       cancelButtonText: I18n.t(`swal.cancel`),
       confirmButtonColor: confirmButtonColor,
@@ -67,12 +67,43 @@ $(document).on(`turbolinks:load`, function() {
           success: function() {
             Swal.fire({
               title: I18n.t(`swal.success.stop_sending_enroll_request`),
-              text: ``, type: `success`, showCancelButton: false,
+              type: `success`, showCancelButton: false,
               confirmButtonText: I18n.t(`swal.ok`),
               confirmButtonColor: confirmButtonColor,
               cancelButtonColor: cancelButtonColor
             }).then(function() {
               location.href = `/events/${event_slug}`;
+            });
+          }
+        });
+      }
+    });
+  });
+
+  $(document).on(`click`, `#enrolled_button`, function() {
+    Swal.fire({
+      title: I18n.t(`swal.warning.send_unenroll_request`),
+      text: I18n.t(`swal.warning.wait_to_be_approved`),
+      type: `warning`, showCancelButton: true,
+      confirmButtonText: I18n.t(`swal.confirm`),
+      cancelButtonText: I18n.t(`swal.cancel`),
+      confirmButtonColor: confirmButtonColor,
+      cancelButtonColor: cancelButtonColor
+    }).then((result) => {
+      if (result.value) {
+        var event_slug = $(`#event_slug`).attr(`value`);
+
+        $.ajax({
+          url: `/notifications`,
+          type: `POST`,
+          data: { 'event_id': event_slug },
+          success: function() {
+            Swal.fire({
+              title: I18n.t(`swal.success.send_unenroll_request`),
+              type: `success`, showCancelButton: false,
+              confirmButtonText: I18n.t(`swal.ok`),
+              confirmButtonColor: confirmButtonColor,
+              cancelButtonColor: cancelButtonColor
             });
           }
         });

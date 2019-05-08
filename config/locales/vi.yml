@@ -6,17 +6,19 @@ vi:
     warning:
       stop_sending_enroll_request: Bạn có chắc chắn muốn huỷ gửi yêu cầu tham gia khoá học này?
       send_enrolling_request: Bạn có chắc chắn muốn gửi yêu cầu tham gia khoá học này?
-      wait_to_be_approved: Bạn cần phải chờ để được chấp thuận bởi cán bộ phòng IC
+      send_unenroll_request: Bạn có chắc muốn gửi yêu cầu hủy tham gia khoá học này?
       add_participant: Bạn có chắc muốn thêm người này vào khoá học?
       unenroll_participant: Bạn có chắc không cho người này tham gia khoá học?
       remove_participant: Bạn có chắc muốn xoá người này khỏi khoá học?
+      wait_to_be_approved: Bạn cần phải chờ để được chấp thuận bởi cán bộ phòng IC
       cannot_be_undo: Hành động này không thể hoàn tác!
     success:
+      stop_sending_enroll_request: Huỷ gửi yêu cầu tham gia khoá học thành công!
+      send_enrolling_request: Gửi yêu cầu tham gia khoá học thành công!
+      send_unenroll_request: Gửi yêu cầu huỷ tham gia khoá học thành công
       add_participant: Thêm vào khoá học thành công!
       unenroll_participant: Hủy tham gia khoá học thành công!
       remove_participant: Xoá khỏi khoá học thành công!
-      stop_sending_enroll_request: Huỷ gửi yêu cầu tham gia khoá học thành công!
-      send_enrolling_request: Gửi yêu cầu tham gia khoá học thành công!
       wait_to_be_approved: Giờ bạn phải chờ để được cán bộ phòng IC chấp thuận. Bạn có thể vào mục "Khoá học của tôi" để nhắn tin với cán bộ phụ trách.
     error:
       removed_from_course: Bạn vừa bị xoá khỏi khoá học!
@@ -122,7 +124,7 @@ vi:
       total: Tổng
   notifications:
     noti_0: <b>%{user}</b> đã đăng kí tham gia khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
-    noti_1: <b>%{user}</b> đã huỷ đăng kí tham gia khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
+    noti_1: <b>%{user}</b> đã hủy đăng kí tham gia khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
     noti_2: <b>%{user}</b> không cho phép bạn tham gia khóa học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
     noti_3: <b>%{user}</b> đã cho phép bạn tham gia khóa học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
     noti_4: <b>%{user}</b> đã xoá bạn khỏi khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
@@ -131,6 +133,7 @@ vi:
     noti_7: <b>%{user}</b> đã từ chối yêu cầu <b>%{requirement}</b> của bạn lúc <i><b>%{time}</i></b>.
     noti_8: "<b>%{user}</b> ở khoá học <b>%{event}</b> đã nhắn tin cho bạn: <br/>\"<i><b>%{message}</i></b>\"<br/>lúc <i><b>%{time}</i></b>."
     noti_9: <b>%{user}</b> ở khoá học <b>%{event}</b> đã xoá một tin nhắn lúc <i><b>%{time}</i></b>.
+    noti_10: <b>%{user}</b> đã gửi yêu cầu hủy tham gia khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
     index:
       no_notification: Bạn chưa có thông báo nào!
       mark_all_as_read: Đánh dấu tất cả là đã đọc
