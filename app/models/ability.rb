@@ -5,6 +5,7 @@ class Ability
     if user.Admin?
       dashboard_rules
       can :manage, User
+      cannot :destroy, User, id: user.id
     elsif user.Manager?
       dashboard_rules
       manager_rules user.id
