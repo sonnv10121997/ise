@@ -13,6 +13,7 @@ class UserEnrollEventsController < ApplicationController
   def show; end
 
   def create
+    return head 403 unless enrollable?
     current_user.user_enroll_events.create event_id: user_event.id
     create_user_event_requirement
     find_conversation user, user_event.leader
@@ -102,5 +103,17 @@ class UserEnrollEventsController < ApplicationController
     joined_participants = user_event.participant_details
       .where(status: UserEnrollEvent.statuses.values[1]).size
     user_event.update_attributes joined_participants: joined_participants
+  end
+
+  def enrollable?
+    enrolling_events = Event.participate_by current_user, UserEnrollEvent
+      .statuses.values[0]
+    return true if enrolling_events.empty?
+    user_event_range = user_event.start_date..user_event.end_date
+    enrolling_events.each do |event|
+      event_range = event.start_date..event.end_date
+      return false if user_event_range.overlaps? event_range
+    end
+    true
   end
 end

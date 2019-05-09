@@ -1,4 +1,4 @@
-class Mmo < ApplicationRecord
+class Mou < ApplicationRecord
   belongs_to :partner
 
   validates :name, presence: true,
