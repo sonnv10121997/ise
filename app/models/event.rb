@@ -32,10 +32,12 @@ class Event < ApplicationRecord
       .joins(:participant_details).where(status: PUBLISHES).group(:id)
       .order "participants DESC"
     end)
-  scope :participate_by, (lambda do |user|
+  scope :participate_by, (lambda do |user, status = nil|
       joins(:participant_details)
-      .where("events.leader_id = ? OR user_enroll_events.user_id = ?",
-        user, user).distinct
+      .where("events.leader_id = ? OR
+        user_enroll_events.user_id = ? AND
+        user_enroll_events.status IN (?)",
+        user, user, status == nil ? UserEnrollEvent.statuses.values : status).distinct
     end)
   scope :lead_by, ->(leader) {where leader_id: leader}
 

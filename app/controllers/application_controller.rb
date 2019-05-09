@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     redirect_with_flash :error, t("rails_admin.access_denied")
   end
 
+  rescue_from ActiveRecord::StatementInvalid do |exception|
+    redirect_with_flash :error, t("rails_admin.foreign_key_constraint")
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -51,9 +55,8 @@ class ApplicationController < ActionController::Base
       requirement_id: requirement&.id, message_id: message&.id
     text = t("notifications.noti_#{notification.notification_type}",
       user: notification.notifier_name, event: notification.event_name,
-      requirement: notification.requirement_name, message: notification
-      .message_content, time: notification.created_at.strftime(Settings.model
-      .notification.datetime_format)).html_safe
+      requirement: notification.requirement_name, time: notification.created_at
+      .strftime(Settings.model.notification.datetime_format)).html_safe
     NotificationBroadcastJob.perform_now notification, text, noty_type
   end
 end

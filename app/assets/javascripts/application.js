@@ -34,7 +34,7 @@ function noty(text, type) {
     text: text,
     layout: `bottomLeft`,
     theme: `relax`,
-    timeout: 3000
+    timeout: 5000
   }).show();
 };
 

@@ -29,8 +29,7 @@ $(document).on(`turbolinks:load`, function() {
           data: {
             'event_id': event_slug,
             'user_id': user_id
-          },
-          success: function() {
+          }, success: function() {
             Swal.fire({
               title: I18n.t(`swal.success.send_enrolling_request`),
               text: I18n.t(`swal.success.wait_to_be_approved`),
@@ -40,6 +39,14 @@ $(document).on(`turbolinks:load`, function() {
               cancelButtonColor: cancelButtonColor
             }).then(function() {
               location.href = `/user_enroll_events/${event_slug}`;
+            });
+          }, error: function() {
+            Swal.fire({
+              title: I18n.t(`swal.error.send_enrolling_request`),
+              text: I18n.t(`swal.error.event_duplicated`),
+              type: `error`, showCancelButton: false,
+              confirmButtonText: I18n.t(`swal.ok`),
+              confirmButtonColor: confirmButtonColor
             });
           }
         });

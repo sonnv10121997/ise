@@ -21,6 +21,8 @@ en:
       remove_participant: Remove participant successfully!
       wait_to_be_approved: You now need to wait to be approved. Check "My courses" tab to inbox the staff!
     error:
+      send_enrolling_request: You cannot send enroll request to this course!
+      event_duplicated: This course is duplicated joining time with your enrolling courses.
       removed_from_course: You have been removed from the course!
   events:
     index:
@@ -132,7 +134,7 @@ en:
     noti_5: <b>%{user}</b> updated <b>%{requirement}</b> requirement for <b>%{event}</b> at <i><b>%{time}</b></i>.
     noti_6: <b>%{user}</b> approved your <b>%{requirement}</b> requirement at <i><b>%{time}</b></i>.
     noti_7: <b>%{user}</b> unapproved your <b>%{requirement}</b> requirement at <i><b>%{time}</b></i>.
-    noti_8: "You've got a message from <b>%{user}</b> in <b>%{event}</b>: <br/>\"<i><b>%{message}</i></b>\"<br/>at <i><b>%{time}</b></i>."
+    noti_8: You've got a message from <b>%{user}</b> in <b>%{event}</b> at <i><b>%{time}</b></i>.
     noti_9: <b>%{user}</b> from <b>%{event}</b> deleted a message at <i><b>%{time}</b></i>.
     noti_10: <b>%{user}</b> sent unenroll request to <b>%{event}</b> at <i><b>%{time}</b></i>.
     index:
@@ -249,6 +251,7 @@ en:
       last: Last
   rails_admin:
     access_denied: You don't have permission to access this content!
+    foreign_key_constraint: You cannot delete this entity becasuse it's reference to or referenced by orther entity!
   valid_end_date: cannot be before start date
   validate_max_participants: Max participants cannot be less than %{number}
   validate_joined_participants: Joined participants cannot be less than %{number}

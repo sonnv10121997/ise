@@ -21,6 +21,8 @@ vi:
       remove_participant: Xoá khỏi khoá học thành công!
       wait_to_be_approved: Giờ bạn phải chờ để được cán bộ phòng IC chấp thuận. Bạn có thể vào mục "Khoá học của tôi" để nhắn tin với cán bộ phụ trách.
     error:
+      send_enrolling_request: Bạn không thể đăng kí tham gia khoá học này!
+      event_duplicated: Khoá học này bị trùng thời gian tham gia với những khoá học bạn đang đăng kí.
       removed_from_course: Bạn vừa bị xoá khỏi khoá học!
   events:
     index:
@@ -132,7 +134,7 @@ vi:
     noti_5: <b>%{user}</b> đã cập nhật yêu cầu <b>%{requirement}</b> của khóa học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
     noti_6: <b>%{user}</b> đã chấp thuận yêu cầu <b>%{requirement}</b> của bạn lúc <i><b>%{time}</i></b>.
     noti_7: <b>%{user}</b> đã từ chối yêu cầu <b>%{requirement}</b> của bạn lúc <i><b>%{time}</i></b>.
-    noti_8: "<b>%{user}</b> ở khoá học <b>%{event}</b> đã nhắn tin cho bạn: <br/>\"<i><b>%{message}</i></b>\"<br/>lúc <i><b>%{time}</i></b>."
+    noti_8: <b>%{user}</b> ở khoá học <b>%{event}</b> đã nhắn tin cho bạn lúc <i><b>%{time}</i></b>.
     noti_9: <b>%{user}</b> ở khoá học <b>%{event}</b> đã xoá một tin nhắn lúc <i><b>%{time}</i></b>.
     noti_10: <b>%{user}</b> đã gửi yêu cầu hủy tham gia khoá học <b>%{event}</b> lúc <i><b>%{time}</i></b>.
     index:
@@ -363,6 +365,7 @@ vi:
         other: "%{count} lỗi khi lưu %{resource}:"
   rails_admin:
     access_denied: Bạn không có quyền truy cập vào nội dung này!
+    foreign_key_constraint: Bạn không thể xoá đối tượng này vì nó đang tham chiếu đến hoặc được tham chiếu bởi các đối tượng khác!
   admin:
     js:
       true: True

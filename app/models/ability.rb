@@ -60,7 +60,7 @@ class Ability
   end
 
   def staff_read_authorization
-    staff_manage_authorization << [Event, Mmo, Partner, Major]
+    staff_manage_authorization << [Event, Mou, Partner, Major]
   end
 
   def staff_manage_authorization
